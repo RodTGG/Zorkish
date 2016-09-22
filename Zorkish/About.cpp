@@ -27,6 +27,5 @@ int About::handle_event()
 {
 	std::cin.ignore();
 	std::cin.get();
-
 	return States::STATE_MAINMENU;
 }

@@ -7,8 +7,8 @@ public:
 	About();
 	~About();
 
-	void display();
-	void logic();
-	int handle_event();
+	void display() override;
+	void logic() override;
+	int handle_event() override;
 };
 

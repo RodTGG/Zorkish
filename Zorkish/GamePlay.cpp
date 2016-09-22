@@ -5,6 +5,8 @@
 GamePlay::GamePlay(Player* p) : GameState(5)
 {
 	myPlayer = p;
+	myGraph->readFile("Adventure.txt");
+	myPlayer->setLocation(myGraph->adjlist[0]);
 }
 
 
@@ -29,20 +31,25 @@ int GamePlay::handle_event()
 	std::cout << ":>";
 	std::cin >> usrInput;
 
-	
-	if (usrInput == "quit")
-	{
-		std::cout << "Your adventure has ended without fame or fortune." << std::endl;
-		return States::STATE_MAINMENU;
-	}
+	do {
+		if (usrInput == "quit")
+		{
+			std::cout << "Your adventure has ended without fame or fortune." << std::endl;
+			return States::STATE_MAINMENU;
+		}
 
-	if (usrInput == "hiscore")
-	{
-		std::cout << "You have entered the magic word and will now see the “New High Score” screen.";
-		return States::STATE_VIEWHALLOFFAME;
-	}
-	if (usrInput == "i")
-	{
-		std::cout << myPlayer->FullDesc();
-	}
+		if (usrInput == "hiscore")
+		{
+			std::cout << "You have entered the magic word and will now see the “New High Score” screen.";
+			return States::STATE_VIEWHALLOFFAME;
+		}
+		if (usrInput == "i")
+		{
+			std::cout << myPlayer->FullDesc();
+		}
+		if (usrInput == "go") 
+		{
+			myPlayer->go("n");
+		}
+	} while (usrInput != "quit");
 }

@@ -1,21 +1,20 @@
 // Zorkish.cpp : Defines the entry point for the console application.
 //
-
 #include "stdafx.h"
-#include "GameEngine.h"
 #include "Graph.h"
-#define DEBUG 2
+#include "GameStateManager.h"
+#define DEBUG 1
 
 int main(int argc, char* argv[]) 
 {
 #if DEBUG == 1
-	GameEngine* myGe = new GameEngine();
+	GameStateManager* myGSM = new GameStateManager();
 	do
 	{
-		myGe->Render();
-		myGe->HandleInput();
-		myGe->UpdateGame();
-	} while (!myGe->exiting());
+		myGSM->change_state();
+		myGSM->Display();
+		myGSM->ExecuteState();
+	} while (myGSM->CurrentState() != States::STATE_EXIT);
 
 	return 0;
 #endif
