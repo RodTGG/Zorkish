@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Inventory.h"
-#include "MapNode.h"
+#include "Graph.h"
 
 class Player : GameObject
 {
@@ -12,6 +12,7 @@ private:
 	bool falive = true;
 
 	MapNode* flocation = NULL;
+	Graph* fmap = NULL;
 public:
 	Player();
 	Player(std::string name, std::string desc);
@@ -27,7 +28,7 @@ public:
 	const int moves();
 	const MapNode* currentLocation();
 	void setLocation(MapNode* aLocation);
-
+	void go(std::string aPlace);
 	
 };
 

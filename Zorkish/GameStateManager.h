@@ -20,7 +20,6 @@ private:
 	int nextState = NULL;
 
 	GameState* fState = NULL;
-	GameState* fPreviousState = NULL;
 	Player* fPlayer = new Player();
 	GameMode* fGameMode = NULL;
 };

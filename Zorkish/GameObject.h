@@ -10,6 +10,7 @@ protected:
 private:
 	IdeableObject* idobject;
 public:
+	GameObject(std::string aName, std::string aId[2]);
 	GameObject(std::string aName, std::string aDesc, std::string aId[2]);
 	~GameObject();
 

@@ -98,7 +98,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Rodrigo\GoogleDrive\Projects\Uni\Zorkish\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\Rodrigo\GoogleDrive\Projects\GitHub\Zorkish\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Zorkish.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Bscmake>

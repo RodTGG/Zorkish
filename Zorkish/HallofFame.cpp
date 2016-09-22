@@ -30,6 +30,5 @@ int HallofFame::handle_event()
 	std::cout << "Press ESC or Enter to return to the Main Menu" << std::endl;
 	std::cin.ignore();
 	std::cin.get();
-
-	return States::STATE_NULL;
+	return States::STATE_MAINMENU;
 }

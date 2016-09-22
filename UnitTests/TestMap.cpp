@@ -1,10 +1,7 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "..\Zorkish\Player.h"
-#include "..\Zorkish\Item.h"
-#include "..\Zorkish\MapNode.h"
 #include "..\Zorkish\Graph.h"
-#include "..\Zorkish\Vertices.cpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -21,7 +18,7 @@ namespace TestMap
 			Item* gun3 = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun3", "pistol" });
 			Item* i[] = { gun,gun2,gun3 };
 
-			MapNode* myMap1 = new MapNode("A very scary node", i);
+			MapNode* myMap1 = new MapNode("1","A very scary node", i);
 
 			Assert::IsTrue(myMap1->mapItems->HasItem("gun"));
 			Assert::IsTrue(myMap1->mapItems->HasItem("gun2"));
@@ -32,40 +29,38 @@ namespace TestMap
 		{
 
 			Player* p = new Player();
-			Graph* mgraph = new Graph();
+			Graph* myGraph = new Graph();
 
-			MapNode* myMap1 = new MapNode("A very scary node");
-			MapNode* myMap2 = new MapNode("A very happy node");
-			MapNode* myMap3 = new MapNode("A very kawaii node");
-			Vertices* myvert = new Vertices();
-			
-			mgraph->addMapNode(myMap1);
-			mgraph->addMapNode(myMap2);
-			mgraph->addMapNode(myMap3);
-			mgraph->addVertices(myvert);
-			mgraph->connectNode(myMap1, myMap2, myvert);
-			
-			p->setLocation(mgraph->graphNode(myMap1));
+			myGraph->addNode(new MapNode("1", "a cool map"));
+			myGraph->addNode(new MapNode("2", "a warm map"));
+			myGraph->addNode(new MapNode("3", "a cold map"));
+			myGraph->addNode(new MapNode("4", "a hot map"));
 
-			if (p->currentLocation() == myMap1) 
+			myGraph->addNeighbor("1", "2");
+			myGraph->addNeighbor("1", "3");
+			myGraph->addNeighbor("1", "4");
+			myGraph->addNeighbor("2", "4");
+			myGraph->addNeighbor("3", "4");
+
+			p->setLocation(myGraph->adjlist[0]);
+			if ((p->currentLocation(), myGraph->adjlist[0]))
+			{
+				Assert::IsTrue(true);
+			}
+			else 
+			{
+				Assert::IsFalse(false);
+			}
+			p->go("2");
+			if ((p->currentLocation(), myGraph->adjlist[1]))
 			{
 				Assert::IsTrue(true);
 			}
 			else
 			{
-				Assert::IsTrue(false);
+				Assert::IsFalse(false);
 			}
 
-			p->setLocation(mgraph->Traverse(mgraph->));
-
-			if (p->currentLocation() == myMap2)
-			{
-				Assert::IsTrue(true);
-			}
-			else
-			{
-				Assert::IsTrue(false);
-			}
 		}
 	};
 }
