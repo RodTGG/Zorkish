@@ -105,9 +105,6 @@
     <ClInclude Include="Graph.h">
       <Filter>Header Files\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Edge.h">
-      <Filter>Header Files\Map</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -171,9 +168,6 @@
       <Filter>Source Files\Map</Filter>
     </ClCompile>
     <ClCompile Include="MapNode.cpp">
-      <Filter>Source Files\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="Edge.cpp">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
   </ItemGroup>

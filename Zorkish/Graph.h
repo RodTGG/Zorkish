@@ -1,6 +1,5 @@
 #pragma once
 #include "stdafx.h"
-#include "Vertices.h"
 #include "MapNode.h"
 #include "Player.h"
 
@@ -10,15 +9,11 @@ public:
 	Graph();
 	~Graph();
 
-	void addMapNode(MapNode* aMapNode);
-	void addVertices(Vertices* aVertice);
-	void connectNode(MapNode* node1, MapNode* node2, Vertices* aVertice);
+	std::vector<MapNode*> adjlist;
 
-	MapNode* currentNode = NULL;
-
-	MapNode* graphNode(MapNode* aNode);
-	MapNode* Traverse(Vertices* aVert, char d);
+	void printGraph();
+	void addNode(MapNode* aNode);
+	void addNeighbor(MapNode& aNode1, MapNode& aNode2);
 private:
-	std::vector<MapNode*> fgraphNodes;				// vector of mapnodes
-	std::vector<Vertices*> fgraphVertices;			// vector of vertices
+	
 };

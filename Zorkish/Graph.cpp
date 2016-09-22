@@ -9,43 +9,61 @@ Graph::~Graph()
 {
 }
 
-void Graph::addMapNode(MapNode* aMapNode)
+void Graph::addNode(MapNode* aNode)
 {
-	fgraphNodes.push_back(aMapNode);
+	adjlist.push_back(aNode);
 }
 
-void Graph::addVertices(Vertices* aVertice)
+void Graph::addNeighbor(MapNode& aNode1, MapNode& aNode2)
 {
-	fgraphVertices.push_back(aVertice);
-}
+	MapNode* a = NULL;
+	MapNode* b = NULL;
 
-void Graph::connectNode(MapNode* node1, MapNode* node2, Vertices* aVertice)
-{
-	if (node1->hasNeighbour(node2))
+	// Copy nodes to temp nodes
+	for (unsigned int i = 0; i < adjlist.size(); i++)
 	{
-		aVertice->setSrc(node1);
-		aVertice->setDest(node2);
-	}
-}
-
-MapNode* Graph::graphNode(MapNode* aNode) 
-{
-	for (unsigned int i = 0; i < fgraphNodes.size(); i++) 
-	{
-		if (fgraphNodes[i] == aNode) 
+		if (adjlist[i]->fname == aNode1.fname)
 		{
-			return fgraphNodes[i];
+			a = adjlist[i];
 		}
-		else 
+		if (adjlist[i]->fname == aNode2.fname)
 		{
-			return NULL;
+			b = adjlist[i];
 		}
 	}
 
-	return NULL;
+	// Check if nodes arent neighbors
+	if (!a->hasNeighbor(b) && !b->hasNeighbor(a)) 
+	{
+		a->fneighbor.push_back(b);
+		b->fneighbor.push_back(a);
+	}
+
+	// Override node data
+	for (unsigned int i = 0; i < adjlist.size(); i++)
+	{
+		if (adjlist[i]->fname == aNode1.fname)
+		{
+			adjlist[i] = a;
+		}
+		if (adjlist[i]->fname == aNode2.fname)
+		{
+			adjlist[i] = b;
+		}
+	}
 }
 
-MapNode* Graph::Traverse(Vertices* aVert, char d)
+void Graph::printGraph() 
 {
-	return aVert->Dest();
+	for (unsigned int i = 0; i < adjlist.size(); i++) 
+	{
+		std::cout << adjlist[i]->fname + "--->";
+
+		for (unsigned int j = 0; j < adjlist[i]->fneighbor.size(); j++) 
+		{
+			std::cout << adjlist[i]->fneighbor[j]->fname;
+		}
+
+		std::cout << "\n";
+	}
 }

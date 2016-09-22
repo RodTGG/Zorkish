@@ -2,7 +2,6 @@
 #include "GameObject.h"
 #include "Inventory.h"
 #include "MapNode.h"
-#include "Vertices.h"
 
 class Player : GameObject
 {

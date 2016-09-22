@@ -3,19 +3,18 @@
 
 MapNode::MapNode()
 {
-	fEdges.clear();
 }
 
-MapNode::MapNode(std::string aDesc)
+MapNode::MapNode(std::string aName, std::string aDesc)
 {
+	fname = aName;
 	fdescription = aDesc;
-	fEdges.clear();
 }
 
-MapNode::MapNode(std::string aDesc, Item* aItems[])
+MapNode::MapNode(std::string aName, std::string aDesc, Item* aItems[])
 {
+	fname = aName;
 	fdescription = aDesc;
-	fEdges.clear();
 
 	for (int i = 0; i < (sizeof(aItems) / sizeof(*aItems)); i++)
 	{
@@ -23,42 +22,9 @@ MapNode::MapNode(std::string aDesc, Item* aItems[])
 	}
 }
 
-void MapNode::addEdge(MapNode& aNode)
-{
-	fconnectedRooms.push_back(&aNode);
-}
-
-void MapNode::remove(MapNode& aNode)
-{
-	for (unsigned int i = 0; i < fconnectedRooms.size(); i++)
-	{
-		if (fconnectedRooms[i] == &aNode)
-		{
-			fconnectedRooms.erase(fconnectedRooms.begin() + i);
-		}
-		else
-		{
-			std::cout << "Error, unable to remove room node" << std::endl;
-		}
-	}
-}
-
 const std::string& MapNode::getDesciption()
 {
 	return fdescription;
-}
-
-bool MapNode::hasNeighbour(MapNode* aNode)
-{
-	for (unsigned int i = 0; i < fconnectedRooms.size(); i++)
-	{
-		if (fconnectedRooms[i] == aNode)
-		{
-			return true;
-		}
-		else { false; }
-	}
-	return false;
 }
 
 void MapNode::toggleVisited()
@@ -71,4 +37,20 @@ void MapNode::toggleVisited()
 	{
 		visited = true;
 	}
+}
+
+bool MapNode::hasNeighbor(MapNode* aNode) 
+{
+	for (unsigned int i = 0; i < fneighbor.size(); i++)
+	{
+		if (fneighbor[i]->fname == aNode->fname)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+	return false;
 }
