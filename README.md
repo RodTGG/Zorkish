@@ -1,2 +1,2 @@
 # Zorkish
-A zork like game developme in C++
+A zork like game developed in C++
