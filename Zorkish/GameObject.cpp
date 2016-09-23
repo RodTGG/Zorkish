@@ -20,4 +20,5 @@ GameObject::GameObject(std::string aName, std::string aDesc, std::string aId[2])
 
 GameObject::~GameObject()
 {
+	delete idobject;
 }

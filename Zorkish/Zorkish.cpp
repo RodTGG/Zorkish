@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "Graph.h"
 #include "GameStateManager.h"
-#define DEBUG 1
+#define DEBUG 2
 
 int main(int argc, char* argv[]) 
 {

@@ -148,6 +148,9 @@
   <ItemGroup>
     <ClInclude Include="About.h" />
     <ClInclude Include="BoxWorld.h" />
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandProcessor.h" />
+    <ClInclude Include="GoCommand.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="MapNode.h" />
     <ClInclude Include="GameMode.h" />
@@ -173,9 +176,12 @@
   <ItemGroup>
     <ClCompile Include="About.cpp" />
     <ClCompile Include="BoxWorld.cpp" />
+    <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CommandProcessor.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GamePlay.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
+    <ClCompile Include="GoCommand.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="HallofFame.cpp" />
     <ClCompile Include="Help.cpp" />
