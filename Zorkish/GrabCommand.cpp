@@ -36,13 +36,13 @@ std::string GrabCommand::Execute(Player* p, std::vector<std::string> aText)
 	}
 	else
 	{
-		if (aText[1].length() == 0)
+		if (aText.size() == 1)
 		{
-			result = "Grab what?";
+			result = "Try having more than just " + aText[0] + "...";
 		}
 		else 
 		{
-			grabItem(p, aText[1]);
+			result = grabItem(p, aText[1]);
 		}
 	}
 
@@ -59,11 +59,11 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 		
 		if (p->currentLocation()->mapItems->HasItem(aObject)) 
 		{
-			result = "unable to remove item";
+			result = "Unable to remove item";
 		}
 		if (!p->Locate(aObject)) 
 		{
-			result = "unable to add item to player";
+			result = "Unable to add item to player";
 		}
 		else 
 		{
@@ -72,7 +72,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 	}
 	else 
 	{
-		result = "You cant grab that...";
+		result = "Nothing to grab";
 	}
 
 	return result;

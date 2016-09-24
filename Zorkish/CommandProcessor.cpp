@@ -12,7 +12,9 @@ CommandProcessor::CommandProcessor()
 	addCommand(new MoveCommand("move"));
 	addCommand(new MoveCommand("go"));
 	addCommand(new GrabCommand("grab"));
+	addCommand(new GrabCommand("take"));
 	addCommand(new PutCommand("put"));
+	addCommand(new PutCommand("drop"));
 }
 
 CommandProcessor::~CommandProcessor()

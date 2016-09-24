@@ -19,7 +19,7 @@ std::string MoveCommand::Execute(Player* p, std::vector<std::string> aText)
 	}
 	else
 	{
-		return "Not enough arguments";
+		return "Move where?";
 	}
 }
 

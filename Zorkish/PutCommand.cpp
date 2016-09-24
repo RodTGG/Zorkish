@@ -36,13 +36,13 @@ std::string PutCommand::Execute(Player* p, std::vector<std::string> aText)
 	}
 	else
 	{
-		if (aText[1].length() == 0)
+		if (aText.size() == 1)
 		{
-			result = "Put what?";
+			result = "....just " + aText[0] + " wont do.";
 		}
 		else
 		{
-			putItem(p, aText[1]);
+			result = putItem(p, aText[1]);
 		}
 	}
 
@@ -53,20 +53,22 @@ std::string PutCommand::putItem(Player* p, std::string aObject)
 {
 	std::string result = "";
 
+	if (p->inv->HasItem(aObject)) 
+	{
+		p->currentLocation()->mapItems->Put(p->inv->Take(aObject));
 
-	p->currentLocation()->mapItems->Put(p->inv->Take(aObject));
-
-	if (!p->currentLocation()->mapItems->HasItem(aObject))
-	{
-		result = "unable to drop item in this location";
+		if (!p->currentLocation()->mapItems->HasItem(aObject))
+		{
+			result = "Unable to drop item in this location";
+		}
+		else
+		{
+			result = "You dropped " + p->currentLocation()->mapItems->Fetch(aObject)->FullDesc();
+		}
 	}
-	if (p->Locate(aObject))
+	else 
 	{
-		result = "unable to remove item from user";
-	}
-	else
-	{
-		result = "you dropped " + p->inv->Fetch(aObject)->FullDesc();
+		result = "You dont have that item";
 	}
 
 return result;
@@ -90,21 +92,7 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 		{
 			if (p->AreYou(aContainer))
 			{
-				p->inv->Put(p->currentLocation()->mapItems->Take(aObject));
-				result = "you take " + p->inv->Fetch(aObject)->FullDesc();
-
-				if (!p->currentLocation()->mapItems->HasItem(aObject))
-				{
-					result = "unable to drop item in this location";
-				}
-				if (p->Locate(aObject))
-				{
-					result = "unable to remove item from user";
-				}
-				else 
-				{
-					result = "you dropped " + p->inv->Fetch(aObject)->FullDesc() + " into " + aContainer;
-				}
+				result = "item already there...";
 			}
 		}
 	}
