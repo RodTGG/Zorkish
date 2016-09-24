@@ -1,11 +1,7 @@
 #include "stdafx.h"
 #include "MoveCommand.h"
 
-MoveCommand::MoveCommand() : Command(new std::string[2]{ "move", "go" })
-{
-}
-
-MoveCommand::MoveCommand(std::string ids[2]) : Command(ids)
+MoveCommand::MoveCommand(std::string aName) : Command(aName)
 {
 }
 
@@ -15,9 +11,9 @@ MoveCommand::~MoveCommand()
 
 std::string MoveCommand::Execute(Player* p, std::vector<std::string> aText)
 {
-	std::string direction = aText[1];
+	std::string direction = aText[1];										// get direction based on char
 
-	if (aText.size() > 1)
+	if (aText.size() > 1)													// make sure there are enough arguments to create node
 	{
 		return ChangeLocation(p, direction);
 	}

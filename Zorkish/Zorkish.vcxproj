@@ -149,7 +149,9 @@
     <ClInclude Include="About.h" />
     <ClInclude Include="BoxWorld.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="GrabCommand.h" />
     <ClInclude Include="CommandProcessor.h" />
+    <ClInclude Include="PutCommand.h" />
     <ClInclude Include="LookCommand.h" />
     <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Graph.h" />
@@ -177,7 +179,9 @@
   <ItemGroup>
     <ClCompile Include="About.cpp" />
     <ClCompile Include="BoxWorld.cpp" />
+    <ClCompile Include="GrabCommand.cpp" />
     <ClCompile Include="CommandProcessor.cpp" />
+    <ClCompile Include="PutCommand.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GamePlay.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
@@ -195,7 +199,6 @@
     <ClCompile Include="NewHighScore.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SelectAdventure.cpp" />
-    <ClCompile Include="Command.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

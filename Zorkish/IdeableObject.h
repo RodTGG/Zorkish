@@ -9,5 +9,5 @@ public:
 	~IdeableObject();
 
 	bool AreYou(std::string aId);
-	std::string FirstId() { identifiers[0]; };
+	std::string FirstId() { return identifiers[0]; };
 };

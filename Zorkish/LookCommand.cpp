@@ -2,12 +2,9 @@
 #include "LookCommand.h"
 
 
-LookCommand::LookCommand() : Command(new std::string[2]{ "look", "l" })
+LookCommand::LookCommand(std::string aName) : Command(aName)
 {
-}
 
-LookCommand::LookCommand(std::string ids[2]) : Command(ids)
-{
 }
 
 LookCommand::~LookCommand()
@@ -20,11 +17,7 @@ std::string LookCommand::Execute(Player* p, std::vector<std::string> aText)
 
 	if (aText.size() >= 3 && aText.size() <= 5)
 	{
-		if (aText[0] != "look")
-		{
-			result = "Thats not look";
-		}
-		else if (aText[1] != "at" && aText[1] != "in")
+		if (aText[1] != "at" && aText[1] != "in")
 		{
 			result = "look at what?";
 		}
@@ -51,7 +44,7 @@ std::string LookCommand::Execute(Player* p, std::vector<std::string> aText)
 			}
 			else
 			{
-				result = lookAtIn(p, aText[2], aText[2]);
+				result = lookAtIn(p, aText[2]);
 			}
 		}
 	}
@@ -66,36 +59,45 @@ std::string LookCommand::Execute(Player* p, std::vector<std::string> aText)
 	return result;
 }
 
+std::string LookCommand::lookAtIn(Player* p, std::string aItem)
+{
+	std::string result = "";
+
+	if (p->AreYou(aItem))
+	{
+		result = p->Locate(aItem)->FullDesc();
+	}
+	else {
+		if (p->currentLocation()->mapItems->HasItem(aItem))
+		{
+			result = p->currentLocation()->mapItems->Fetch(aItem)->FullDesc();
+		}
+		else
+		{
+			result = "Could not find item";
+		}
+	}
+
+	return result;
+}
+
 std::string LookCommand::lookAtIn(Player* p, std::string aItem, std::string aContainer)
 {
 	std::string result = "";
 
-	if (aItem != aContainer) {
-		if (p->Locate(aContainer) == NULL)
+	if (p->Locate(aContainer) == NULL)
+	{
+		result = "You do not have" + aContainer;
+	}
+	else
+	{
+		if (p->Locate(aItem) == NULL)
 		{
-			result = "You do not have" + aContainer;
+			result = "You do not have " + aItem + " in " + aContainer;
 		}
 		else
 		{
-			if (p->Locate(aItem) == NULL)
-			{
-				result = "You do not have " + aItem + " in " + aContainer;
-			}
-			else
-			{
-				result = p->Locate(aItem)->FullDesc();
-			}
-		}
-	}
-	else 
-	{
-		if (p->currentLocation()->mapItems->HasItem(aItem)) 
-		{
-			result = p->currentLocation()->mapItems->Fetch(aItem)->FullDesc();
-		}
-		else 
-		{
-			result = "Could not find item";
+			result = p->Locate(aItem)->FullDesc();
 		}
 	}
 

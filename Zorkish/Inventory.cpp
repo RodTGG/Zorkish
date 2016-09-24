@@ -29,14 +29,14 @@ bool Inventory::HasItem(std::string aId)
 	return result;
 }
 
-void Inventory::Put(Item* aItm)
+void Inventory::Put(GameObject* aItm)
 {
 	items.push_back(aItm);
 }
 
-Item* Inventory::Take(std::string aId)
+GameObject* Inventory::Take(std::string aId)
 {
-	Item* result = NULL;
+	GameObject* result = NULL;
 
 	for (unsigned int i = 0; i < items.size(); i++)
 	{
@@ -50,9 +50,9 @@ Item* Inventory::Take(std::string aId)
 	return result;
 }
 
-Item* Inventory::Fetch(std::string aId)
+GameObject* Inventory::Fetch(std::string aId)
 {
-	Item* result = NULL;
+	GameObject* result = NULL;
 
 	for (unsigned int i = 0; i < items.size(); i++)
 	{
