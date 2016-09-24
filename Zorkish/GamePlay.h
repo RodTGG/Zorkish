@@ -1,6 +1,7 @@
 #pragma once
 #include "GameState.h"
-#include "Player.h"
+#include "CommandProcessor.h"
+
 class GamePlay :
 	public GameState
 {
@@ -14,5 +15,8 @@ public:
 private:
 	Player* myPlayer;
 	Graph* myGraph = new Graph();
+
+protected:
+	CommandProcessor* fcp = new CommandProcessor();
 };
 

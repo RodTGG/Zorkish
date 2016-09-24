@@ -1,35 +1,21 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 #include "..\Zorkish\Player.h"
-#include "..\Zorkish\Graph.h"
+#include "..\Zorkish\MoveCommand.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
-namespace TestMap
+namespace TestCommandProcessor
 {
-	TEST_CLASS(TestMap)
+	TEST_CLASS(TestCommandProcessor)
 	{
 	public:
 
-		TEST_METHOD(TestMapNodeInventory)
+		TEST_METHOD(TestMoveCommand)
 		{
-			Item* gun = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun", "pistol" });
-			Item* gun2 = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun2", "pistol" });
-			Item* gun3 = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun3", "pistol" });
-			Item* i[] = { gun,gun2,gun3 };
-
-			MapNode* myMap1 = new MapNode("1","A very scary node", i);
-
-			Assert::IsTrue(myMap1->mapItems->HasItem("gun"));
-			Assert::IsTrue(myMap1->mapItems->HasItem("gun2"));
-			Assert::IsTrue(myMap1->mapItems->HasItem("gun3"));
-		}
-
-		TEST_METHOD(TestMapRooms)
-		{
-
 			Player* p = new Player();
 			Graph* myGraph = new Graph();
+			MoveCommand* move = new MoveCommand();
 
 			myGraph->addNode(new MapNode("1", "a cool map"));
 			myGraph->addNode(new MapNode("2", "a warm map"));
@@ -47,11 +33,13 @@ namespace TestMap
 			{
 				Assert::IsTrue(true);
 			}
-			else 
+			else
 			{
 				Assert::IsFalse(false);
 			}
-			p->setLocation(myGraph->adjlist[0]->fneighbor[0]);
+
+			move->ChangeLocation(p, "n");
+
 			if ((p->currentLocation(), myGraph->adjlist[1]))
 			{
 				Assert::IsTrue(true);

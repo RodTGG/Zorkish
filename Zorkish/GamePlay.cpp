@@ -28,10 +28,21 @@ void GamePlay::logic()
 int GamePlay::handle_event()
 {
 	std::string usrInput = "";
-	std::cout << ":>";
-	std::cin >> usrInput;
 
 	do {
+		std::cout << ":>";
+		while (std::getline(std::cin, usrInput))
+		{
+			if (usrInput.empty())
+			{
+				continue;
+			}
+			else
+			{
+				break;
+			}
+		}
+
 		if (usrInput == "quit")
 		{
 			std::cout << "Your adventure has ended without fame or fortune." << std::endl;
@@ -47,9 +58,9 @@ int GamePlay::handle_event()
 		{
 			std::cout << myPlayer->FullDesc();
 		}
-		if (usrInput == "go") 
+		else 
 		{
-			myPlayer->go("n");
+			std::cout << fcp->executeCommand(myPlayer,usrInput) << std::endl;
 		}
 	} while (usrInput != "quit");
 }

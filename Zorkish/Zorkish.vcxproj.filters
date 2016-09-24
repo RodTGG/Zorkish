@@ -111,10 +111,10 @@
     <ClInclude Include="CommandProcessor.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
-    <ClInclude Include="GoCommand.h">
+    <ClInclude Include="Command.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
-    <ClInclude Include="Command.h">
+    <ClInclude Include="MoveCommand.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>
@@ -182,10 +182,10 @@
     <ClCompile Include="CommandProcessor.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="GoCommand.cpp">
+    <ClCompile Include="Command.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
+    <ClCompile Include="MoveCommand.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>

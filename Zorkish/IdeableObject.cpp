@@ -28,7 +28,7 @@ bool IdeableObject::AreYou(std::string aId)
 
 	for (int i = 0; i < 2; i++)
 	{
-		if (identifiers[i] == temp[i])
+		if (aId == temp[i])
 		{
 			result = true;
 			break;

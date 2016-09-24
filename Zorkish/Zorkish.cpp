@@ -3,7 +3,12 @@
 #include "stdafx.h"
 #include "Graph.h"
 #include "GameStateManager.h"
-#define DEBUG 2
+#define DEBUG 1
+
+void add(int a, int b, int* c)
+{
+	*c = a + b;
+}
 
 int main(int argc, char* argv[]) 
 {
@@ -23,6 +28,13 @@ int main(int argc, char* argv[])
 	myGraph->readFile("Adventure.txt");
 	myGraph->printGraph();
 #endif
+#if DEBUG == 3
+	int a = 3;
+	int b = 4;
+	int c = 0;
 
+	add(a,b, &c);
+	std::cout << c;
+#endif
 }
 

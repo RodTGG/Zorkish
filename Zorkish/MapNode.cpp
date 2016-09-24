@@ -9,6 +9,11 @@ MapNode::MapNode(std::string aName, std::string aDesc)
 {
 	fname = aName;
 	fdescription = aDesc;
+
+	for (unsigned int i = 0; i < 4; i++)
+	{
+		fneighbor.push_back(NULL);
+	}
 }
 
 MapNode::MapNode(std::string aName, std::string aDesc, Item* aItems[])
@@ -39,17 +44,19 @@ void MapNode::toggleVisited()
 	}
 }
 
-bool MapNode::hasNeighbor(MapNode* aNode) 
+bool MapNode::hasNeighbor(MapNode* aNode)
 {
 	for (unsigned int i = 0; i < fneighbor.size(); i++)
 	{
-		if (fneighbor[i]->fname == aNode->fname)
-		{
-			return true;
-		}
-		else 
-		{
-			return false;
+		if (fneighbor[i] != NULL) {
+			if (fneighbor[i]->fname == aNode->fname)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 	return false;

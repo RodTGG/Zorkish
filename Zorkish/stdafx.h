@@ -17,3 +17,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
+#include <list>
+// #include <map>				// I dont think its really needed, specially for commands where
+								// a second variable is simply not needed.

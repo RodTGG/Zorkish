@@ -9,6 +9,24 @@ Graph::~Graph()
 {
 }
 
+void Graph::Tokenizer(const std::string& str, std::vector<std::string>& fTokens, const std::string& delimiters)
+{
+	// Skip delimiters at beginning.
+	std::string::size_type lastPos = str.find_first_not_of(delimiters, 0);
+	// Find first "non-delimiter".
+	std::string::size_type pos = str.find_first_of(delimiters, lastPos);
+
+	while (std::string::npos != pos || std::string::npos != lastPos)
+	{
+		// Found a token, add it to the vector.
+		fTokens.push_back(str.substr(lastPos, pos - lastPos));
+		// Skip delimiters.  Note the "not_of"
+		lastPos = str.find_first_not_of(delimiters, pos);
+		// Find next "non-delimiter"
+		pos = str.find_first_of(delimiters, lastPos);
+	}
+}
+
 /// <summary>
 /// Adds the node to adjency list.
 /// </summary>
@@ -23,10 +41,12 @@ void Graph::addNode(MapNode* aNode)
 /// </summary>
 /// <param name="aNode1">name of node1.</param>
 /// <param name="aNode2">name of node2.</param>
-void Graph::addNeighbor(std::string aNode1, std::string aNode2)
+void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDirection)
 {
 	MapNode* a = NULL;
 	MapNode* b = NULL;
+	int direction = getDirection(aDirection);
+
 
 	// Copy nodes to temp nodes
 	for (unsigned int i = 0; i < adjlist.size(); i++)
@@ -44,8 +64,25 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2)
 	// Check if nodes arent neighbors
 	if (!a->hasNeighbor(b) && !b->hasNeighbor(a))
 	{
-		a->fneighbor.push_back(b);
-		b->fneighbor.push_back(a);
+		a->fneighbor.at(direction) = b;
+
+		switch (direction)
+		{
+		case 0:
+			b->fneighbor.at(2) = a;
+			break;
+		case 1:
+			b->fneighbor.at(3) = a;
+			break;
+		case 2:
+			b->fneighbor.at(0) = a;
+			break;
+		case 3:
+			b->fneighbor.at(1) = a;
+		default:
+			b->fneighbor.at(1) = a;
+			break;
+		}
 	}
 
 	// Override node data
@@ -62,6 +99,15 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2)
 	}
 }
 
+int Graph::getDirection(std::string aDirection)
+{
+	char* direction[4]{ "N", "E","S","W" };
+
+	if (aDirection == direction[0]) return 0;
+	if (aDirection == direction[1]) return 1;
+	if (aDirection == direction[2]) return 2;
+	if (aDirection == direction[3]) return 3;
+}
 
 /// <summary>
 /// Prints the graph.
@@ -74,28 +120,10 @@ void Graph::printGraph()
 
 		for (unsigned int j = 0; j < adjlist[i]->fneighbor.size(); j++)
 		{
-			std::cout << adjlist[i]->fneighbor[j]->fname;
+			if (adjlist[i]->fneighbor[j] != NULL) std::cout << adjlist[i]->fneighbor[j]->fname;
 		}
 
 		std::cout << "\n";
-	}
-}
-
-void Graph::Tokenizer(const std::string& str, std::vector<std::string>& fTokens, const std::string& delimiters)
-{
-	// Skip delimiters at beginning.
-	std::string::size_type lastPos = str.find_first_not_of(delimiters, 0);
-	// Find first "non-delimiter".
-	std::string::size_type pos = str.find_first_of(delimiters, lastPos);
-
-	while (std::string::npos != pos || std::string::npos != lastPos)
-	{
-		// Found a token, add it to the vector.
-		fTokens.push_back(str.substr(lastPos, pos - lastPos));
-		// Skip delimiters.  Note the "not_of"
-		lastPos = str.find_first_not_of(delimiters, pos);
-		// Find next "non-delimiter"
-		pos = str.find_first_of(delimiters, lastPos);
 	}
 }
 
@@ -146,22 +174,16 @@ void Graph::readFile(std::string aFile)
 					}
 					if (line != "" && fTokens[0] == "[Connections]")
 					{
-						while (true)
+						do
 						{
 							fTokens.clear();
 							std::getline(istream, line);
 							Tokenizer(line, fTokens);
-							if (line != "" && !istream.eof())
-							{
-								addNeighbor(fTokens[0], fTokens[1]);
-								std::cout << "Added neighbor" << std::endl;
-								fTokens.clear();
-							}
-							else 
-							{
-								break;
-							}
-						}
+
+							addNeighbor(fTokens[0], fTokens[1], fTokens[2]);
+							std::cout << "Added neighbor" << std::endl;
+
+						} while (!istream.eof());
 					}
 				}
 			}

@@ -1,13 +1,15 @@
 #pragma once
-#include "GameObject.h"
+#include "IdeableObject.h"
+#include "Player.h"
+
 class Command :
-	public GameObject
+	public IdeableObject
 {
 public:
-	Command();
+	Command(std::string ids[2]);
 	~Command();
 
-	virtual void Run() = 0;
+	virtual std::string Execute(Player* p, std::vector<std::string> aText) = 0;
 private:
 };
 

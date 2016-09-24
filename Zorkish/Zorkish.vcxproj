@@ -22,7 +22,7 @@
     <ProjectGuid>{E91CA002-BE1F-4461-B396-719096EBB58F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Zorkish</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -150,7 +150,7 @@
     <ClInclude Include="BoxWorld.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandProcessor.h" />
-    <ClInclude Include="GoCommand.h" />
+    <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="MapNode.h" />
     <ClInclude Include="GameMode.h" />
@@ -176,12 +176,10 @@
   <ItemGroup>
     <ClCompile Include="About.cpp" />
     <ClCompile Include="BoxWorld.cpp" />
-    <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandProcessor.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GamePlay.cpp" />
     <ClCompile Include="GameStateManager.cpp" />
-    <ClCompile Include="GoCommand.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="HallofFame.cpp" />
     <ClCompile Include="Help.cpp" />
@@ -191,9 +189,11 @@
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MapNode.cpp" />
     <ClCompile Include="MountainWorld.cpp" />
+    <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="NewHighScore.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SelectAdventure.cpp" />
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

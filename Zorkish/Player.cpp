@@ -59,7 +59,7 @@ const int Player::moves()
 	return fmoves;
 }
 
-const MapNode* Player::currentLocation()
+MapNode* Player::currentLocation()
 {
 	return flocation;
 }
@@ -67,57 +67,4 @@ const MapNode* Player::currentLocation()
 void Player::setLocation(MapNode* aLocation)
 {
 	flocation = aLocation;
-}
-
-void Player::go(std::string aPlace) 
-{
-	if (aPlace == "n" || "up" || "north")
-	{
-		if (flocation->fneighbor[0] != NULL) 
-		{
-			flocation = flocation->fneighbor[0];
-		}
-		else 
-		{
-			std::cout << "Cant go that way" << std::endl;
-		}
-		
-	}
-	else if (aPlace == "right" || "east" || "e")
-	{
-		if (flocation->fneighbor[1] != NULL)
-		{
-			flocation = flocation->fneighbor[1];
-		}
-		else
-		{
-			std::cout << "Cant go that way" << std::endl;
-		}
-	}
-	else if (aPlace == "s" || "down" || "south")
-	{
-		if (flocation->fneighbor[2] != NULL)
-		{
-			flocation = flocation->fneighbor[2];
-		}
-		else
-		{
-			std::cout << "Cant go that way" << std::endl;
-		}
-	}
-	else if (aPlace == "w" || "left" || "west")
-	{
-		if (flocation->fneighbor[3] != NULL)
-		{
-			flocation = flocation->fneighbor[3];
-		}
-		else
-		{
-			std::cout << "Cant go that way" << std::endl;
-		}
-	}
-	else
-	{
-		std::cout << "Not a place" << std::endl;
-	}
 }

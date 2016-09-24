@@ -26,9 +26,7 @@ public:
 	const int hp();
 	const bool alive();
 	const int moves();
-	const MapNode* currentLocation();
+	MapNode* currentLocation();
 	void setLocation(MapNode* aLocation);
-	void go(std::string aPlace);
-	
 };
 
