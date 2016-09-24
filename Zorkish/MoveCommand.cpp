@@ -3,17 +3,14 @@
 
 MoveCommand::MoveCommand() : Command(new std::string[2]{ "move", "go" })
 {
-
 }
 
-MoveCommand::MoveCommand(std::string ids[2]) : Command(new std::string[2]{ "move", "go" })
+MoveCommand::MoveCommand(std::string ids[2]) : Command(ids)
 {
-
 }
 
 MoveCommand::~MoveCommand()
 {
-
 }
 
 std::string MoveCommand::Execute(Player* p, std::vector<std::string> aText)
@@ -45,7 +42,6 @@ std::string MoveCommand::ChangeLocation(Player* p, std::string direction)
 		{
 			result = "Cant go that way";
 		}
-
 	}
 	else if (direction == "right" || direction == "east" || direction == "e")
 	{

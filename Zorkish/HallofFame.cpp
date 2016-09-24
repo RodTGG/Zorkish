@@ -1,11 +1,9 @@
 #include "stdafx.h"
 #include "HallofFame.h"
 
-
 HallofFame::HallofFame() : GameState(4)
 {
 }
-
 
 HallofFame::~HallofFame()
 {
@@ -22,7 +20,6 @@ void HallofFame::display()
 
 void HallofFame::logic()
 {
-
 }
 
 int HallofFame::handle_event()

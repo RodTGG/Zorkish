@@ -6,14 +6,14 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace TestPlayer
-{		
+{
 	TEST_CLASS(TestPlayer)
 	{
 	public:
-		
+
 		TEST_METHOD(TestPlayerAddItem)
 		{
-			Item* gun = new Item("9mm", "a 9mm weapon", new std::string[2]{"gun", "pistol"});
+			Item* gun = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun", "pistol" });
 			Player* p = new Player();
 			p->inv->Put(gun);
 

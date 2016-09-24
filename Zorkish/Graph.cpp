@@ -47,7 +47,6 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 	MapNode* b = NULL;
 	int direction = getDirection(aDirection);
 
-
 	// Copy nodes to temp nodes
 	for (unsigned int i = 0; i < adjlist.size(); i++)
 	{
@@ -101,12 +100,15 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 
 int Graph::getDirection(std::string aDirection)
 {
+	int result = 0;
 	char* direction[4]{ "N", "E","S","W" };
 
-	if (aDirection == direction[0]) return 0;
-	if (aDirection == direction[1]) return 1;
-	if (aDirection == direction[2]) return 2;
-	if (aDirection == direction[3]) return 3;
+	if (aDirection == direction[0]) result = 0;
+	if (aDirection == direction[1]) result = 1;
+	if (aDirection == direction[2]) result = 2;
+	if (aDirection == direction[3]) result = 3;
+
+	return result;
 }
 
 /// <summary>
@@ -182,7 +184,6 @@ void Graph::readFile(std::string aFile)
 
 							addNeighbor(fTokens[0], fTokens[1], fTokens[2]);
 							std::cout << "Added neighbor" << std::endl;
-
 						} while (!istream.eof());
 					}
 				}

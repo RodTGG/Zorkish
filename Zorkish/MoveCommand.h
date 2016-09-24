@@ -1,6 +1,6 @@
 #pragma once
 #include "Command.h"
-class MoveCommand : 
+class MoveCommand :
 	public Command
 {
 public:
@@ -11,4 +11,3 @@ public:
 	std::string Execute(Player* p, std::vector<std::string> aText) override;
 	std::string ChangeLocation(Player* p, std::string direction);
 };
-

@@ -11,8 +11,6 @@ public:
 	std::vector<MapNode*> adjlist;
 	std::vector<std::string> fTokens;
 
-
-	
 	void readFile(std::string aFile);
 	void printGraph();
 	void addNode(MapNode* aNode);

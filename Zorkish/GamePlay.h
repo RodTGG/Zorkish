@@ -19,4 +19,3 @@ private:
 protected:
 	CommandProcessor* fcp = new CommandProcessor();
 };
-

@@ -23,4 +23,3 @@ private:
 	Player* fPlayer = new Player();
 	GameMode* fGameMode = NULL;
 };
-

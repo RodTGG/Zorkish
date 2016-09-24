@@ -17,7 +17,6 @@ GameStateManager::GameStateManager()
 	fState = new MainMenu();
 }
 
-
 GameStateManager::~GameStateManager()
 {
 	delete fState;

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "GameObject.h"
 
-
 GameObject::GameObject(std::string aName, std::string aId[2]) : IdeableObject(aId)
 {
 	name = aName;
@@ -16,7 +15,6 @@ GameObject::GameObject(std::string aName, std::string aDesc, std::string aId[2])
 	shortdesc = name + "(" + aId[0] + ")";
 	idobject = new IdeableObject(aId);
 }
-
 
 GameObject::~GameObject()
 {

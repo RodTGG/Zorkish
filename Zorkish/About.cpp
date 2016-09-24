@@ -1,11 +1,9 @@
 #include "stdafx.h"
 #include "About.h"
 
-
 About::About() : GameState(1)
 {
 }
-
 
 About::~About()
 {
@@ -20,7 +18,6 @@ void About::display()
 
 void About::logic()
 {
-
 }
 
 int About::handle_event()

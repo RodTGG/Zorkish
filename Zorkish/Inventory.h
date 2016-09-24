@@ -11,10 +11,11 @@ public:
 	Inventory();
 	~Inventory();
 
+	//GameObject* null;
+
 	bool HasItem(std::string aId);
 	void Put(Item* aItm);
-	Item Take(std::string aId);
-	Item Fetch(std::string aId);
+	Item* Take(std::string aId);
+	Item* Fetch(std::string aId);
 	std::string ItemList();
 };
-

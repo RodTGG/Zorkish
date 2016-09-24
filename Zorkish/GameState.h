@@ -14,7 +14,6 @@ public:
 	virtual void display() = 0;
 	virtual int handle_event() = 0;
 
-	int ID() { return id; };
-
+	// Properties
+	const int ID() { return id; };
 };
-

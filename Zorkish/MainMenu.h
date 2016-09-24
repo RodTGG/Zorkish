@@ -10,4 +10,3 @@ public:
 	void logic();
 	int handle_event();
 };
-
