@@ -1,13 +1,11 @@
 #include "stdafx.h"
 #include "NewHighScore.h"
 
-
 NewHighScore::NewHighScore(Player* aPlayer, GameMode* aGameMode) : GameState(6)
 {
 	fPlayer = aPlayer;
 	game = aGameMode;
 }
-
 
 NewHighScore::~NewHighScore()
 {
@@ -28,7 +26,6 @@ void NewHighScore::display()
 
 void NewHighScore::logic()
 {
-
 }
 
 int NewHighScore::handle_event()

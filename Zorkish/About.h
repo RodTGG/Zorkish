@@ -11,4 +11,3 @@ public:
 	void logic() override;
 	int handle_event() override;
 };
-

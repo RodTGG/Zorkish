@@ -14,7 +14,6 @@ public:
 private:
 	std::vector<std::string> ftokens;
 	std::vector<Command*> fcommands;
-	
+
 	void Tokenizer(const std::string& str, std::vector<std::string>& fTokens, const std::string& delimiters = " ");
 };
-

@@ -1,11 +1,9 @@
 #include "stdafx.h"
 #include "Help.h"
 
-
 Help::Help() : GameState(2)
 {
 }
-
 
 Help::~Help()
 {
@@ -22,7 +20,6 @@ void Help::display()
 
 void Help::logic()
 {
-
 }
 
 int Help::handle_event()

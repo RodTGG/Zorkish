@@ -150,6 +150,7 @@
     <ClInclude Include="BoxWorld.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandProcessor.h" />
+    <ClInclude Include="LookCommand.h" />
     <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="MapNode.h" />
@@ -186,6 +187,7 @@
     <ClCompile Include="IdeableObject.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="LookCommand.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MapNode.cpp" />
     <ClCompile Include="MountainWorld.cpp" />

@@ -1,11 +1,9 @@
 #include "stdafx.h"
 #include "MainMenu.h"
 
-
 MainMenu::MainMenu() : GameState(0)
 {
 }
-
 
 MainMenu::~MainMenu()
 {
@@ -20,35 +18,48 @@ void MainMenu::display()
 
 void MainMenu::logic()
 {
-
 }
 
 int MainMenu::handle_event()
 {
+	bool valid = false;
+	int resultState = States::STATE_MAINMENU;
 	int usrInput = NULL;
-	std::cout << "Select 1-5:>";
 
-	do
-	{
+	do {
+		std::cout << "Select 1-5:>";
 		std::cin >> usrInput;
+		std::cin.clear();
+		std::cin.ignore(INT_MAX, '\n');
+
 		switch (usrInput)
 		{
 		case 1:
-			return States::STATE_SELECTADVENTURE;
+			resultState = States::STATE_SELECTADVENTURE;
+			valid = true;
 			break;
 		case 2:
-			return States::STATE_VIEWHALLOFFAME;
+			resultState = States::STATE_VIEWHALLOFFAME;
+			valid = true;
 			break;
 		case 3:
-			return States::STATE_HELP;
+			resultState = States::STATE_HELP;
+			valid = true;
 			break;
 		case 4:
-			return States::STATE_ABOUT;
+			resultState = States::STATE_ABOUT;
+			valid = true;
 			break;
 		case 5:
-			return States::STATE_EXIT;
+			resultState = States::STATE_EXIT;
+			valid = true;
+			break;
+		default:
+			std::cout << "Please enter one of the options." << std::endl;
+			valid = false;
 			break;
 		}
+	} while (!valid);
 
-	} while (usrInput > 6 || usrInput < 1);
+	return resultState;
 }

@@ -12,4 +12,3 @@ public:
 	virtual std::string Execute(Player* p, std::vector<std::string> aText) = 0;
 private:
 };
-

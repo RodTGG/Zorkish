@@ -18,7 +18,7 @@ namespace TestMap
 			Item* gun3 = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun3", "pistol" });
 			Item* i[] = { gun,gun2,gun3 };
 
-			MapNode* myMap1 = new MapNode("1","A very scary node", i);
+			MapNode* myMap1 = new MapNode("1", "A very scary node", i);
 
 			Assert::IsTrue(myMap1->mapItems->HasItem("gun"));
 			Assert::IsTrue(myMap1->mapItems->HasItem("gun2"));
@@ -27,7 +27,6 @@ namespace TestMap
 
 		TEST_METHOD(TestMapRooms)
 		{
-
 			Player* p = new Player();
 			Graph* myGraph = new Graph();
 
@@ -47,7 +46,7 @@ namespace TestMap
 			{
 				Assert::IsTrue(true);
 			}
-			else 
+			else
 			{
 				Assert::IsFalse(false);
 			}

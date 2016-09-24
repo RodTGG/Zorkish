@@ -1,12 +1,13 @@
 #include "stdafx.h"
 #include "CommandProcessor.h"
-
+#include "MoveCommand.h"
+#include "LookCommand.h"
 
 CommandProcessor::CommandProcessor()
 {
 	addCommand(new MoveCommand());
+	addCommand(new LookCommand());
 }
-
 
 CommandProcessor::~CommandProcessor()
 {
@@ -32,7 +33,6 @@ std::string CommandProcessor::executeCommand(Player* p, std::string aText)
 		std::transform(ftokens[i].begin(), ftokens[i].end(), ftokens[i].begin(), ::tolower);
 	}
 
-
 	if (hasCommand(ftokens[0])) {
 		command = getCommand(ftokens[0]);
 		result = command->Execute(p, ftokens);
@@ -54,18 +54,20 @@ std::string CommandProcessor::executeCommand(Player* p, std::string aText)
 
 bool CommandProcessor::hasCommand(std::string aCommand)
 {
+	bool result = false;
+
 	for (unsigned int i = 0; i < fcommands.size(); i++)
 	{
 		if (fcommands[i]->AreYou(aCommand))
 		{
-			return true;
+			result = true;
 		}
 		else
 		{
-			return false;
+			result = false;
 		}
 	}
-	return false;
+	return result;
 }
 
 Command* CommandProcessor::getCommand(std::string aCommand)

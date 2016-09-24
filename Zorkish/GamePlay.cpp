@@ -1,14 +1,12 @@
 #include "stdafx.h"
 #include "GamePlay.h"
 
-
 GamePlay::GamePlay(Player* p) : GameState(5)
 {
 	myPlayer = p;
 	myGraph->readFile("Adventure.txt");
 	myPlayer->setLocation(myGraph->adjlist[0]);
 }
-
 
 GamePlay::~GamePlay()
 {
@@ -22,12 +20,14 @@ void GamePlay::display()
 
 void GamePlay::logic()
 {
-
+	myPlayer->inv->Put(new Item("Sword","A mighty Sword", new std::string[2]{"sword","heartseeker"}));
 }
 
 int GamePlay::handle_event()
 {
+	int returnState = States::STATE_MAINMENU;
 	std::string usrInput = "";
+	logic();
 
 	do {
 		std::cout << ":>";
@@ -58,9 +58,11 @@ int GamePlay::handle_event()
 		{
 			std::cout << myPlayer->FullDesc();
 		}
-		else 
+		else
 		{
-			std::cout << fcp->executeCommand(myPlayer,usrInput) << std::endl;
+			std::cout << fcp->executeCommand(myPlayer, usrInput) << std::endl;
 		}
 	} while (usrInput != "quit");
+
+	return returnState;
 }

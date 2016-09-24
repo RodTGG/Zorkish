@@ -1,13 +1,12 @@
 #include "stdafx.h"
 #include "Player.h"
 
-
-Player::Player() : GameObject("Player1", "You", new std::string[2]{ "me", "inventory" })
+Player::Player() : GameObject("Player1", "You", new std::string[2]{ "me", "inv" })
 {
 	description = "You are Carrying: \n";
 }
 
-Player::Player(std::string name, std::string desc) : GameObject(name, desc, new std::string[2]{"me", "inventory"})
+Player::Player(std::string name, std::string desc) : GameObject(name, desc, new std::string[2]{ "me", "inv" })
 {
 	description = desc;
 	shortdesc = "You";
@@ -31,9 +30,16 @@ GameObject * Player::Locate(std::string aId)
 	{
 		result = this;
 	}
-	else 
+	else
 	{
-		result = &inv->Fetch(aId);
+		if(inv->HasItem(aId))
+		{
+			result = inv->Fetch(aId);
+		}
+		else 
+		{
+			result = NULL;
+		}
 	}
 
 	return result;

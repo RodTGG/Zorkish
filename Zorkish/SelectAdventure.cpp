@@ -1,11 +1,9 @@
 #include "stdafx.h"
 #include "SelectAdventure.h"
 
-
 SelectAdventure::SelectAdventure() : GameState(3)
 {
 }
-
 
 SelectAdventure::~SelectAdventure()
 {
@@ -21,25 +19,28 @@ void SelectAdventure::display()
 
 void SelectAdventure::logic()
 {
-
 }
 
 int SelectAdventure::handle_event()
 {
+	int resultState = States::STATE_MAINMENU;
 	int usrInput = NULL;
+
 	std::cout << "Select 1-3:>";
 	std::cin >> usrInput;
 
 	switch (usrInput)
 	{
 	case 1:
-		return States::GAME_MOUNTAINWORLD;
+		resultState = States::GAME_MOUNTAINWORLD;
 		break;
 	case 2:
-		return States::GAME_WATERWORLD;
+		resultState = States::GAME_WATERWORLD;
 		break;
 	case 3:
-		return States::GAME_BOXWORLD;
+		resultState = States::GAME_BOXWORLD;
 		break;
 	}
+
+	return resultState;
 }

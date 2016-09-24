@@ -18,4 +18,3 @@ public:
 	std::string ShortDesc() { return shortdesc; };
 	virtual std::string FullDesc() = 0;
 };
-

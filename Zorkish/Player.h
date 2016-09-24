@@ -29,4 +29,3 @@ public:
 	MapNode* currentLocation();
 	void setLocation(MapNode* aLocation);
 };
-

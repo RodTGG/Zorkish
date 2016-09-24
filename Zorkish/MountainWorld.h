@@ -7,4 +7,3 @@ public:
 	MountainWorld();
 	~MountainWorld();
 };
-

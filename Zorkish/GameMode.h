@@ -11,4 +11,3 @@ public:
 	virtual ~GameMode() {};
 	virtual std::string NAME() { return name; };
 };
-

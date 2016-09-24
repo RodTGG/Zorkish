@@ -17,4 +17,3 @@ private:
 	Player* fPlayer;
 	GameMode* game = new GameMode();
 };
-

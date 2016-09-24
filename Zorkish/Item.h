@@ -10,4 +10,3 @@ public:
 
 	std::string FullDesc() override;
 };
-

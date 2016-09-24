@@ -3,10 +3,8 @@
 
 Command::Command(std::string ids[2]) : IdeableObject(ids)
 {
-
 }
 
 Command::~Command()
 {
-
 }

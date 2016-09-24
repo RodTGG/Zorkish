@@ -11,7 +11,6 @@ public:
 	void display();
 	void logic();
 	int handle_event();
- 
+
 private:
 };
-
