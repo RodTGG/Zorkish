@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
+#include "..\Zorkish\Item.h"
 #include "..\Zorkish\Player.h"
+#include "..\Zorkish\MapNode.h"
 #include "..\Zorkish\Graph.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -18,11 +20,16 @@ namespace TestMap
 			Item* gun3 = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun3", "pistol" });
 			Item* i[] = { gun,gun2,gun3 };
 
-			MapNode* myMap1 = new MapNode("1", "A very scary node", i);
+			MapNode* myMap1 = new MapNode("1","a very scary room");
+			myMap1->mapItems->Put(i[0]);
+			myMap1->mapItems->Put(i[1]);
+			myMap1->mapItems->Put(i[2]);
 
 			Assert::IsTrue(myMap1->mapItems->HasItem("gun"));
 			Assert::IsTrue(myMap1->mapItems->HasItem("gun2"));
 			Assert::IsTrue(myMap1->mapItems->HasItem("gun3"));
+
+			Assert::IsTrue(true);
 		}
 
 		TEST_METHOD(TestMapRooms)
@@ -35,11 +42,11 @@ namespace TestMap
 			myGraph->addNode(new MapNode("3", "a cold map"));
 			myGraph->addNode(new MapNode("4", "a hot map"));
 
-			myGraph->addNeighbor("1", "2");
-			myGraph->addNeighbor("1", "3");
-			myGraph->addNeighbor("1", "4");
-			myGraph->addNeighbor("2", "4");
-			myGraph->addNeighbor("3", "4");
+			myGraph->addNeighbor("1", "2", "N");
+			myGraph->addNeighbor("1", "3", "E");
+			myGraph->addNeighbor("1", "4", "W");
+			myGraph->addNeighbor("2", "4", "S");
+			myGraph->addNeighbor("3", "4", "W");
 
 			p->setLocation(myGraph->adjlist[0]);
 			if ((p->currentLocation(), myGraph->adjlist[0]))

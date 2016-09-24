@@ -16,17 +16,6 @@ MapNode::MapNode(std::string aName, std::string aDesc)
 	}
 }
 
-MapNode::MapNode(std::string aName, std::string aDesc, Item* aItems[])
-{
-	fname = aName;
-	fdescription = aDesc;
-
-	for (int i = 0; i < (sizeof(aItems) / sizeof(*aItems)); i++)
-	{
-		mapItems->Put(aItems[i]);
-	}
-}
-
 const std::string& MapNode::getDesciption()
 {
 	return fdescription;
