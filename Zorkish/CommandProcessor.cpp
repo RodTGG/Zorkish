@@ -2,11 +2,17 @@
 #include "CommandProcessor.h"
 #include "MoveCommand.h"
 #include "LookCommand.h"
+#include "GrabCommand.h"
+#include "PutCommand.h"
 
 CommandProcessor::CommandProcessor()
 {
-	addCommand(new MoveCommand());
-	addCommand(new LookCommand());
+	addCommand(new LookCommand("look"));
+	addCommand(new LookCommand("l"));
+	addCommand(new MoveCommand("move"));
+	addCommand(new MoveCommand("go"));
+	addCommand(new GrabCommand("grab"));
+	addCommand(new PutCommand("put"));
 }
 
 CommandProcessor::~CommandProcessor()
@@ -15,7 +21,10 @@ CommandProcessor::~CommandProcessor()
 
 void CommandProcessor::addCommand(Command* aCommand)
 {
-	fcommands.push_back(aCommand);
+	std::string name = aCommand->name();
+	std::transform(name.begin(), name.end(), name.begin(), ::tolower);
+
+	fcommands[name] = aCommand;
 }
 
 std::string CommandProcessor::executeCommand(Player* p, std::string aText)
@@ -39,7 +48,7 @@ std::string CommandProcessor::executeCommand(Player* p, std::string aText)
 		ftokens.clear();
 	}
 	else {
-		errorMessage = "Not a command";
+		errorMessage = "Not a command ";
 	}
 
 	if (errorMessage.length() != 0)
@@ -56,17 +65,15 @@ bool CommandProcessor::hasCommand(std::string aCommand)
 {
 	bool result = false;
 
-	for (unsigned int i = 0; i < fcommands.size(); i++)
+	if (fcommands.find(aCommand) != fcommands.end())
 	{
-		if (fcommands[i]->AreYou(aCommand))
-		{
-			result = true;
-		}
-		else
-		{
-			result = false;
-		}
+		result = true;
 	}
+	else
+	{
+		result = false;
+	}
+
 	return result;
 }
 
@@ -74,16 +81,13 @@ Command* CommandProcessor::getCommand(std::string aCommand)
 {
 	Command* result = NULL;
 
-	for (unsigned int i = 0; i < fcommands.size(); i++)
+	if (hasCommand(aCommand))
 	{
-		if (fcommands[i]->AreYou(aCommand))
-		{
-			result = fcommands[i];
-		}
-		else
-		{
-			result = NULL;
-		}
+		result = fcommands[aCommand];
+	}
+	else
+	{
+		result = NULL;
 	}
 
 	return result;

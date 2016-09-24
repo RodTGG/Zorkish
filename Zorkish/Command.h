@@ -2,13 +2,14 @@
 #include "IdeableObject.h"
 #include "Player.h"
 
-class Command :
-	public IdeableObject
+class Command
 {
 public:
-	Command(std::string ids[2]);
-	~Command();
+	Command(std::string aName) { fname = aName; };
 
 	virtual std::string Execute(Player* p, std::vector<std::string> aText) = 0;
+
+	virtual std::string name() { return fname; };
 private:
+	std::string fname;
 };

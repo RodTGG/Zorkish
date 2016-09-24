@@ -3,7 +3,8 @@
 #include "Inventory.h"
 #include "Graph.h"
 
-class Player : GameObject
+class Player :
+	public GameObject
 {
 private:
 	int fhp = 100;

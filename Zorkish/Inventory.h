@@ -6,7 +6,7 @@
 class Inventory : std::vector<Item>
 {
 private:
-	std::vector<Item*> items;
+	std::vector<GameObject*> items;
 public:
 	Inventory();
 	~Inventory();
@@ -14,8 +14,8 @@ public:
 	//GameObject* null;
 
 	bool HasItem(std::string aId);
-	void Put(Item* aItm);
-	Item* Take(std::string aId);
-	Item* Fetch(std::string aId);
+	void Put(GameObject* aItm);
+	GameObject* Take(std::string aId);
+	GameObject* Fetch(std::string aId);
 	std::string ItemList();
 };

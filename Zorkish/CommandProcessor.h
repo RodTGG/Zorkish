@@ -1,6 +1,9 @@
 #pragma once
 #include "MoveCommand.h"
 
+/// <summary>
+/// Manages and processes the commands
+/// </summary>
 class CommandProcessor
 {
 public:
@@ -13,7 +16,7 @@ public:
 	Command* getCommand(std::string aCommand);
 private:
 	std::vector<std::string> ftokens;
-	std::vector<Command*> fcommands;
+	std::map<std::string, Command*> fcommands;
 
 	void Tokenizer(const std::string& str, std::vector<std::string>& fTokens, const std::string& delimiters = " ");
 };
