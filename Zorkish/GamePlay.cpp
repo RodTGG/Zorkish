@@ -56,7 +56,7 @@ int GamePlay::handle_event()
 		}
 		if (usrInput == "i")
 		{
-			std::cout << myPlayer->FullDesc();
+			std::cout << myPlayer->fullDesc();
 		}
 		else
 		{

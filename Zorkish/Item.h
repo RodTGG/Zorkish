@@ -8,5 +8,5 @@ public:
 	Item(std::string name, std::string desc, std::string idents[]);
 	~Item();
 
-	std::string FullDesc() override;
+	std::string fullDesc() override;
 };

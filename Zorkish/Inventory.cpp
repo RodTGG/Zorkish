@@ -71,7 +71,7 @@ std::string Inventory::ItemList()
 
 	for (unsigned int i = 0; i < items.size(); i++)
 	{
-		result += items[i]->Name() + "\t" + items[i]->ShortDesc() + "\n";
+		result += items[i]->name() + "\t" + items[i]->shortDesc() + "\n";
 	}
 	return result;
 }

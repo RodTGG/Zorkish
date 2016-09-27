@@ -65,12 +65,12 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem)
 
 	if (p->AreYou(aItem))
 	{
-		result = p->Locate(aItem)->FullDesc();
+		result = p->Locate(aItem)->fullDesc();
 	}
 	else {
 		if (p->currentLocation()->mapItems->HasItem(aItem))
 		{
-			result = p->currentLocation()->mapItems->Fetch(aItem)->FullDesc();
+			result = p->currentLocation()->mapItems->Fetch(aItem)->fullDesc();
 		}
 		else
 		{
@@ -97,7 +97,7 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem, std::string aCon
 		}
 		else
 		{
-			result = p->Locate(aItem)->FullDesc();
+			result = p->Locate(aItem)->fullDesc();
 		}
 	}
 

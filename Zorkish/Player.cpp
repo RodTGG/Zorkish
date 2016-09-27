@@ -3,13 +3,13 @@
 
 Player::Player() : GameObject("Player1", "You", new std::string[2]{ "me", "inv" })
 {
-	description = "You are Carrying: \n";
+	fdescription = "You are Carrying: \n";
 }
 
 Player::Player(std::string name, std::string desc) : GameObject(name, desc, new std::string[2]{ "me", "inv" })
 {
-	description = desc;
-	shortdesc = "You";
+	fdescription = desc;
+	fshortdesc = "You";
 }
 
 Player::~Player()
@@ -17,9 +17,9 @@ Player::~Player()
 	delete this;
 }
 
-std::string Player::FullDesc()
+std::string Player::fullDesc()
 {
-	return  description + inv->ItemList();
+	return  fdescription + inv->ItemList();
 }
 
 GameObject * Player::Locate(std::string aId)

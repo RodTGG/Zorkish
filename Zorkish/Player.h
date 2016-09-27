@@ -20,7 +20,7 @@ public:
 	~Player();
 
 	Inventory* inv = new Inventory();
-	std::string FullDesc() override;
+	std::string fullDesc() override;
 	GameObject* Locate(std::string aId);
 
 	const int score();

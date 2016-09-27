@@ -65,6 +65,7 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 	{
 		a->fneighbor.at(direction) = b;
 
+		// Place node in opposite direction of node a
 		switch (direction)
 		{
 		case 0:
@@ -113,6 +114,7 @@ int Graph::getDirection(std::string aDirection)
 
 /// <summary>
 /// Prints the graph.
+///	Prints nodes neighbours.
 /// </summary>
 void Graph::printGraph()
 {
@@ -129,6 +131,10 @@ void Graph::printGraph()
 	}
 }
 
+/// <summary>
+/// Reads the file from specified file.
+/// </summary>
+/// <param name="aFile">file to read from.</param>
 void Graph::readFile(std::string aFile)
 {
 	std::string line = "";

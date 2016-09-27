@@ -13,7 +13,7 @@ Item::~Item()
 {
 }
 
-std::string Item::FullDesc()
+std::string Item::fullDesc()
 {
-	return description;
+	return fdescription;
 }

@@ -63,7 +63,7 @@ std::string PutCommand::putItem(Player* p, std::string aObject)
 		}
 		else
 		{
-			result = "You dropped " + p->currentLocation()->mapItems->Fetch(aObject)->FullDesc();
+			result = "You dropped " + p->currentLocation()->mapItems->Fetch(aObject)->fullDesc();
 		}
 	}
 	else 

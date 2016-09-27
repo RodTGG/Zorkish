@@ -67,7 +67,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 		}
 		else 
 		{
-			result = "You grabbed " + p->Locate(aObject)->FullDesc();
+			result = "You grabbed " + p->Locate(aObject)->fullDesc();
 		}
 	}
 	else 
@@ -94,7 +94,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 		}
 		else
 		{
-			result = p->Locate(aObject)->FullDesc();
+			result = p->Locate(aObject)->fullDesc();
 			p->inv->Put(p->Locate(aObject));
 
 			if (p->currentLocation()->mapItems->HasItem(aObject))
@@ -107,7 +107,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 			}
 			else
 			{
-				result = "You grabbed " + p->Locate(aObject)->FullDesc();
+				result = "You grabbed " + p->Locate(aObject)->fullDesc();
 			}
 		}
 	}
