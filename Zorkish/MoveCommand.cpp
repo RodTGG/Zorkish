@@ -11,16 +11,19 @@ MoveCommand::~MoveCommand()
 
 std::string MoveCommand::Execute(Player* p, std::vector<std::string> aText)
 {
+	std::string result = "";
 	std::string direction = aText[1];										// get direction based on char
 
 	if (aText.size() > 1)													// make sure there are enough arguments to create node
 	{
-		return ChangeLocation(p, direction);
+		result = ChangeLocation(p, direction);
 	}
 	else
 	{
-		return "Move where?";
+		result = aText[0] + " where?";
 	}
+
+	return result;
 }
 
 std::string MoveCommand::ChangeLocation(Player* p, std::string direction)

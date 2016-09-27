@@ -72,7 +72,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 	}
 	else 
 	{
-		result = "Nothing to grab";
+		result = "You try really hard but you just cant seem to grab " + aObject;
 	}
 
 	return result;

@@ -8,6 +8,8 @@
 2,Hey
 3,Test
 4,Lol
+5,Kek
+6,Hehe
 
 #must contain name of node and neighbour node and relation to first node, one per line
 [Connections]

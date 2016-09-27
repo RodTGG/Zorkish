@@ -52,7 +52,7 @@ std::string LookCommand::Execute(Player* p, std::vector<std::string> aText)
 	{
 		if (aText.size() == 1)
 		{
-			result = "just look? you can do better than that";
+			result = "just " + aText[0] + "? you can do better than that.";
 		}
 	}
 
