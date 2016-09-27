@@ -19,7 +19,7 @@ public:
 	GameObject(std::string aName, std::string aDesc, std::string aId[2]);
 	~GameObject();
 
-	std::string name() { return fname; };				// 
-	std::string shortDesc() { return fshortdesc; };
-	virtual std::string fullDesc() = 0;
+	std::string name() { return fname; };				// Returns object name
+	std::string shortDesc() { return fshortdesc; };		// Returns short description
+	virtual std::string fullDesc() = 0;					// Returns fullDesc
 };

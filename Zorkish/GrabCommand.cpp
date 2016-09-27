@@ -95,7 +95,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 		else
 		{
 			result = p->Locate(aObject)->fullDesc();
-			p->inv->Put(p->Locate(aObject));
+			p->inv->Put((Item*)p->Locate(aObject));
 
 			if (p->currentLocation()->mapItems->HasItem(aObject))
 			{
