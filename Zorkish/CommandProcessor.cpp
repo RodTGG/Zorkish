@@ -49,7 +49,6 @@ void CommandProcessor::addCommand(Command* aCommand)
 
 std::string CommandProcessor::executeCommand(Player* p, std::string aText)
 {
-	std::string errorMessage = "";
 	std::string result = "";
 	Command* command = NULL;
 
@@ -65,20 +64,15 @@ std::string CommandProcessor::executeCommand(Player* p, std::string aText)
 	if (hasCommand(ftokens[0])) {
 		command = getCommand(ftokens[0]);
 		result = command->Execute(p, ftokens);
-		ftokens.clear();
-	}
-	else {
-		errorMessage = "Not a command ";
-	}
-
-	if (errorMessage.length() != 0)
-	{
-		return errorMessage;
 	}
 	else
 	{
-		return result;
+		result = "Not a command ";
 	}
+
+	ftokens.clear();
+
+	return result;
 }
 
 bool CommandProcessor::hasCommand(std::string aCommand)
