@@ -68,9 +68,9 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem)
 		result = p->Locate(aItem)->fullDesc();
 	}
 	else {
-		if (p->currentLocation()->mapItems->HasItem(aItem))
+		if (p->currentLocation()->fChest->Fetch(aItem))
 		{
-			result = p->currentLocation()->mapItems->Fetch(aItem)->fullDesc();
+			result = p->currentLocation()->fChest->Fetch(aItem)->fullDesc();
 		}
 		else
 		{

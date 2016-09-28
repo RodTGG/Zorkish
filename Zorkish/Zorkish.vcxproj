@@ -22,7 +22,7 @@
     <ProjectGuid>{E91CA002-BE1F-4461-B396-719096EBB58F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Zorkish</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -149,6 +149,7 @@
     <ClInclude Include="About.h" />
     <ClInclude Include="BoxWorld.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="Container.h" />
     <ClInclude Include="GrabCommand.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="PutCommand.h" />
@@ -179,6 +180,7 @@
   <ItemGroup>
     <ClCompile Include="About.cpp" />
     <ClCompile Include="BoxWorld.cpp" />
+    <ClCompile Include="Container.cpp" />
     <ClCompile Include="GrabCommand.cpp" />
     <ClCompile Include="CommandProcessor.cpp" />
     <ClCompile Include="PutCommand.cpp" />

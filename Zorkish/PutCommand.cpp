@@ -55,15 +55,15 @@ std::string PutCommand::putItem(Player* p, std::string aObject)
 
 	if (p->inv->HasItem(aObject)) 
 	{
-		p->currentLocation()->mapItems->Put(p->inv->Take(aObject));
+		p->currentLocation()->fChest->Put(p->inv->Take(aObject));
 
-		if (!p->currentLocation()->mapItems->HasItem(aObject))
+		if (!p->currentLocation()->fChest->HasItem(aObject))
 		{
 			result = "Unable to drop item in this location";
 		}
 		else
 		{
-			result = "You dropped " + p->currentLocation()->mapItems->Fetch(aObject)->fullDesc();
+			result = "You dropped " + p->currentLocation()->fChest->Fetch(aObject)->fullDesc();
 		}
 	}
 	else 
@@ -77,6 +77,11 @@ return result;
 std::string PutCommand::putItem(Player* p, std::string aObject, std::string aContainer)
 {
 	std::string result = "";
+
+	if (p->currentLocation()->fChest->HasItem(aContainer)) 
+	{
+		p->currentLocation()->fChest->getContainer(aContainer)->Put(p->inv->Take(aObject));
+	}
 
 	if (p->Locate(aContainer) == NULL)
 	{

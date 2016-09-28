@@ -1,5 +1,5 @@
 #pragma once
-#include "IdeableObject.h"
+#include "Container.h"
 #include "Item.h"
 #include <vector>
 
@@ -8,17 +8,10 @@
 /// Contais gameObject
 /// </summary>
 /// <seealso cref="std::vector{Item}" />
-class Inventory
+class Inventory : public Container
 {
 private:
-	std::vector<Item*> items;				// Vector of items
 public:
-	Inventory();
+	Inventory(std::string aName, std::string aDesc, std::string aId[]);
 	~Inventory();
-
-	bool HasItem(std::string aId);			// Returns true if item with ID exists
-	void Put(Item* aItm);					// Adds new item to front of invetory
-	Item* Take(std::string aId);			// Returns item from invetory, also deletes item.
-	Item* Fetch(std::string aId);			// Returns copy of item
-	std::string ItemList();					// Returns a string with a lits of all items
 };

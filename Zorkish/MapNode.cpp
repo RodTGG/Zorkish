@@ -3,6 +3,7 @@
 
 MapNode::MapNode()
 {
+	fChest->Put(new Container("Bag", "a kawaii bag", new std::string[2]{"bag","beg"}));
 }
 
 MapNode::MapNode(std::string aName, std::string aDesc)

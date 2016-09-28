@@ -23,7 +23,7 @@ public:
 	Player(std::string name, std::string desc);		// Alternate constructor with name and description
 	~Player();
 
-	Inventory* inv = new Inventory();				// Inventory
+	Inventory* inv = new Inventory("inv", "Your invetory", new std::string[2]{"inv","Inv"});				// Inventory
 	std::string fullDesc() override;				// Full description (item list)
 	GameObject* Locate(std::string aId);			// Locates object, player or item in inv
 	void setLocation(MapNode* aLocation);			// Sets the Location

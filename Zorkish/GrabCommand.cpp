@@ -53,11 +53,11 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 {
 	std::string result = "";
 
-	if (p->currentLocation()->mapItems->HasItem(aObject)) 
+	if (p->currentLocation()->fChest->HasItem(aObject)) 
 	{
-		p->inv->Put(p->currentLocation()->mapItems->Take(aObject));
+		p->inv->Put(p->currentLocation()->fChest->Take(aObject));
 		
-		if (p->currentLocation()->mapItems->HasItem(aObject)) 
+		if (p->currentLocation()->fChest->HasItem(aObject))
 		{
 			result = "Unable to remove item";
 		}
@@ -97,7 +97,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 			result = p->Locate(aObject)->fullDesc();
 			p->inv->Put((Item*)p->Locate(aObject));
 
-			if (p->currentLocation()->mapItems->HasItem(aObject))
+			if (p->currentLocation()->fChest->HasItem(aObject))
 			{
 				result = "unable to remove item";
 			}
