@@ -53,11 +53,11 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 {
 	std::string result = "";
 
-	if (p->currentLocation()->fChest->HasItem(aObject)) 
+	if (p->currentLocation()->fInventory->HasItem(aObject)) 
 	{
-		p->inv->Put(p->currentLocation()->fChest->Take(aObject));
+		p->inv->Put(p->currentLocation()->fInventory->Take(aObject));
 		
-		if (p->currentLocation()->fChest->HasItem(aObject))
+		if (p->currentLocation()->fInventory->HasItem(aObject))
 		{
 			result = "Unable to remove item";
 		}
@@ -82,9 +82,13 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 {
 	std::string result = "";
 
-	if (p->Locate(aContainer) == NULL)
+	if (p->currentLocation()->fInventory->HasItem(aContainer))
 	{
-		result = "You do not have" + aContainer;
+		p->currentLocation()->fInventory->getContainer(aContainer)->Put(p->inv->Take(aObject));
+	}
+	else if (p->Locate(aContainer) == NULL)
+	{
+		result = "You do not have " + aContainer;
 	}
 	else
 	{
@@ -97,7 +101,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 			result = p->Locate(aObject)->fullDesc();
 			p->inv->Put((Item*)p->Locate(aObject));
 
-			if (p->currentLocation()->fChest->HasItem(aObject))
+			if (p->currentLocation()->fInventory->HasItem(aObject))
 			{
 				result = "unable to remove item";
 			}

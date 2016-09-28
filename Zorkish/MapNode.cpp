@@ -3,7 +3,7 @@
 
 MapNode::MapNode()
 {
-	fChest->Put(new Container("Bag", "a kawaii bag", new std::string[2]{"bag","beg"}));
+	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{"bag","beg"}));
 }
 
 MapNode::MapNode(std::string aName, std::string aDesc)
@@ -15,6 +15,8 @@ MapNode::MapNode(std::string aName, std::string aDesc)
 	{
 		fneighbor.push_back(NULL);
 	}
+
+	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
 }
 
 const std::string& MapNode::getDesciption()

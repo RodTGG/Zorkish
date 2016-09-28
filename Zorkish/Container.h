@@ -1,0 +1,21 @@
+#pragma once
+#include "Item.h"
+
+class Container :
+	public Item
+{
+public:
+	Container(std::string aName, std::string aDesc, std::string aId[]);
+	~Container();
+
+	std::vector<Item*> fItems;
+
+	virtual bool HasItem(std::string aId);				// Returns true if item with ID exists
+	virtual void Put(Item* aItm);						// Adds new item to front of invetory
+	virtual Item* Take(std::string aId);				// Returns item from invetory, also deletes item.
+	virtual Item* Fetch(std::string aId);				// Returns copy of item
+	virtual std::string ItemList();						// Returns a string with a lits of all items
+	virtual Container* getContainer(std::string aName);
+	std::string fullDesc() override;
+};
+

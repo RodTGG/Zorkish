@@ -1,5 +1,5 @@
 #pragma once
-#include "Container.h"
+#include "Inventory.h"
 
 class MapNode
 {
@@ -11,7 +11,7 @@ private:
 public:
 	std::string fname = "";
 	std::vector<MapNode*> fneighbor;
-	Container* fChest = new Container("Chest", "a very pretty chest", new std::string[2]{"chest","Chest"});										// mapnodes inventory and items
+	Inventory* fInventory = new Inventory("Map", "items on the floor", new std::string[2]{"map","floor"});										// mapnodes inventory and items
 
 	MapNode();																	// default constructor
 	MapNode(std::string aName, std::string aDesc);								// constructor with just description

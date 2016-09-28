@@ -68,9 +68,9 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem)
 		result = p->Locate(aItem)->fullDesc();
 	}
 	else {
-		if (p->currentLocation()->fChest->Fetch(aItem))
+		if (p->currentLocation()->fInventory->HasItem(aItem))
 		{
-			result = p->currentLocation()->fChest->Fetch(aItem)->fullDesc();
+			result = p->currentLocation()->fInventory->Fetch(aItem)->fullDesc();
 		}
 		else
 		{
@@ -84,7 +84,7 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem)
 std::string LookCommand::lookAtIn(Player* p, std::string aItem, std::string aContainer)
 {
 	std::string result = "";
-
+	
 	if (p->Locate(aContainer) == NULL)
 	{
 		result = "You do not have" + aContainer;
