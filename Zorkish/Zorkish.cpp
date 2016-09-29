@@ -5,15 +5,20 @@
 #include "GameStateManager.h"
 #define DEBUG 1
 
-void add(int a, int b, int* c)
-{
-	*c = a + b;
-}
-
 int main(int argc, char* argv[])
 {
+	bool lDebug = false;
+
+	if (argc == 2)
+	{
+		if (*argv[1] == 'd')
+		{
+			lDebug = true;
+		}
+	}
+
 #if DEBUG == 1
-	GameStateManager* myGSM = new GameStateManager();
+	GameStateManager* myGSM = new GameStateManager(lDebug);
 	do
 	{
 		myGSM->change_state();
@@ -24,16 +29,8 @@ int main(int argc, char* argv[])
 	return 0;
 #endif
 #if DEBUG == 2
-	Graph* myGraph = new Graph();
+	Graph* myGraph = new Graph(lDebug);
 	myGraph->readFile("Adventure.txt");
 	myGraph->printGraph();
-#endif
-#if DEBUG == 3
-	int a = 3;
-	int b = 4;
-	int c = 0;
-
-	add(a, b, &c);
-	std::cout << c;
 #endif
 }

@@ -40,6 +40,8 @@ int SelectAdventure::handle_event()
 	case 3:
 		resultState = States::GAME_BOXWORLD;
 		break;
+	default:
+		resultState = 8;
 	}
 
 	return resultState;

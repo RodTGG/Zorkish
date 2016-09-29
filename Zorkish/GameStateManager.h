@@ -10,6 +10,7 @@
 class GameStateManager
 {
 public:
+	GameStateManager(bool aDebug);
 	GameStateManager();
 	~GameStateManager();
 
@@ -20,9 +21,12 @@ public:
 	void Display();								// Displays the states display function
 	void ExecuteState();						// Executes the states logic
 private: 
-	int nextState = NULL;						// Id of next state
+	bool fDebug = false;
+	int fnextState = NULL;						// Id of next state
 
 	GameState* fState = NULL;					// GameState object pointer
-	Player* fPlayer = new Player();				// Player object pointer
+	Player* fPlayer = NULL;				// Player object pointer
 	GameMode* fGameMode = NULL;					// GameMode object pointer
+protected:
+	bool DebugMode();
 };

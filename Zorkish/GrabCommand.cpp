@@ -40,7 +40,7 @@ std::string GrabCommand::Execute(Player* p, std::vector<std::string> aText)
 		{
 			result = "Try having more than just " + aText[0] + "...";
 		}
-		else 
+		else
 		{
 			result = grabItem(p, aText[1]);
 		}
@@ -53,24 +53,12 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 {
 	std::string result = "";
 
-	if (p->currentLocation()->fInventory->HasItem(aObject)) 
+	if (p->currentLocation()->fInventory->HasItem(aObject))
 	{
 		p->inv->Put(p->currentLocation()->fInventory->Take(aObject));
-		
-		if (p->currentLocation()->fInventory->HasItem(aObject))
-		{
-			result = "Unable to remove item";
-		}
-		if (!p->Locate(aObject)) 
-		{
-			result = "Unable to add item to player";
-		}
-		else 
-		{
-			result = "You grabbed " + p->Locate(aObject)->fullDesc();
-		}
+		result = "You grabbed " + p->Locate(aObject)->fullDesc();
 	}
-	else 
+	else
 	{
 		result = "You try really hard but you just cant seem to grab " + aObject;
 	}
@@ -84,7 +72,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 
 	if (p->currentLocation()->fInventory->HasItem(aContainer))
 	{
-		p->currentLocation()->fInventory->getContainer(aContainer)->Put(p->inv->Take(aObject));
+		p->inv->Put(p->currentLocation()->fInventory->getContainer(aContainer)->Take(aObject));
 	}
 	else if (p->Locate(aContainer) == NULL)
 	{

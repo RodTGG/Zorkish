@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "Graph.h"
 
+Graph::Graph(bool aDebugging)
+{
+	fDebugging = aDebugging;
+}
+
 Graph::Graph()
 {
 }
@@ -138,12 +143,16 @@ void Graph::printGraph()
 void Graph::readFile(std::string aFile)
 {
 	std::string line = "";
-	std::ifstream istream(aFile);
+	std::ifstream istream;
+	bool isOpen;
 
+	istream.open(aFile);
+	isOpen = istream.is_open();
 	if (istream.is_open())
 	{
+		if (fDebugging) {
 		std::cout << "MapOpened" << std::endl;
-
+		}
 		while (!istream.eof())
 		{
 			char preview;
@@ -161,7 +170,9 @@ void Graph::readFile(std::string aFile)
 					Tokenizer(line, fTokens);
 					if (fTokens[0] == "[Nodes]")
 					{
-						std::cout << "Reading nodes" << std::endl;
+						if (fDebugging) {
+							std::cout << "Reading nodes" << std::endl;
+						}
 						fTokens.clear();
 						while (true)
 						{
@@ -171,7 +182,9 @@ void Graph::readFile(std::string aFile)
 							if (line != "")
 							{
 								addNode(new MapNode(fTokens[0], fTokens[1]));
-								std::cout << "Added node" << std::endl;
+								if (fDebugging) {
+									std::cout << "Added node" << std::endl;
+								}
 								fTokens.clear();
 							}
 							else
@@ -189,11 +202,23 @@ void Graph::readFile(std::string aFile)
 							Tokenizer(line, fTokens);
 
 							addNeighbor(fTokens[0], fTokens[1], fTokens[2]);
-							std::cout << "Added neighbor" << std::endl;
-						} while (!istream.eof());
+							if (fDebugging) {
+								std::cout << "Added neighbor" << std::endl;
+							}
+						} while (istream.peek() == '\n');
 					}
 				}
 			}
 		}
 	}
+	else
+	{
+		std::cout << "Could not open file: " + aFile << std::endl;
+		exit(2);
+	}
+}
+
+std::string Graph::fileName()
+{
+	return fName;
 }

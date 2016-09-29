@@ -205,7 +205,7 @@ namespace TestCommandProcessor
 			Assert::IsTrue(p->inv->HasItem("gun"));
 			Assert::IsTrue(p->currentLocation()->fInventory->HasItem("bag"));
 			put->Execute(p, std::vector<std::string>{"grab", "gun", "from", "bag"});
-			Assert::IsTrue(p->currentLocation()->fInventory->getContainer("bag")->HasItem("gun"));
+			Assert::IsFalse(p->currentLocation()->fInventory->getContainer("bag")->HasItem("gun"));
 		}
 	};
 }

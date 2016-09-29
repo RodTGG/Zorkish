@@ -53,32 +53,16 @@ std::string PutCommand::putItem(Player* p, std::string aObject)
 {
 	std::string result = "";
 
-	if (p->inv->HasItem(aObject)) 
-	{
-		p->currentLocation()->fInventory->Put(p->inv->Take(aObject));
+	p->currentLocation()->fInventory->Put(p->inv->Take(aObject));
 
-		if (!p->currentLocation()->fInventory->HasItem(aObject))
-		{
-			result = "Unable to drop item in this location";
-		}
-		else
-		{
-			result = "You dropped " + p->currentLocation()->fInventory->Fetch(aObject)->fullDesc();
-		}
-	}
-	else 
-	{
-		result = "You dont have that item";
-	}
-
-return result;
+	return result;
 }
 
 std::string PutCommand::putItem(Player* p, std::string aObject, std::string aContainer)
 {
 	std::string result = "";
 
-	if (p->currentLocation()->fInventory->HasItem(aContainer)) 
+	if (p->currentLocation()->fInventory->HasItem(aContainer))
 	{
 		p->currentLocation()->fInventory->getContainer(aContainer)->Put(p->inv->Take(aObject));
 	}

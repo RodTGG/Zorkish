@@ -12,8 +12,18 @@
 #include "BoxWorld.h"
 #include "GamePlay.h"
 
+GameStateManager::GameStateManager(bool aDebug)
+{
+
+	fDebug = aDebug;
+	fState = new MainMenu();
+	fPlayer = new Player();
+}
+
+
 GameStateManager::GameStateManager()
 {
+	fPlayer = new Player();
 	fState = new MainMenu();
 }
 
@@ -25,7 +35,7 @@ GameStateManager::~GameStateManager()
 
 void GameStateManager::change_state()
 {
-	switch (nextState)
+	switch (fnextState)
 	{
 	case States::STATE_MAINMENU:
 		fState = new MainMenu();
@@ -46,7 +56,7 @@ void GameStateManager::change_state()
 		fState = new HallofFame();
 		break;
 	case States::STATE_GAMEPLAY:
-		fState = new GamePlay(fPlayer);
+		fState = new GamePlay(fPlayer, fGameMode, fDebug);
 		break;
 	case States::STATE_EXIT:
 		break;
@@ -70,7 +80,7 @@ void GameStateManager::change_state()
 
 void GameStateManager::set_next_state(int aState)
 {
-	nextState = aState;
+	fnextState = aState;
 }
 
 int GameStateManager::CurrentState()
@@ -85,5 +95,10 @@ void GameStateManager::Display()
 
 void GameStateManager::ExecuteState()
 {
-	nextState = fState->handle_event();
+	fnextState = fState->handle_event();
+}
+
+bool GameStateManager::DebugMode()
+{
+	return fDebug;
 }

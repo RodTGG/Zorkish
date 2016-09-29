@@ -1,6 +1,5 @@
 #pragma once
 #include "GameState.h"
-#include "GameMode.h"
 class SelectAdventure :
 	public GameState
 {

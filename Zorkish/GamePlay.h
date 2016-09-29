@@ -1,12 +1,14 @@
 #pragma once
 #include "GameState.h"
+#include "GameMode.h"
 #include "CommandProcessor.h"
 
 class GamePlay :
 	public GameState
 {
 public:
-	GamePlay(Player* p);
+	GamePlay(Player* p, GameMode* aGame, bool aDebug);
+	GamePlay(Player* p, GameMode* aGame);
 	~GamePlay();
 
 	void display() override;
@@ -14,8 +16,10 @@ public:
 	int handle_event() override;
 private:
 	Player* myPlayer;
-	Graph* myGraph = new Graph();
+	Graph* myGraph = NULL;
+	GameMode* fGameMode = NULL;
+	bool fDebugging = false;
 
 protected:
-	CommandProcessor* fcp = new CommandProcessor();
+	CommandProcessor* fcp = NULL;
 };

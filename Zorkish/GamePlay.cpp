@@ -1,11 +1,24 @@
 #include "stdafx.h"
 #include "GamePlay.h"
-
-GamePlay::GamePlay(Player* p) : GameState(5)
+GamePlay::GamePlay(Player* aPlayer, GameMode* aGameMode, bool aDebugging) : GameState(5)
 {
-	myPlayer = p;
+	fGameMode = aGameMode;
+	fDebugging = aDebugging;
+	myPlayer = aPlayer;
+	myGraph = new Graph(aDebugging);
+	fcp = new CommandProcessor();
 	myGraph->readFile("Adventure.txt");
 	myPlayer->setLocation(myGraph->adjlist[0]);
+	
+}
+
+GamePlay::GamePlay(Player* aPlayer, GameMode* aGameMode) : GameState(5)
+{
+	fGameMode = aGameMode;
+	myPlayer = aPlayer;
+	myGraph->readFile("Adventure.txt");
+	myPlayer->setLocation(myGraph->adjlist[0]);
+	fcp = new CommandProcessor();
 }
 
 GamePlay::~GamePlay()
