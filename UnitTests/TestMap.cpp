@@ -21,13 +21,13 @@ namespace TestMap
 			Item* i[] = { gun,gun2,gun3 };
 
 			MapNode* myMap1 = new MapNode("1","a very scary room");
-			myMap1->mapItems->Put(i[0]);
-			myMap1->mapItems->Put(i[1]);
-			myMap1->mapItems->Put(i[2]);
+			myMap1->fInventory->Put(i[0]);
+			myMap1->fInventory->Put(i[1]);
+			myMap1->fInventory->Put(i[2]);
 
-			Assert::IsTrue(myMap1->mapItems->HasItem("gun"));
-			Assert::IsTrue(myMap1->mapItems->HasItem("gun2"));
-			Assert::IsTrue(myMap1->mapItems->HasItem("gun3"));
+			Assert::IsTrue(myMap1->fInventory->HasItem("gun"));
+			Assert::IsTrue(myMap1->fInventory->HasItem("gun2"));
+			Assert::IsTrue(myMap1->fInventory->HasItem("gun3"));
 
 			Assert::IsTrue(true);
 		}
