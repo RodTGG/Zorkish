@@ -56,6 +56,16 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 	if (p->currentLocation()->fInventory->HasItem(aObject))
 	{
 		p->inv->Put(p->currentLocation()->fInventory->Take(aObject));
+
+		if (!p->inv->HasItem(aObject))
+		{
+			Error::Display("Error in grabCommand, unable to add " + aObject + " to player...");
+		}
+		if (p->currentLocation()->fInventory->HasItem(aObject))
+		{
+			Error::Display("Error unable take" + aObject + " from mapnode " + p->currentLocation()->fname + " inventory...");
+		}
+
 		result = "You grabbed " + p->Locate(aObject)->fullDesc();
 	}
 	else
@@ -69,38 +79,61 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aContainer)
 {
 	std::string result = "";
+	Container* myContainer = new Container();
 
 	if (p->currentLocation()->fInventory->HasItem(aContainer))
 	{
-		p->inv->Put(p->currentLocation()->fInventory->getContainer(aContainer)->Take(aObject));
+		myContainer = p->currentLocation()->fInventory->getContainer(aContainer);
+
+		if (myContainer != NULL)
+		{
+			p->inv->Put(p->currentLocation()->fInventory->getContainer(aContainer)->Take(aObject));
+		}
+		else
+		{
+			result = "You cant put " + aObject + " in " + aContainer;
+		}
+		if (!p->inv->HasItem(aObject))
+		{
+			Error::Display("Unable to grab " + aObject + " from " + aContainer + "...");
+		}
 	}
 	else if (p->Locate(aContainer) == NULL)
 	{
 		result = "You do not have " + aContainer;
 	}
+	else if (p->Locate(aObject) == p)
+	{
+		result = "Hmmm you look in " + aContainer + " but cant seem to find your better self...";
+	}
 	else
 	{
-		if (p->Locate(aObject) == NULL)
+		myContainer = p->inv->getContainer(aContainer);
+
+		if (myContainer != NULL)
 		{
-			result = "You do not have " + aObject + " in " + aContainer;
+			if (myContainer->HasItem(aObject))
+			{
+				p->inv->Put(myContainer->Take(aObject));
+				result = p->Locate(aObject)->fullDesc();
+
+				if (p->currentLocation()->fInventory->HasItem(aObject))
+				{
+					Error::Display("");
+				}
+				if (!p->Locate(aObject))
+				{
+					Error::Display("");
+				}
+			}
+			else 
+			{
+				result = aContainer + " does not have item sword...";
+			}
 		}
 		else
 		{
-			result = p->Locate(aObject)->fullDesc();
-			p->inv->Put((Item*)p->Locate(aObject));
-
-			if (p->currentLocation()->fInventory->HasItem(aObject))
-			{
-				result = "unable to remove item";
-			}
-			if (!p->Locate(aObject))
-			{
-				result = "unable to add item to player";
-			}
-			else
-			{
-				result = "You grabbed " + p->Locate(aObject)->fullDesc();
-			}
+			result = "You cannot grab " + aObject + " from " + aContainer;
 		}
 	}
 

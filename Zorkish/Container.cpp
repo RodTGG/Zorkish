@@ -2,10 +2,15 @@
 #include "Container.h"
 
 
-Container::Container(std::string aName, std::string aDesc, std::string aId[]) : Item(aName,aDesc,aId)
+Container::Container() : Item("Container", "a container", new std::string[2]{ "container","Container" })
 {
+	bContainer = true;
 }
 
+Container::Container(std::string aName, std::string aDesc, std::string aId[2]) : Item(aName, aDesc, aId)
+{
+	bContainer = true;
+}
 
 Container::~Container()
 {
@@ -34,6 +39,8 @@ bool Container::HasItem(std::string aId)
 void Container::Put(Item* aItm)
 {
 	fItems.push_back(aItm);
+
+	fItems.resize(fItems.size());
 }
 
 Item* Container::Take(std::string aId)
@@ -49,6 +56,9 @@ Item* Container::Take(std::string aId)
 			break;
 		}
 	}
+
+	fItems.resize(fItems.size());
+
 	return result;
 }
 
@@ -73,12 +83,13 @@ Container* Container::getContainer(std::string aId)
 
 	for (unsigned int i = 0; i < fItems.size(); i++)
 	{
-		if (fItems[i]->AreYou(aId))
+		if (fItems[i]->isContainer() && fItems[i]->AreYou(aId))
 		{
 			result = (Container*)fItems[i];
 			break;
 		}
 	}
+
 	return result;
 }
 
@@ -88,12 +99,12 @@ std::string Container::ItemList()
 
 	for (unsigned int i = 0; i < fItems.size(); i++)
 	{
-		result += fItems[i]->name() + "\t" + fItems[i]->shortDesc() + "\n";
+		result += fItems[i]->name() + "\t" + fItems[i]->fullDesc() + "\n";
 	}
 	return result;
 }
 
 std::string Container::fullDesc()
 {
-	return  fname + " contains: " + ItemList();
+	return  fname + " contains:\n" + ItemList();
 }

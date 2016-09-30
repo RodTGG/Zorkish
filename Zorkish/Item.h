@@ -10,9 +10,12 @@ class Item :
 	public GameObject
 {
 public:
+	bool isContainer() { return bContainer; };
 	Item(std::string name, std::string idents[]);							// Default constructor
 	Item(std::string name, std::string desc, std::string idents[]);			// Alternate constructor with description
 	~Item();
 
 	std::string fullDesc() override;										// Returns full description of object
+protected:
+	bool bContainer = false;
 };

@@ -26,7 +26,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -150,6 +150,7 @@
     <ClInclude Include="BoxWorld.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Container.h" />
+    <ClInclude Include="Error.h" />
     <ClInclude Include="GrabCommand.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="PutCommand.h" />

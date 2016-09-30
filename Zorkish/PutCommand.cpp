@@ -52,9 +52,17 @@ std::string PutCommand::Execute(Player* p, std::vector<std::string> aText)
 std::string PutCommand::putItem(Player* p, std::string aObject)
 {
 	std::string result = "";
-
 	p->currentLocation()->fInventory->Put(p->inv->Take(aObject));
+	result = "You dropped " + aObject;
 
+	if (p->inv->HasItem(aObject))
+	{
+		Error::Display("Unable to take " + aObject + " from player");
+	}
+	if (!p->currentLocation()->fInventory->HasItem(aObject))
+	{
+		Error::Display("Unable to add " + aObject + "to mapnode");
+	}
 	return result;
 }
 
@@ -65,22 +73,48 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 	if (p->currentLocation()->fInventory->HasItem(aContainer))
 	{
 		p->currentLocation()->fInventory->getContainer(aContainer)->Put(p->inv->Take(aObject));
+		
+		result = "You put " + aObject + " in " + aContainer;
+
+		if (p->inv->HasItem(aObject))
+		{
+			Error::Display("Unable to remove " + aObject + " from " + aContainer);
+		}
+		if (!p->currentLocation()->fInventory->getContainer(aContainer)->HasItem(aObject))
+		{
+			Error::Display("Unable to add " + aObject + " to " + aContainer);
+		}
 	}
 	else if (p->Locate(aContainer) == NULL)
 	{
 		result = "You do not have " + aContainer;
 	}
+	else if (p->Locate(aObject) == p)
+	{
+		result = "You try to fit in " + aContainer + " but only get half way :(";
+	}
+	else if (p->Locate(aObject) == NULL)
+	{
+		result = "You do not have " + aObject;
+	}
 	else
 	{
-		if (p->Locate(aObject) == NULL)
+		if (p->AreYou(aContainer))
 		{
-			result = "You do not have " + aObject + " in " + aContainer;
+			result = "item already there...";
 		}
 		else
 		{
-			if (p->AreYou(aContainer))
+			Container* myContainer = p->inv->getContainer(aContainer);
+
+			if (!myContainer == NULL) 
 			{
-				result = "item already there...";
+				p->inv->getContainer(aContainer)->Put(p->inv->Take(aObject));
+				result = "You put " + aObject + " in " + aContainer;
+			}
+			else 
+			{
+				result =  "You cant put " + aObject + " in " + aContainer;
 			}
 		}
 	}

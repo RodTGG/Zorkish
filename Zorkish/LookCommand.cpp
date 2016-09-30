@@ -74,7 +74,14 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem)
 		}
 		else
 		{
-			result = "Could not find item";
+			if (p->inv->HasItem(aItem))
+			{
+				result = p->Locate(aItem)->fullDesc();
+			}
+			else
+			{
+				result = "Could not find " + aItem;
+			}
 		}
 	}
 

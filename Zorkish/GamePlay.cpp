@@ -16,9 +16,10 @@ GamePlay::GamePlay(Player* aPlayer, GameMode* aGameMode) : GameState(5)
 {
 	fGameMode = aGameMode;
 	myPlayer = aPlayer;
+	myGraph = new Graph();
+	fcp = new CommandProcessor();
 	myGraph->readFile("Adventure.txt");
 	myPlayer->setLocation(myGraph->adjlist[0]);
-	fcp = new CommandProcessor();
 }
 
 GamePlay::~GamePlay()

@@ -5,8 +5,11 @@
 class Container :
 	public Item
 {
+private:
+	
 public:
-	Container(std::string aName, std::string aDesc, std::string aId[]);
+	Container();
+	Container(std::string aName, std::string aDesc, std::string aId[2]);
 	~Container();
 
 	std::vector<Item*> fItems;

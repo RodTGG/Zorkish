@@ -4,14 +4,12 @@
 class MapNode
 {
 private:
-	// backward pointer to previous element
-
 	std::string fdescription = "";												// description of current map node
 	bool visited = false;														// has node already been visited
 public:
 	std::string fname = "";
 	std::vector<MapNode*> fneighbor;
-	Inventory* fInventory = new Inventory("Map", "items on the floor", new std::string[2]{"map","floor"});										// mapnodes inventory and items
+	Inventory* fInventory = new Inventory("items on the floor", new std::string[2]{"map","floor"});										// mapnodes inventory and items
 
 	MapNode();																	// default constructor
 	MapNode(std::string aName, std::string aDesc);								// constructor with just description

@@ -106,13 +106,21 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 
 int Graph::getDirection(std::string aDirection)
 {
-	int result = 0;
+	int result = -1;
 	char* direction[4]{ "N", "E","S","W" };
 
-	if (aDirection == direction[0]) result = 0;
-	if (aDirection == direction[1]) result = 1;
-	if (aDirection == direction[2]) result = 2;
-	if (aDirection == direction[3]) result = 3;
+	for (unsigned int i = 0; i < 4; i++)
+	{
+		if (direction[i] == aDirection)
+		{
+			result = i;
+		}
+	}
+
+	if (result == -1) 
+	{
+		Error::Display("Error in Graph, getDirection unable to convert direction: " + aDirection);
+	}
 
 	return result;
 }
@@ -143,15 +151,12 @@ void Graph::printGraph()
 void Graph::readFile(std::string aFile)
 {
 	std::string line = "";
-	std::ifstream istream;
-	bool isOpen;
+	std::ifstream istream(aFile);
 
-	istream.open(aFile);
-	isOpen = istream.is_open();
 	if (istream.is_open())
 	{
 		if (fDebugging) {
-		std::cout << "MapOpened" << std::endl;
+			std::cout << "MapOpened" << std::endl;
 		}
 		while (!istream.eof())
 		{
@@ -213,8 +218,7 @@ void Graph::readFile(std::string aFile)
 	}
 	else
 	{
-		std::cout << "Could not open file: " + aFile << std::endl;
-		exit(2);
+		Error::Display("Unable to open file: " + aFile + "\nMake sure the file exists.");
 	}
 }
 

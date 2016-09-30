@@ -19,7 +19,7 @@ Player::~Player()
 
 std::string Player::fullDesc()
 {
-	return  fdescription + inv->ItemList();
+	return  fdescription + inv->fullDesc();
 }
 
 GameObject * Player::Locate(std::string aId)

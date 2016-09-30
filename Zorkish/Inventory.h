@@ -10,8 +10,7 @@
 /// <seealso cref="std::vector{Item}" />
 class Inventory : public Container
 {
-private:
 public:
-	Inventory(std::string aName, std::string aDesc, std::string aId[]);
+	Inventory(std::string aDesc, std::string aId[]);
 	~Inventory();
 };
