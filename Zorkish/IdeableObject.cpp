@@ -2,10 +2,12 @@
 #include "IdeableObject.h"
 #include <algorithm>
 
+using namespace Zorkish;
+
 IdeableObject::IdeableObject(std::string aIdents[2])
 {
-	identifiers[0] = aIdents[0];
-	identifiers[1] = aIdents[1];
+	fIdentifiers[0] = aIdents[0];
+	fIdentifiers[1] = aIdents[1];
 }
 
 IdeableObject::~IdeableObject()
@@ -15,7 +17,7 @@ IdeableObject::~IdeableObject()
 bool IdeableObject::AreYou(std::string aId)
 {
 	bool result = false;
-	std::string* temp = identifiers;
+	std::string* temp = fIdentifiers;
 
 	for (int i = 0; i < 2; i++)
 	{

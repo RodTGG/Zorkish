@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "NewHighScore.h"
 
+using namespace Zorkish;
+
 NewHighScore::NewHighScore(Player* aPlayer, GameMode* aGameMode) : GameState(6)
 {
 	fPlayer = aPlayer;
@@ -20,8 +22,8 @@ void NewHighScore::display()
 	std::cout << "Congratulations!" << std::endl;
 	std::cout << "You have made it to the Zorkish Hall Of Fame" << std::endl;
 	std::cout << "Adventure: " + game->NAME() << std::endl;
-	std::cout << "Score: " + fPlayer->score() << std::endl;
-	std::cout << "Moves: " + fPlayer->moves() << std::endl;
+	std::cout << "Score: " + fPlayer->getScore() << std::endl;
+	std::cout << "Moves: " + fPlayer->getMoves() << std::endl;
 }
 
 void NewHighScore::logic()

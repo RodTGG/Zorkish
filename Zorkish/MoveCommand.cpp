@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "MoveCommand.h"
 
+using namespace Zorkish;
+
 MoveCommand::MoveCommand(std::string aName) : Command(aName)
 {
 }
@@ -32,10 +34,10 @@ std::string MoveCommand::ChangeLocation(Player* p, std::string direction)
 
 	if (direction == "n" || direction == "up" || direction == "north")
 	{
-		if (p->currentLocation()->fneighbor[0] != NULL)
+		if (p->getLocation()->fNeighbor[0] != NULL)
 		{
-			p->setLocation((p->currentLocation()->fneighbor[0]));
-			result += p->currentLocation()->getDesciption();
+			p->setLocation((p->getLocation()->fNeighbor[0]));
+			result += p->getLocation()->getDesciption();
 		}
 		else
 		{
@@ -44,10 +46,10 @@ std::string MoveCommand::ChangeLocation(Player* p, std::string direction)
 	}
 	else if (direction == "right" || direction == "east" || direction == "e")
 	{
-		if (p->currentLocation()->fneighbor[1] != NULL)
+		if (p->getLocation()->fNeighbor[1] != NULL)
 		{
-			p->setLocation((p->currentLocation()->fneighbor[1]));
-			result += p->currentLocation()->getDesciption();
+			p->setLocation((p->getLocation()->fNeighbor[1]));
+			result += p->getLocation()->getDesciption();
 		}
 		else
 		{
@@ -56,10 +58,10 @@ std::string MoveCommand::ChangeLocation(Player* p, std::string direction)
 	}
 	else if (direction == "s" || direction == "down" || direction == "south")
 	{
-		if (p->currentLocation()->fneighbor[2] != NULL)
+		if (p->getLocation()->fNeighbor[2] != NULL)
 		{
-			p->setLocation((p->currentLocation()->fneighbor[2]));
-			result += p->currentLocation()->getDesciption();
+			p->setLocation((p->getLocation()->fNeighbor[2]));
+			result += p->getLocation()->getDesciption();
 		}
 		else
 		{
@@ -68,10 +70,10 @@ std::string MoveCommand::ChangeLocation(Player* p, std::string direction)
 	}
 	else if (direction == "w" || direction == "left" || direction == "west")
 	{
-		if (p->currentLocation()->fneighbor[3] != NULL)
+		if (p->getLocation()->fNeighbor[3] != NULL)
 		{
-			p->setLocation((p->currentLocation()->fneighbor[3]));
-			result += p->currentLocation()->getDesciption();
+			p->setLocation((p->getLocation()->fNeighbor[3]));
+			result += p->getLocation()->getDesciption();
 		}
 		else
 		{

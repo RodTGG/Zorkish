@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "SelectAdventure.h"
 
+using namespace Zorkish;
+
 SelectAdventure::SelectAdventure() : GameState(3)
 {
 }

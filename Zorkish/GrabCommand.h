@@ -1,5 +1,7 @@
 #pragma once
 #include "Command.h"
+
+namespace Zorkish {
 class GrabCommand :
 	public Command
 {
@@ -11,4 +13,4 @@ public:
 	std::string grabItem(Player* p, std::string aObject);
 	std::string grabItem(Player* p, std::string aObject, std::string aContainer);
 };
-
+}

@@ -1,29 +1,33 @@
 #include "stdafx.h"
 #include "GamePlay.h"
+
+using namespace Zorkish;
+
 GamePlay::GamePlay(Player* aPlayer, GameMode* aGameMode, bool aDebugging) : GameState(5)
 {
 	fGameMode = aGameMode;
 	fDebugging = aDebugging;
-	myPlayer = aPlayer;
-	myGraph = new Graph(aDebugging);
-	fcp = new CommandProcessor();
-	myGraph->readFile("Adventure.txt");
-	myPlayer->setLocation(myGraph->adjlist[0]);
-	
+	fPlayer = aPlayer;
+	fGraph = new Graph(aDebugging);
+	fCommandProcessor = new CommandProcessor();
 }
 
 GamePlay::GamePlay(Player* aPlayer, GameMode* aGameMode) : GameState(5)
 {
 	fGameMode = aGameMode;
-	myPlayer = aPlayer;
-	myGraph = new Graph();
-	fcp = new CommandProcessor();
-	myGraph->readFile("Adventure.txt");
-	myPlayer->setLocation(myGraph->adjlist[0]);
+	fPlayer = aPlayer;
+	fGraph = new Graph();
+	fCommandProcessor = new CommandProcessor();
 }
 
 GamePlay::~GamePlay()
 {
+}
+
+void GamePlay::setupGame() 
+{
+	fGraph->readFile("Adventure.txt");
+	fPlayer->setLocation(fGraph->adjlist[0]);
 }
 
 void GamePlay::display()
@@ -34,7 +38,8 @@ void GamePlay::display()
 
 void GamePlay::logic()
 {
-	myPlayer->inv->Put(new Item("Sword","A mighty Sword", new std::string[2]{"sword","heartseeker"}));
+	setupGame();
+	fPlayer->getInventory()->Put(new Item("Sword","A mighty Sword", new std::string[2]{"sword","heartseeker"}));
 }
 
 int GamePlay::handle_event()
@@ -70,11 +75,11 @@ int GamePlay::handle_event()
 		}
 		if (usrInput == "i")
 		{
-			std::cout << myPlayer->fullDesc();
+			std::cout << fPlayer->getFullDesc();
 		}
 		else
 		{
-			std::cout << fcp->executeCommand(myPlayer, usrInput) << std::endl;
+			std::cout << fCommandProcessor->executeCommand(fPlayer, usrInput) << std::endl;
 		}
 	} while (usrInput != "quit");
 

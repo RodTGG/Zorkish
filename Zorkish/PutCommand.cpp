@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "PutCommand.h"
 
+using namespace Zorkish;
 
 PutCommand::PutCommand(std::string aName) : Command(aName)
 {
@@ -52,14 +53,14 @@ std::string PutCommand::Execute(Player* p, std::vector<std::string> aText)
 std::string PutCommand::putItem(Player* p, std::string aObject)
 {
 	std::string result = "";
-	p->currentLocation()->fInventory->Put(p->inv->Take(aObject));
+	p->getLocation()->fInventory->Put(p->getInventory()->Take(aObject));
 	result = "You dropped " + aObject;
 
-	if (p->inv->HasItem(aObject))
+	if (p->getInventory()->HasItem(aObject))
 	{
 		Error::Display("Unable to take " + aObject + " from player");
 	}
-	if (!p->currentLocation()->fInventory->HasItem(aObject))
+	if (!p->getLocation()->fInventory->HasItem(aObject))
 	{
 		Error::Display("Unable to add " + aObject + "to mapnode");
 	}
@@ -70,17 +71,17 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 {
 	std::string result = "";
 
-	if (p->currentLocation()->fInventory->HasItem(aContainer))
+	if (p->getLocation()->fInventory->HasItem(aContainer))
 	{
-		p->currentLocation()->fInventory->getContainer(aContainer)->Put(p->inv->Take(aObject));
+		p->getLocation()->fInventory->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
 		
 		result = "You put " + aObject + " in " + aContainer;
 
-		if (p->inv->HasItem(aObject))
+		if (p->getInventory()->HasItem(aObject))
 		{
 			Error::Display("Unable to remove " + aObject + " from " + aContainer);
 		}
-		if (!p->currentLocation()->fInventory->getContainer(aContainer)->HasItem(aObject))
+		if (!p->getLocation()->fInventory->getContainer(aContainer)->HasItem(aObject))
 		{
 			Error::Display("Unable to add " + aObject + " to " + aContainer);
 		}
@@ -105,11 +106,11 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 		}
 		else
 		{
-			Container* myContainer = p->inv->getContainer(aContainer);
+			Container* myContainer = p->getInventory()->getContainer(aContainer);
 
 			if (!myContainer == NULL) 
 			{
-				p->inv->getContainer(aContainer)->Put(p->inv->Take(aObject));
+				p->getInventory()->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
 				result = "You put " + aObject + " in " + aContainer;
 			}
 			else 

@@ -1,15 +1,17 @@
 #include "stdafx.h"
 #include "Player.h"
 
-Player::Player() : GameObject("Player1", "You", new std::string[2]{ "me", "inv" })
+using namespace Zorkish;
+
+Player::Player() : Character("Player1", "You", new std::string[2]{ "me", "inv" })
 {
-	fdescription = "You are Carrying: \n";
+	fDescription = "You are Carrying: \n";
 }
 
-Player::Player(std::string name, std::string desc) : GameObject(name, desc, new std::string[2]{ "me", "inv" })
+Player::Player(std::string aName, std::string aDesc) : Character(aName, aDesc, new std::string[2]{ "me", "inv" })
 {
-	fdescription = desc;
-	fshortdesc = "You";
+	fDescription = aDesc;
+	fShortdesc = "You";
 }
 
 Player::~Player()
@@ -17,60 +19,12 @@ Player::~Player()
 	delete this;
 }
 
-std::string Player::fullDesc()
+const int Player::getScore()
 {
-	return  fdescription + inv->fullDesc();
+	return fScore;
 }
 
-GameObject * Player::Locate(std::string aId)
+const int Player::getMoves()
 {
-	GameObject* result = NULL;
-
-	if (AreYou(aId))
-	{
-		result = this;
-	}
-	else
-	{
-		if(inv->HasItem(aId))
-		{
-			result = inv->Fetch(aId);
-		}
-		else 
-		{
-			result = NULL;
-		}
-	}
-
-	return result;
-}
-
-const int Player::hp()
-{
-	return fhp;
-}
-
-const int Player::score()
-{
-	return fscore;
-}
-
-const bool Player::alive()
-{
-	return falive;
-}
-
-const int Player::moves()
-{
-	return fmoves;
-}
-
-MapNode* Player::currentLocation()
-{
-	return flocation;
-}
-
-void Player::setLocation(MapNode* aLocation)
-{
-	flocation = aLocation;
+	return fMoves;
 }

@@ -6,6 +6,7 @@
 #include "..\Zorkish\Graph.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace Zorkish;
 
 namespace TestMap
 {
@@ -49,7 +50,7 @@ namespace TestMap
 			myGraph->addNeighbor("3", "4", "W");
 
 			p->setLocation(myGraph->adjlist[0]);
-			if ((p->currentLocation(), myGraph->adjlist[0]))
+			if ((p->getLocation(), myGraph->adjlist[0]))
 			{
 				Assert::IsTrue(true);
 			}
@@ -57,8 +58,8 @@ namespace TestMap
 			{
 				Assert::IsFalse(false);
 			}
-			p->setLocation(myGraph->adjlist[0]->fneighbor[0]);
-			if ((p->currentLocation(), myGraph->adjlist[1]))
+			p->setLocation(myGraph->adjlist[0]->fNeighbor[0]);
+			if ((p->getLocation(), myGraph->adjlist[1]))
 			{
 				Assert::IsTrue(true);
 			}

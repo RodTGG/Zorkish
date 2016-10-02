@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Graph.h"
 
+using namespace Zorkish;
+
 Graph::Graph(bool aDebugging)
 {
 	fDebugging = aDebugging;
@@ -55,11 +57,11 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 	// Copy nodes to temp nodes
 	for (unsigned int i = 0; i < adjlist.size(); i++)
 	{
-		if (adjlist[i]->fname == aNode1)
+		if (adjlist[i]->fName == aNode1)
 		{
 			a = adjlist[i];
 		}
-		if (adjlist[i]->fname == aNode2)
+		if (adjlist[i]->fName == aNode2)
 		{
 			b = adjlist[i];
 		}
@@ -68,24 +70,24 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 	// Check if nodes arent neighbors
 	if (!a->hasNeighbor(b) && !b->hasNeighbor(a))
 	{
-		a->fneighbor.at(direction) = b;
+		a->fNeighbor.at(direction) = b;
 
 		// Place node in opposite direction of node a
 		switch (direction)
 		{
 		case 0:
-			b->fneighbor.at(2) = a;
+			b->fNeighbor.at(2) = a;
 			break;
 		case 1:
-			b->fneighbor.at(3) = a;
+			b->fNeighbor.at(3) = a;
 			break;
 		case 2:
-			b->fneighbor.at(0) = a;
+			b->fNeighbor.at(0) = a;
 			break;
 		case 3:
-			b->fneighbor.at(1) = a;
+			b->fNeighbor.at(1) = a;
 		default:
-			b->fneighbor.at(1) = a;
+			b->fNeighbor.at(1) = a;
 			break;
 		}
 	}
@@ -93,11 +95,11 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 	// Override node data
 	for (unsigned int i = 0; i < adjlist.size(); i++)
 	{
-		if (adjlist[i]->fname == aNode1)
+		if (adjlist[i]->fName == aNode1)
 		{
 			adjlist[i] = a;
 		}
-		if (adjlist[i]->fname == aNode2)
+		if (adjlist[i]->fName == aNode2)
 		{
 			adjlist[i] = b;
 		}
@@ -133,11 +135,11 @@ void Graph::printGraph()
 {
 	for (unsigned int i = 0; i < adjlist.size(); i++)
 	{
-		std::cout << adjlist[i]->fname + "--->";
+		std::cout << adjlist[i]->fName + "--->";
 
-		for (unsigned int j = 0; j < adjlist[i]->fneighbor.size(); j++)
+		for (unsigned int j = 0; j < adjlist[i]->fNeighbor.size(); j++)
 		{
-			if (adjlist[i]->fneighbor[j] != NULL) std::cout << adjlist[i]->fneighbor[j]->fname;
+			if (adjlist[i]->fNeighbor[j] != NULL) std::cout << adjlist[i]->fNeighbor[j]->fName;
 		}
 
 		std::cout << "\n";

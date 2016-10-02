@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "LookCommand.h"
 
+using namespace Zorkish;
 
 LookCommand::LookCommand(std::string aName) : Command(aName)
 {
@@ -65,18 +66,18 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem)
 
 	if (p->AreYou(aItem))
 	{
-		result = p->Locate(aItem)->fullDesc();
+		result = p->Locate(aItem)->getFullDesc();
 	}
 	else {
-		if (p->currentLocation()->fInventory->HasItem(aItem))
+		if (p->getLocation()->fInventory->HasItem(aItem))
 		{
-			result = p->currentLocation()->fInventory->Fetch(aItem)->fullDesc();
+			result = p->getLocation()->fInventory->Fetch(aItem)->getFullDesc();
 		}
 		else
 		{
-			if (p->inv->HasItem(aItem))
+			if (p->getInventory()->HasItem(aItem))
 			{
-				result = p->Locate(aItem)->fullDesc();
+				result = p->Locate(aItem)->getFullDesc();
 			}
 			else
 			{
@@ -104,7 +105,7 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem, std::string aCon
 		}
 		else
 		{
-			result = p->Locate(aItem)->fullDesc();
+			result = p->Locate(aItem)->getFullDesc();
 		}
 	}
 

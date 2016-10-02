@@ -4,6 +4,7 @@
 #include "..\Zorkish\Player.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace Zorkish;
 
 namespace TestPlayer
 {
@@ -15,20 +16,20 @@ namespace TestPlayer
 		{
 			Item* gun = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun", "pistol" });
 			Player* p = new Player();
-			p->inv->Put(gun);
+			p->getInventory()->Put(gun);
 
-			Assert::IsTrue(p->inv->HasItem("gun"));
+			Assert::IsTrue(p->getInventory()->HasItem("gun"));
 		}
 
 		TEST_METHOD(TestPlayerRemoveItem)
 		{
 			Item* gun = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun", "pistol" });
 			Player* p = new Player();
-			p->inv->Put(gun);
+			p->getInventory()->Put(gun);
 
-			Assert::IsTrue(p->inv->HasItem("gun"));
-			p->inv->Take("gun");
-			Assert::IsFalse(p->inv->HasItem("gun"));
+			Assert::IsTrue(p->getInventory()->HasItem("gun"));
+			p->getInventory()->Take("gun");
+			Assert::IsFalse(p->getInventory()->HasItem("gun"));
 		}
 	};
 }

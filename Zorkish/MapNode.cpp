@@ -1,47 +1,76 @@
 #include "stdafx.h"
 #include "MapNode.h"
 
+using namespace Zorkish;
+
 MapNode::MapNode()
 {
+	fCharacters = new CharacterContainer();
+	fInventory = new Container("mapInv","items on the floor", new std::string[2]{ "map","floor" });
 	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{"bag","beg"}));
 }
 
 MapNode::MapNode(std::string aName, std::string aDesc)
 {
-	fname = aName;
-	fdescription = aDesc;
+	fCharacters = new CharacterContainer();
+	fInventory = new Container("mapInv", "items on the floor", new std::string[2]{ "map","floor" });
+
+	fName = aName;
+	fDescription = aDesc;
 
 	for (unsigned int i = 0; i < 4; i++)
 	{
-		fneighbor.push_back(NULL);
+		fNeighbor.push_back(NULL);
 	}
 
 	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
 }
 
+MapNode::MapNode(std::string aName, std::string aDesc, Item aItems[])
+{
+	fCharacters = new CharacterContainer();
+	fInventory = new Container("mapInv", "items on the floor", new std::string[2]{ "map","floor" });
+
+	fName = aName;
+	fDescription = aDesc;
+
+	for (unsigned int i = 0; i < 4; i++)
+	{
+		fNeighbor.push_back(NULL);
+	}
+
+	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
+}
+
+MapNode::~MapNode()
+{
+	delete fCharacters;
+	delete fInventory;
+}
+
 const std::string& MapNode::getDesciption()
 {
-	return fdescription;
+	return fDescription;
 }
 
 void MapNode::toggleVisited()
 {
-	if (visited)
+	if (fVisited)
 	{
-		visited = false;
+		fVisited = false;
 	}
 	else
 	{
-		visited = true;
+		fVisited = true;
 	}
 }
 
 bool MapNode::hasNeighbor(MapNode* aNode)
 {
-	for (unsigned int i = 0; i < fneighbor.size(); i++)
+	for (unsigned int i = 0; i < fNeighbor.size(); i++)
 	{
-		if (fneighbor[i] != NULL) {
-			if (fneighbor[i]->fname == aNode->fname)
+		if (fNeighbor[i] != NULL) {
+			if (fNeighbor[i]->fName == aNode->fName)
 			{
 				return true;
 			}

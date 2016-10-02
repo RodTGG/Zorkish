@@ -8,6 +8,7 @@
 #include "..\Zorkish\PutCommand.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace Zorkish;
 
 namespace TestCommandProcessor
 {
@@ -37,7 +38,7 @@ namespace TestCommandProcessor
 			myGraph->addNeighbor("3", "4","W");
 
 			p->setLocation(myGraph->adjlist[0]);
-			if ((p->currentLocation(), myGraph->adjlist[0]))
+			if ((p->getLocation(), myGraph->adjlist[0]))
 			{
 				Assert::IsTrue(true);
 			}
@@ -48,7 +49,7 @@ namespace TestCommandProcessor
 
 			move->ChangeLocation(p, "n");
 
-			if ((p->currentLocation(), myGraph->adjlist[1]))
+			if ((p->getLocation(), myGraph->adjlist[1]))
 			{
 				Assert::IsTrue(true);
 			}
@@ -80,7 +81,7 @@ namespace TestCommandProcessor
 
 			p->setLocation(myGraph->adjlist[0]);
 
-			Assert::AreEqual(p->fullDesc(), look->Execute(p, std::vector<std::string>{"look", "at", "me"}));
+			Assert::AreEqual(p->getFullDesc(), look->Execute(p, std::vector<std::string>{"look", "at", "me"}));
 		}
 
 		/* Tests the grab command.
@@ -105,12 +106,12 @@ namespace TestCommandProcessor
 			myGraph->addNeighbor("3", "4", "W");
 
 			p->setLocation(myGraph->adjlist[0]);
-			p->currentLocation()->fInventory->Put(gun);
+			p->getLocation()->fInventory->Put(gun);
 
-			Assert::IsTrue(!p->inv->HasItem("gun"));
+			Assert::IsTrue(!p->getInventory()->HasItem("gun"));
 			grab->Execute(p, std::vector<std::string>{"take", "gun"});
-			Assert::IsTrue(p->inv->HasItem("gun"));
-			Assert::IsTrue(!p->currentLocation()->fInventory->HasItem("gun"));
+			Assert::IsTrue(p->getInventory()->HasItem("gun"));
+			Assert::IsTrue(!p->getLocation()->fInventory->HasItem("gun"));
 		}
 
 		/* Tests the put command
@@ -135,13 +136,13 @@ namespace TestCommandProcessor
 			myGraph->addNeighbor("3", "4", "W");
 
 
-			p->inv->Put(gun);
+			p->getInventory()->Put(gun);
 			p->setLocation(myGraph->adjlist[0]);
 
-			Assert::IsTrue(p->inv->HasItem("gun"));
+			Assert::IsTrue(p->getInventory()->HasItem("gun"));
 			put->Execute(p, std::vector<std::string>{"put", "gun"});
-			Assert::IsTrue(!p->inv->HasItem("gun"));
-			Assert::IsTrue(p->currentLocation()->fInventory->HasItem("gun"));
+			Assert::IsTrue(!p->getInventory()->HasItem("gun"));
+			Assert::IsTrue(p->getLocation()->fInventory->HasItem("gun"));
 		}
 	};
 }

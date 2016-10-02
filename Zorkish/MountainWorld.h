@@ -1,9 +1,12 @@
 #pragma once
 #include "GameMode.h"
-class MountainWorld :
-	public GameMode
-{
-public:
-	MountainWorld();
-	~MountainWorld();
-};
+
+namespace Zorkish {
+	class MountainWorld :
+		public GameMode
+	{
+	public:
+		MountainWorld();
+		~MountainWorld();
+	};
+}

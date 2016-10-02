@@ -4,14 +4,16 @@
 /// Error class.
 /// Displays message and exits program
 ///	Error returns 1
-class Error
-{
-public:
-	Error() {};
-
-	static void Display(std::string aMsg)
+namespace Zorkish {
+	class Error
 	{
-		std::cout << aMsg << std::endl;
-		exit(1);
-	}
-};
+	public:
+		Error() {};
+
+		static void Display(std::string aMsg)
+		{
+			std::cout << aMsg << std::endl;
+			exit(1);
+		}
+	};
+}

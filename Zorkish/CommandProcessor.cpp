@@ -5,6 +5,8 @@
 #include "GrabCommand.h"
 #include "PutCommand.h"
 
+using namespace Zorkish;
+
 CommandProcessor::CommandProcessor()
 {
 	addCommand(new LookCommand("look"));

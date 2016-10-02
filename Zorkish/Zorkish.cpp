@@ -1,9 +1,10 @@
 // Zorkish.cpp : Defines the entry point for the console application.
 //
 #include "stdafx.h"
-#include "Graph.h"
 #include "GameStateManager.h"
 #define DEBUG 1
+
+using namespace Zorkish;
 
 int main(int argc, char* argv[])
 {

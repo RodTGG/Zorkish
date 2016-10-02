@@ -2,12 +2,12 @@
 #include "GameState.h"
 
 namespace Zorkish {
-	class About :
-		public GameState
+	class Exit
+		: public GameState
 	{
 	public:
-		About();
-		~About();
+		Exit();
+		~Exit();
 
 		void display() override;
 		void logic() override;

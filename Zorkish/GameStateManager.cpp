@@ -11,6 +11,9 @@
 #include "WaterWorld.h"
 #include "BoxWorld.h"
 #include "GamePlay.h"
+#include "Exit.h"
+
+using namespace Zorkish;
 
 GameStateManager::GameStateManager(bool aDebug)
 {
@@ -59,6 +62,7 @@ void GameStateManager::change_state()
 		fState = new GamePlay(fPlayer, fGameMode, fDebug);
 		break;
 	case States::STATE_EXIT:
+		fState = new Exit();
 		break;
 	case States::GAME_MOUNTAINWORLD:
 		fGameMode = new MountainWorld();

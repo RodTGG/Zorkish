@@ -1,5 +1,7 @@
 #pragma once
 #include "Command.h"
+
+namespace Zorkish {
 class LookCommand :
 	public Command
 {
@@ -13,4 +15,4 @@ public:
 private:
 	
 };
-
+}

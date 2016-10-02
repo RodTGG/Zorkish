@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GrabCommand.h"
 
+using namespace Zorkish;
 
 GrabCommand::GrabCommand(std::string aName) : Command(aName)
 {
@@ -53,20 +54,20 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 {
 	std::string result = "";
 
-	if (p->currentLocation()->fInventory->HasItem(aObject))
+	if (p->getLocation()->fInventory->HasItem(aObject))
 	{
-		p->inv->Put(p->currentLocation()->fInventory->Take(aObject));
+		p->getInventory()->Put(p->getLocation()->fInventory->Take(aObject));
 
-		if (!p->inv->HasItem(aObject))
+		if (!p->getInventory()->HasItem(aObject))
 		{
 			Error::Display("Error in grabCommand, unable to add " + aObject + " to player...");
 		}
-		if (p->currentLocation()->fInventory->HasItem(aObject))
+		if (p->getLocation()->fInventory->HasItem(aObject))
 		{
-			Error::Display("Error unable take" + aObject + " from mapnode " + p->currentLocation()->fname + " inventory...");
+			Error::Display("Error unable take" + aObject + " from mapnode " + p->getLocation()->fName + " inventory...");
 		}
 
-		result = "You grabbed " + p->Locate(aObject)->fullDesc();
+		result = "You grabbed " + p->Locate(aObject)->getFullDesc();
 	}
 	else
 	{
@@ -79,21 +80,21 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aContainer)
 {
 	std::string result = "";
-	Container* myContainer = new Container();
+	Container* myContainer;
 
-	if (p->currentLocation()->fInventory->HasItem(aContainer))
+	if (p->getLocation()->fInventory->HasItem(aContainer))
 	{
-		myContainer = p->currentLocation()->fInventory->getContainer(aContainer);
+		myContainer = p->getLocation()->fInventory->getContainer(aContainer);
 
 		if (myContainer != NULL)
 		{
-			p->inv->Put(p->currentLocation()->fInventory->getContainer(aContainer)->Take(aObject));
+			p->getInventory()->Put(p->getLocation()->fInventory->getContainer(aContainer)->Take(aObject));
 		}
 		else
 		{
 			result = "You cant put " + aObject + " in " + aContainer;
 		}
-		if (!p->inv->HasItem(aObject))
+		if (!p->getInventory()->HasItem(aObject))
 		{
 			Error::Display("Unable to grab " + aObject + " from " + aContainer + "...");
 		}
@@ -108,16 +109,16 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 	}
 	else
 	{
-		myContainer = p->inv->getContainer(aContainer);
+		myContainer = p->getInventory()->getContainer(aContainer);
 
 		if (myContainer != NULL)
 		{
 			if (myContainer->HasItem(aObject))
 			{
-				p->inv->Put(myContainer->Take(aObject));
-				result = p->Locate(aObject)->fullDesc();
+				p->getInventory()->Put(myContainer->Take(aObject));
+				result = p->Locate(aObject)->getFullDesc();
 
-				if (p->currentLocation()->fInventory->HasItem(aObject))
+				if (p->getLocation()->fInventory->HasItem(aObject))
 				{
 					Error::Display("");
 				}

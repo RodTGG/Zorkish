@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "HallofFame.h"
 
+using namespace Zorkish;
+
 HallofFame::HallofFame() : GameState(4)
 {
 }

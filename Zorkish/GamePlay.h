@@ -3,23 +3,27 @@
 #include "GameMode.h"
 #include "CommandProcessor.h"
 
-class GamePlay :
-	public GameState
-{
-public:
-	GamePlay(Player* p, GameMode* aGame, bool aDebug);
-	GamePlay(Player* p, GameMode* aGame);
-	~GamePlay();
+namespace Zorkish {
+	class GamePlay :
+		public GameState
+	{
+	public:
+		GamePlay(Player* p, GameMode* aGame, bool aDebug);
+		GamePlay(Player* p, GameMode* aGame);
+		~GamePlay();
 
-	void display() override;
-	void logic() override;
-	int handle_event() override;
-private:
-	Player* myPlayer;
-	Graph* myGraph = NULL;
-	GameMode* fGameMode = NULL;
-	bool fDebugging = false;
+		void display() override;
+		void logic() override;
+		int handle_event() override;
 
-protected:
-	CommandProcessor* fcp = NULL;
-};
+		void setupGame();
+	private:
+		Player* fPlayer;
+		Graph* fGraph = NULL;
+		GameMode* fGameMode = NULL;
+		bool fDebugging = false;
+
+	protected:
+		CommandProcessor* fCommandProcessor = NULL;
+	};
+}

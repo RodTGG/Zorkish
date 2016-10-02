@@ -1,19 +1,29 @@
 #pragma once
-#include "Inventory.h"
+#include "Container.h"
+#include "CharacterContainer.h"
 
-class MapNode
-{
-private:
-	std::string fdescription = "";												// description of current map node
-	bool visited = false;														// has node already been visited
-public:
-	std::string fname = "";
-	std::vector<MapNode*> fneighbor;
-	Inventory* fInventory = new Inventory("items on the floor", new std::string[2]{"map","floor"});										// mapnodes inventory and items
+namespace Zorkish {
+	class MapNode
+	{
+	private:
+		std::string fDescription = "";												// description of current map node
+		bool fVisited = false;														// has node already been visited
+	public:
+		std::string fName = "";
+		std::vector<MapNode*> fNeighbor;
 
-	MapNode();																	// default constructor
-	MapNode(std::string aName, std::string aDesc);								// constructor with just description
-	const std::string& getDesciption();											// return constant reference to description
-	void toggleVisited();
-	bool hasNeighbor(MapNode* aNode);
-};
+		CharacterContainer* fCharacters;
+		Container* fInventory;														// mapnodes inventory and items
+
+		MapNode();																	// default constructor
+		MapNode(std::string aName, std::string aDesc);								// constructor with just description
+		MapNode(std::string aName, std::string aDesc, Item aItems[]);				// constructor with items
+		~MapNode();
+
+
+		const std::string& getDesciption();											// return constant reference to description
+		void toggleVisited();
+		bool hasNeighbor(MapNode* aNode);
+		void addCharacter(GameObject* aChar);
+	};
+}

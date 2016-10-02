@@ -8,6 +8,7 @@
 #include "..\Zorkish\PutCommand.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
+using namespace Zorkish;
 
 namespace TestGrabCommand
 {
@@ -39,13 +40,13 @@ namespace TestGrabCommand
 			myGraph->addNeighbor("3", "4", "W");
 
 
-			p->inv->Put(gun);
+			p->getInventory()->Put(gun);
 			p->setLocation(myGraph->adjlist[0]);
 
-			Assert::IsTrue(p->inv->HasItem("gun"));
-			Assert::IsTrue(p->currentLocation()->fInventory->HasItem("bag"));
+			Assert::IsTrue(p->getInventory()->HasItem("gun"));
+			Assert::IsTrue(p->getLocation()->fInventory->HasItem("bag"));
 			put->Execute(p, std::vector<std::string>{"grab", "gun", "from", "bag"});
-			Assert::IsFalse(p->currentLocation()->fInventory->getContainer("bag")->HasItem("gun"));
+			Assert::IsFalse(p->getLocation()->fInventory->getContainer("bag")->HasItem("gun"));
 		}
-	}
+	};
 }

@@ -89,6 +89,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <BrowseInformation>true</BrowseInformation>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,10 +148,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="About.h" />
+    <ClInclude Include="Attack.h" />
     <ClInclude Include="BoxWorld.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="CharacterContainer.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Container.h" />
+    <ClInclude Include="Damage.h" />
     <ClInclude Include="Error.h" />
+    <ClInclude Include="Exit.h" />
     <ClInclude Include="GrabCommand.h" />
     <ClInclude Include="CommandProcessor.h" />
     <ClInclude Include="PutCommand.h" />
@@ -166,7 +172,6 @@
     <ClInclude Include="HallofFame.h" />
     <ClInclude Include="Help.h" />
     <ClInclude Include="IdeableObject.h" />
-    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="MountainWorld.h" />
@@ -180,8 +185,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="About.cpp" />
+    <ClCompile Include="Attack.cpp" />
     <ClCompile Include="BoxWorld.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="CharacterContainer.cpp" />
     <ClCompile Include="Container.cpp" />
+    <ClCompile Include="Damage.cpp" />
+    <ClCompile Include="Exit.cpp" />
     <ClCompile Include="GrabCommand.cpp" />
     <ClCompile Include="CommandProcessor.cpp" />
     <ClCompile Include="PutCommand.cpp" />
@@ -192,7 +202,6 @@
     <ClCompile Include="HallofFame.cpp" />
     <ClCompile Include="Help.cpp" />
     <ClCompile Include="IdeableObject.cpp" />
-    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="LookCommand.cpp" />
     <ClCompile Include="MainMenu.cpp" />
