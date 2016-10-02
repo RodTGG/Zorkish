@@ -7,14 +7,12 @@ CharacterContainer::CharacterContainer()
 {
 }
 
-
 CharacterContainer::~CharacterContainer()
 {
 }
 
 void CharacterContainer::removeChar(std::string aName)
 {
-
 	for (unsigned int i = 0; i < fChars.size(); i++)
 	{
 		if (fChars[i]->AreYou(aName))
@@ -27,7 +25,7 @@ void CharacterContainer::removeChar(std::string aName)
 	fChars.resize(fChars.size());
 }
 
-void CharacterContainer::addChars(GameObject* aChar) 
+void CharacterContainer::addChars(GameObject* aChar)
 {
 	fChars.push_back(aChar);
 }
@@ -38,7 +36,7 @@ bool CharacterContainer::hasChar(std::string aName)
 
 	for (unsigned int i = 0; i < fChars.size(); i++)
 	{
-		if (fChars[i]->AreYou(aName)) 
+		if (fChars[i]->AreYou(aName))
 		{
 			result = true;
 		}

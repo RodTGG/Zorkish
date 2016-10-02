@@ -6,8 +6,8 @@ using namespace Zorkish;
 MapNode::MapNode()
 {
 	fCharacters = new CharacterContainer();
-	fInventory = new Container("mapInv","items on the floor", new std::string[2]{ "map","floor" });
-	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{"bag","beg"}));
+	fInventory = new Container("mapInv", "items on the floor", new std::string[2]{ "map","floor" });
+	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
 }
 
 MapNode::MapNode(std::string aName, std::string aDesc)

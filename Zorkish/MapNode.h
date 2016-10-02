@@ -20,7 +20,6 @@ namespace Zorkish {
 		MapNode(std::string aName, std::string aDesc, Item aItems[]);				// constructor with items
 		~MapNode();
 
-
 		const std::string& getDesciption();											// return constant reference to description
 		void toggleVisited();
 		bool hasNeighbor(MapNode* aNode);

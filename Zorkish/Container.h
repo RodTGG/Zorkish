@@ -23,5 +23,4 @@ namespace Zorkish {
 		virtual Container* getContainer(std::string aName);
 		std::string getFullDesc() override;
 	};
-
 }

@@ -39,7 +39,6 @@ namespace TestGrabCommand
 			myGraph->addNeighbor("2", "4", "S");
 			myGraph->addNeighbor("3", "4", "W");
 
-
 			p->getInventory()->Put(gun);
 			p->setLocation(myGraph->adjlist[0]);
 

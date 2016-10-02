@@ -50,12 +50,12 @@ GameObject::~GameObject()
 	delete fIdObject;
 }
 
-Damage* GameObject::getDamage() 
+Damage* GameObject::getDamage()
 {
 	return fDamage;
 }
 
-int GameObject::getFireResistance() 
+int GameObject::getFireResistance()
 {
 	return fResistances[0];
 }

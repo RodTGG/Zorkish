@@ -3,7 +3,7 @@
 
 /// <summary>
 /// Item base class
-/// 
+///
 /// </summary>
 /// <seealso cref="GameObject" />
 namespace Zorkish {

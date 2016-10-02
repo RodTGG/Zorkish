@@ -24,7 +24,7 @@ GamePlay::~GamePlay()
 {
 }
 
-void GamePlay::setupGame() 
+void GamePlay::setupGame()
 {
 	fGraph->readFile("Adventure.txt");
 	fPlayer->setLocation(fGraph->adjlist[0]);
@@ -39,7 +39,7 @@ void GamePlay::display()
 void GamePlay::logic()
 {
 	setupGame();
-	fPlayer->getInventory()->Put(new Item("Sword","A mighty Sword", new std::string[2]{"sword","heartseeker"}));
+	fPlayer->getInventory()->Put(new Item("Sword", "A mighty Sword", new std::string[2]{ "sword","heartseeker" }));
 }
 
 int GamePlay::handle_event()

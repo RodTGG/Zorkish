@@ -50,8 +50,9 @@ void Graph::addNode(MapNode* aNode)
 /// <param name="aNode2">name of node2.</param>
 void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDirection)
 {
-	MapNode* a = NULL;
-	MapNode* b = NULL;
+	MapNode* a = new MapNode();
+	MapNode* b = new MapNode();
+
 	int direction = getDirection(aDirection);
 
 	// Copy nodes to temp nodes
@@ -104,6 +105,9 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 			adjlist[i] = b;
 		}
 	}
+
+	delete a;
+	delete b;
 }
 
 int Graph::getDirection(std::string aDirection)
@@ -119,7 +123,7 @@ int Graph::getDirection(std::string aDirection)
 		}
 	}
 
-	if (result == -1) 
+	if (result == -1)
 	{
 		Error::Display("Error in Graph, getDirection unable to convert direction: " + aDirection);
 	}

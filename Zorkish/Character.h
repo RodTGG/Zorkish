@@ -18,10 +18,8 @@ namespace Zorkish {
 		Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, int aResistance[4]);	// Specified damage and resistance
 		~Character();
 
-
-
 		GameObject* Locate(std::string aId);			// Locates object, character or item in inv
-		void setLocation(MapNode* aLocation);			// Sets the Location		
+		void setLocation(MapNode* aLocation);			// Sets the Location
 
 		const int getHp();								// Returns hp
 		const bool isAlive();							// Returns alive state

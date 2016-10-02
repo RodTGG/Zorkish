@@ -21,7 +21,7 @@ namespace TestMap
 			Item* gun3 = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun3", "pistol" });
 			Item* i[] = { gun,gun2,gun3 };
 
-			MapNode* myMap1 = new MapNode("1","a very scary room");
+			MapNode* myMap1 = new MapNode("1", "a very scary room");
 			myMap1->fInventory->Put(i[0]);
 			myMap1->fInventory->Put(i[1]);
 			myMap1->fInventory->Put(i[2]);

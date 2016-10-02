@@ -7,7 +7,6 @@ Exit::Exit()
 {
 }
 
-
 Exit::~Exit()
 {
 }

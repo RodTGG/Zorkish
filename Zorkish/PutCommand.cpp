@@ -7,7 +7,6 @@ PutCommand::PutCommand(std::string aName) : Command(aName)
 {
 }
 
-
 PutCommand::~PutCommand()
 {
 }
@@ -74,7 +73,7 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 	if (p->getLocation()->fInventory->HasItem(aContainer))
 	{
 		p->getLocation()->fInventory->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
-		
+
 		result = "You put " + aObject + " in " + aContainer;
 
 		if (p->getInventory()->HasItem(aObject))
@@ -108,14 +107,14 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 		{
 			Container* myContainer = p->getInventory()->getContainer(aContainer);
 
-			if (!myContainer == NULL) 
+			if (!myContainer == NULL)
 			{
 				p->getInventory()->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
 				result = "You put " + aObject + " in " + aContainer;
 			}
-			else 
+			else
 			{
-				result =  "You cant put " + aObject + " in " + aContainer;
+				result = "You cant put " + aObject + " in " + aContainer;
 			}
 		}
 	}

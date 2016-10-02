@@ -17,12 +17,10 @@ using namespace Zorkish;
 
 GameStateManager::GameStateManager(bool aDebug)
 {
-
 	fDebug = aDebug;
 	fState = new MainMenu();
 	fPlayer = new Player();
 }
-
 
 GameStateManager::GameStateManager()
 {

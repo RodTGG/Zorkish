@@ -19,8 +19,6 @@ namespace Zorkish {
 		Player(std::string aName, std::string aDesc);		// Alternate constructor with name and description
 		~Player();
 
-
-
 		// Properties
 		const int getScore();								// Returns Score
 		const int getMoves();								// returns number of moves

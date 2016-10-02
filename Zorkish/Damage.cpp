@@ -13,7 +13,7 @@ Damage::Damage()
 
 Damage::Damage(int aDmg[4])
 {
-	for (unsigned int i = 0; i < 4; i++) 
+	for (unsigned int i = 0; i < 4; i++)
 	{
 		fDmg[i] = aDmg[i];
 	}

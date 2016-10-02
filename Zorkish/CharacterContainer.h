@@ -15,5 +15,4 @@ namespace Zorkish {
 
 		std::vector<GameObject*> fChars;
 	};
-
 }

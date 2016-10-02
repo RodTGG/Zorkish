@@ -20,5 +20,4 @@ namespace Zorkish {
 	private:
 		int fDmg[4];
 	};
-
 }

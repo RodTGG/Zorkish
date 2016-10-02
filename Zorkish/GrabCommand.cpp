@@ -7,7 +7,6 @@ GrabCommand::GrabCommand(std::string aName) : Command(aName)
 {
 }
 
-
 GrabCommand::~GrabCommand()
 {
 }
@@ -127,7 +126,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 					Error::Display("");
 				}
 			}
-			else 
+			else
 			{
 				result = aContainer + " does not have item sword...";
 			}

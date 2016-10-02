@@ -31,11 +31,11 @@ namespace TestCommandProcessor
 			myGraph->addNode(new MapNode("3", "a cold map"));
 			myGraph->addNode(new MapNode("4", "a hot map"));
 
-			myGraph->addNeighbor("1", "2","N");
-			myGraph->addNeighbor("1", "3","E");
-			myGraph->addNeighbor("1", "4","W");
-			myGraph->addNeighbor("2", "4","S");
-			myGraph->addNeighbor("3", "4","W");
+			myGraph->addNeighbor("1", "2", "N");
+			myGraph->addNeighbor("1", "3", "E");
+			myGraph->addNeighbor("1", "4", "W");
+			myGraph->addNeighbor("2", "4", "S");
+			myGraph->addNeighbor("3", "4", "W");
 
 			p->setLocation(myGraph->adjlist[0]);
 			if ((p->getLocation(), myGraph->adjlist[0]))
@@ -134,7 +134,6 @@ namespace TestCommandProcessor
 			myGraph->addNeighbor("1", "4", "W");
 			myGraph->addNeighbor("2", "4", "S");
 			myGraph->addNeighbor("3", "4", "W");
-
 
 			p->getInventory()->Put(gun);
 			p->setLocation(myGraph->adjlist[0]);

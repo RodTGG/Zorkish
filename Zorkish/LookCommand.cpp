@@ -5,7 +5,6 @@ using namespace Zorkish;
 
 LookCommand::LookCommand(std::string aName) : Command(aName)
 {
-
 }
 
 LookCommand::~LookCommand()
@@ -92,7 +91,7 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem)
 std::string LookCommand::lookAtIn(Player* p, std::string aItem, std::string aContainer)
 {
 	std::string result = "";
-	
+
 	if (p->Locate(aContainer) == NULL)
 	{
 		result = "You do not have" + aContainer;
