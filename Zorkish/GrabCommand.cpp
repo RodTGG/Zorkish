@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "GrabCommand.h"
 
-using namespace Zorkish;
-
 GrabCommand::GrabCommand(std::string aName) : Command(aName)
 {
 }

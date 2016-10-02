@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Graph.h"
 
-using namespace Zorkish;
-
 Graph::Graph(bool aDebugging)
 {
 	fDebugging = aDebugging;
@@ -50,8 +48,8 @@ void Graph::addNode(MapNode* aNode)
 /// <param name="aNode2">name of node2.</param>
 void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDirection)
 {
-	MapNode* a = new MapNode();
-	MapNode* b = new MapNode();
+	MapNode* a = NULL;
+	MapNode* b = NULL;
 
 	int direction = getDirection(aDirection);
 
@@ -105,9 +103,6 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 			adjlist[i] = b;
 		}
 	}
-
-	delete a;
-	delete b;
 }
 
 int Graph::getDirection(std::string aDirection)
@@ -185,7 +180,7 @@ void Graph::readFile(std::string aFile)
 							std::cout << "Reading nodes" << std::endl;
 						}
 						fTokens.clear();
-						while (true)
+						while (!istream.eof())
 						{
 							std::getline(istream, line);
 							Tokenizer(line, fTokens);
@@ -206,17 +201,23 @@ void Graph::readFile(std::string aFile)
 					}
 					if (line != "" && fTokens[0] == "[Connections]")
 					{
-						do
-						{
+						while (!istream.eof()) {
 							fTokens.clear();
 							std::getline(istream, line);
 							Tokenizer(line, fTokens);
 
-							addNeighbor(fTokens[0], fTokens[1], fTokens[2]);
-							if (fDebugging) {
-								std::cout << "Added neighbor" << std::endl;
+							if (line != "")
+							{
+								addNeighbor(fTokens[0], fTokens[1], fTokens[2]);
+								if (fDebugging) {
+									std::cout << "Added neighbor" << std::endl;
+								}
 							}
-						} while (istream.peek() == '\n');
+							else
+							{
+								break;
+							}
+						}
 					}
 				}
 			}

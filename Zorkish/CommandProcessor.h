@@ -4,21 +4,20 @@
 /// <summary>
 /// Manages and processes the commands
 /// </summary>
-namespace Zorkish {
-	class CommandProcessor
-	{
-	public:
-		CommandProcessor();
-		~CommandProcessor();
-		void addCommand(Command* aCommand);
 
-		std::string executeCommand(Player* p, std::string aText);
-		bool hasCommand(std::string aCommand);
-		Command* getCommand(std::string aCommand);
-	private:
-		std::vector<std::string> ftokens;
-		std::map<std::string, Command*> fcommands;
+class CommandProcessor
+{
+public:
+	CommandProcessor();
+	~CommandProcessor();
+	void addCommand(Command* aCommand);
 
-		void Tokenizer(const std::string& str, std::vector<std::string>& fTokens, const std::string& delimiters = " ");
-	};
-}
+	std::string executeCommand(Player* p, std::string aText);
+	bool hasCommand(std::string aCommand);
+	Command* getCommand(std::string aCommand);
+private:
+	std::vector<std::string> ftokens;
+	std::map<std::string, Command*> fcommands;
+
+	void Tokenizer(const std::string& str, std::vector<std::string>& fTokens, const std::string& delimiters = " ");
+};

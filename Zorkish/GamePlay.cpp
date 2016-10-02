@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "GamePlay.h"
 
-using namespace Zorkish;
-
 GamePlay::GamePlay(Player* aPlayer, GameMode* aGameMode, bool aDebugging) : GameState(5)
 {
 	fGameMode = aGameMode;

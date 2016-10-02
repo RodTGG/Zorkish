@@ -1,42 +1,41 @@
 #pragma once
-#include "GameObject.h"
 #include "Container.h"
-#include "Graph.h"
+#include "GameObject.h"
+#include "MapNode.h"
 
 /// <summary>
 /// Character base class
 ///	Character can receive damage
 /// </summary>
 /// <seealso cref="GameObject" />
-namespace Zorkish {
-	class Character :
-		public GameObject
-	{
-	public:
-		Character(std::string aName, std::string aDesc, std::string aId[2]);									// Default contructor, damage 0, resitance 0
-		Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg);						// Specified damage
-		Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, int aResistance[4]);	// Specified damage and resistance
-		~Character();
 
-		GameObject* Locate(std::string aId);			// Locates object, character or item in inv
-		void setLocation(MapNode* aLocation);			// Sets the Location
+class Character :
+	public GameObject
+{
+public:
+	Character(std::string aName, std::string aDesc, std::string aId[2]);									// Default contructor, damage 0, resitance 0
+	Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg);						// Specified damage
+	Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, int aResistance[4]);	// Specified damage and resistance
+	~Character();
 
-		const int getHp();								// Returns hp
-		const bool isAlive();							// Returns alive state
+	GameObject* Locate(std::string aId);			// Locates object, character or item in inv
+	void setLocation(MapNode* aLocation);			// Sets the Location
 
-		void receiveDamage(Damage* aDamage);			// Takes damage
-		void updateCharacter();							// Updates Character
+	const int getHp();								// Returns hp
+	const bool isAlive();							// Returns alive state
 
-		Container* getInventory();						// Returns invetory
-		MapNode* getLocation();							// Returns current mapnode
-		virtual std::string getFullDesc() override;		// Full description (item list)
+	void receiveDamage(Damage* aDamage);			// Takes damage
+	void updateCharacter();							// Updates Character
 
-	private:
-		MapNode* flocation = NULL;						// Character location
-	protected:
-		int fHp = 100;									// Default hp, this allows new entities to have a default hp and not need pass as param
-		bool fAlive = true;								// Player alive state
+	Container* getInventory();						// Returns invetory
+	MapNode* getLocation();							// Returns current mapnode
+	virtual std::string getFullDesc() override;		// Full description (item list)
 
-		Container* fInventory;					// Inventory
-	};
-}
+private:
+	MapNode* flocation = NULL;						// Character location
+protected:
+	int fHp = 100;									// Default hp, this allows new entities to have a default hp and not need pass as param
+	bool fAlive = true;								// Player alive state
+
+	Container* fInventory;							// Inventory
+};

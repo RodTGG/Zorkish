@@ -4,8 +4,7 @@
 #include "LookCommand.h"
 #include "GrabCommand.h"
 #include "PutCommand.h"
-
-using namespace Zorkish;
+#include "Attack.h"
 
 CommandProcessor::CommandProcessor()
 {
@@ -17,6 +16,7 @@ CommandProcessor::CommandProcessor()
 	addCommand(new GrabCommand("take"));
 	addCommand(new PutCommand("put"));
 	addCommand(new PutCommand("drop"));
+	addCommand(new Attack("attack"));
 }
 
 CommandProcessor::~CommandProcessor()

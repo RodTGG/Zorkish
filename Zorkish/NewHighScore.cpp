@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "NewHighScore.h"
 
-using namespace Zorkish;
-
 NewHighScore::NewHighScore(Player* aPlayer, GameMode* aGameMode) : GameState(6)
 {
 	fPlayer = aPlayer;

@@ -1,13 +1,14 @@
 #include "stdafx.h"
 #include "MapNode.h"
-
-using namespace Zorkish;
+#include "CharacterContainer.h"
+#include "Character.h"
 
 MapNode::MapNode()
 {
 	fCharacters = new CharacterContainer();
 	fInventory = new Container("mapInv", "items on the floor", new std::string[2]{ "map","floor" });
 	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
+	fCharacters->addChars(new Character("Squirell", "da squirell", new std::string[2]{ "squirell","hehexd" }));
 }
 
 MapNode::MapNode(std::string aName, std::string aDesc)
@@ -24,6 +25,7 @@ MapNode::MapNode(std::string aName, std::string aDesc)
 	}
 
 	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
+	fCharacters->addChars(new Character("Squirell", "da squirell", new std::string[2]{ "squirell","hehexd" }));
 }
 
 MapNode::MapNode(std::string aName, std::string aDesc, Item aItems[])
@@ -40,6 +42,7 @@ MapNode::MapNode(std::string aName, std::string aDesc, Item aItems[])
 	}
 
 	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
+	fCharacters->addChars(new Character("Squirell", "da squirell", new std::string[2]{ "squirell","hehexd" }));
 }
 
 MapNode::~MapNode()

@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Exit.h"
 
-using namespace Zorkish;
-
 Exit::Exit()
 {
 }

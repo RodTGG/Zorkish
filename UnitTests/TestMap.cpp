@@ -6,7 +6,6 @@
 #include "..\Zorkish\Graph.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
-using namespace Zorkish;
 
 namespace TestMap
 {

@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "GameObject.h"
 
-using namespace Zorkish;
-
 GameObject::GameObject(std::string aName, std::string aDesc, std::string aId[2]) : IdeableObject(aId)
 {
 	fIdObject = new IdeableObject(aId);

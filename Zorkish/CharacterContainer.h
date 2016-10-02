@@ -1,18 +1,17 @@
 #pragma once
-#include "GameObject.h"
+class Character;
 
-namespace Zorkish {
-	class CharacterContainer
-	{
-	public:
-		CharacterContainer();
-		~CharacterContainer();
+class CharacterContainer
+{
+public:
+	CharacterContainer();
+	~CharacterContainer();
 
-		bool hasChar(std::string aName);
-		void addChars(GameObject* aChar);
-		void removeChar(std::string aName);
-		std::string getCharList();
+	Character* getChar(std::string aName);
+	bool hasChar(std::string aName);
+	void addChars(Character* aChar);
+	void removeChar(std::string aName);
+	std::string getCharList();
 
-		std::vector<GameObject*> fChars;
-	};
-}
+	std::vector<Character*> fChars;
+};

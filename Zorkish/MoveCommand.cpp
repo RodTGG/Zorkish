@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "MoveCommand.h"
 
-using namespace Zorkish;
-
 MoveCommand::MoveCommand(std::string aName) : Command(aName)
 {
 }

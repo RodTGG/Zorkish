@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
 
-using namespace Zorkish;
-
 Player::Player() : Character("Player1", "You", new std::string[2]{ "me", "inv" })
 {
 	fDescription = "You are Carrying: \n";

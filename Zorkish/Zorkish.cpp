@@ -2,9 +2,9 @@
 //
 #include "stdafx.h"
 #include "GameStateManager.h"
+#include "Graph.h"
+#include "CharacterContainer.h"
 #define DEBUG 1
-
-using namespace Zorkish;
 
 int main(int argc, char* argv[])
 {
@@ -30,8 +30,14 @@ int main(int argc, char* argv[])
 	return 0;
 #endif
 #if DEBUG == 2
-	Graph* myGraph = new Graph(lDebug);
+	Graph* myGraph = new Graph(true);
 	myGraph->readFile("Adventure.txt");
 	myGraph->printGraph();
+#endif
+#if DEBUG == 3
+	CharacterContainer* myCC = new CharacterContainer();
+	myCC->addChars(new Character("Squirell", "da squirell", new std::string[2]{ "squirell","hehexd" }));
+
+	std::cout << myCC->getCharList();
 #endif
 }

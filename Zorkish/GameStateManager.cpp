@@ -13,8 +13,6 @@
 #include "GamePlay.h"
 #include "Exit.h"
 
-using namespace Zorkish;
-
 GameStateManager::GameStateManager(bool aDebug)
 {
 	fDebug = aDebug;

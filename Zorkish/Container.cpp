@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Container.h"
 
-using namespace Zorkish;
-
 Container::Container() : Item("Container", "a container", new std::string[2]{ "container","Container" })
 {
 	bContainer = true;
@@ -107,5 +105,5 @@ std::string Container::ItemList()
 
 std::string Container::getFullDesc()
 {
-	return  fName + " contains:\n" + ItemList();
+	return  "contains:\n" + ItemList();
 }

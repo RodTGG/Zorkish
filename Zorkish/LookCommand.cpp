@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "LookCommand.h"
 
-using namespace Zorkish;
-
 LookCommand::LookCommand(std::string aName) : Command(aName)
 {
 }

@@ -8,7 +8,6 @@
 #include "..\Zorkish\PutCommand.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
-using namespace Zorkish;
 
 namespace TestPutCommand
 {

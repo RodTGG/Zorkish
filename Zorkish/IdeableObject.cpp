@@ -2,8 +2,6 @@
 #include "IdeableObject.h"
 #include <algorithm>
 
-using namespace Zorkish;
-
 IdeableObject::IdeableObject(std::string aIdents[2])
 {
 	fIdentifiers[0] = aIdents[0];

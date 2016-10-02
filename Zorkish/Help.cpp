@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Help.h"
 
-using namespace Zorkish;
-
 Help::Help() : GameState(2)
 {
 }

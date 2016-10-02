@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "MainMenu.h"
 
-using namespace Zorkish;
-
 MainMenu::MainMenu() : GameState(0)
 {
 }

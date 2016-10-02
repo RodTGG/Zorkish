@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "About.h"
 
-using namespace Zorkish;
-
 About::About() : GameState(1)
 {
 }

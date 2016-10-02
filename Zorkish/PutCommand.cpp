@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "PutCommand.h"
 
-using namespace Zorkish;
-
 PutCommand::PutCommand(std::string aName) : Command(aName)
 {
 }
@@ -52,6 +50,7 @@ std::string PutCommand::Execute(Player* p, std::vector<std::string> aText)
 std::string PutCommand::putItem(Player* p, std::string aObject)
 {
 	std::string result = "";
+
 	p->getLocation()->fInventory->Put(p->getInventory()->Take(aObject));
 	result = "You dropped " + aObject;
 

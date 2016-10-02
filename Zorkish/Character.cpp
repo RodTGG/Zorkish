@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Character.h"
 
-using namespace Zorkish;
-
 Character::Character(std::string aName, std::string aDesc, std::string aId[2]) : GameObject(aName, aDesc, aId)
 {
 	fInventory = new Container("myInventory", "Your invetory", new std::string[2]{ "inv","Inv" });
@@ -75,14 +73,14 @@ void Character::setLocation(MapNode* aLocation)
 	flocation = aLocation;
 }
 
-Container* Character::getInventory()
-{
-	return fInventory;
-}
-
 MapNode* Character::getLocation()
 {
 	return flocation;
+}
+
+Container* Character::getInventory()
+{
+	return fInventory;
 }
 
 const int Character::getHp()

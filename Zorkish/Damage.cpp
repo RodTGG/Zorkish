@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Damage.h"
 
-using namespace Zorkish;
-
 Damage::Damage()
 {
 	for (unsigned int i = 0; i < 4; i++)
