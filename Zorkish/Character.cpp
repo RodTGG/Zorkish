@@ -28,14 +28,15 @@ void Character::updateCharacter()
 	}
 }
 
-void Character::receiveDamage(Damage* aDamage)
+void Character::receiveDamage(const Damage* aDamage)
 {
 	unsigned int resultDmg = 0;
+	Damage dmgTemp = *aDamage;
 
-	resultDmg += aDamage->getFireDmg() - getFireResistance();
-	resultDmg += aDamage->getIceDmg() - getIceResistance();
-	resultDmg += aDamage->getLightningDmg() - getLightningResistance();
-	resultDmg += aDamage->getDarkDmg() - getDarkResistance();
+	resultDmg += dmgTemp.getFireDmg() - getFireResistance();
+	resultDmg += dmgTemp.getIceDmg() - getIceResistance();
+	resultDmg += dmgTemp.getLightningDmg() - getLightningResistance();
+	resultDmg += dmgTemp.getDarkDmg() - getDarkResistance();
 
 	fHp -= resultDmg;
 }

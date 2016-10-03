@@ -14,10 +14,9 @@ protected:
 	std::string fDescription;							// long description of object
 	std::string fShortdesc;								// a shorter description
 	std::string fName;									// name of object
+	Damage* fDamage;									// Damage object
 private:
 	IdeableObject* fIdObject;							// object id's
-	Damage* fDamage;									// Damage object
-
 	int fResistances[4];								// Resistances 0, fire, 1 ice, 2 lightning, 3 dark.
 public:
 	GameObject(std::string aName, std::string aDesc, std::string aId[2]);
@@ -29,7 +28,7 @@ public:
 	std::string getName() { return fName; };				// Returns object name
 	std::string getShortDesc() { return fShortdesc; };		// Returns short description
 	virtual std::string getFullDesc() = 0;					// Returns fullDesc
-	Damage* getDamage();
+	const Damage* getDamage();
 
 	// Resistances
 	int getFireResistance();

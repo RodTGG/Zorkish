@@ -54,11 +54,24 @@ std::string Attack::Execute(Player* p, std::vector<std::string> aText)
 	return result;
 }
 
+/// <summary>
+/// Executes command
+/// Receives attack object
+/// Deals 1 damage if player hits themselves, regardless of item.
+/// </summary>
+/// <param name="p">The p.</param>
+/// <param name="aText">a text.</param>
+/// <returns>result</returns>
 std::string Attack::AttackWith(Player* aPlayer, std::string aObject)
 {
 	std::string result = "";
 
-	if (aPlayer->getLocation()->fCharacters->hasChar(aObject))
+	if(aPlayer->AreYou(aObject))
+	{
+		result = "Ouch! you hit yourself. Your stats go down... and your self-esteem.";
+		aPlayer->receiveDamage(aPlayer->getDamage());
+	}
+	else if (aPlayer->getLocation()->fCharacters->hasChar(aObject))
 	{
 		aPlayer->getLocation()->fCharacters->getChar(aObject)->receiveDamage(aPlayer->getDamage());
 		aPlayer->receiveDamage(aPlayer->getLocation()->fCharacters->getChar(aObject)->getDamage());

@@ -24,7 +24,7 @@ public:
 	const int getHp();								// Returns hp
 	const bool isAlive();							// Returns alive state
 
-	void receiveDamage(Damage* aDamage);			// Takes damage
+	void receiveDamage(const Damage* aDamage);			// Takes damage
 	void updateCharacter();							// Updates Character
 
 	Container* getInventory();						// Returns invetory

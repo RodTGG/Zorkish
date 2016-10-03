@@ -48,7 +48,7 @@ GameObject::~GameObject()
 	delete fIdObject;
 }
 
-Damage* GameObject::getDamage()
+const Damage* GameObject::getDamage()
 {
 	return fDamage;
 }
