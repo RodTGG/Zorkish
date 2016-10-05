@@ -8,11 +8,7 @@ GameObject::GameObject(std::string aName, std::string aDesc, std::string aId[2])
 	fName = aName;
 	fDescription = aDesc;
 	fShortdesc = fName + "(" + FirstId() + ")";
-
-	for (unsigned int i = 0; i < 4; i++)
-	{
-		fResistances[i] = 0;
-	}
+	fResistance = new Resistance();
 }
 
 GameObject::GameObject(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg) : IdeableObject(aId)
@@ -22,25 +18,18 @@ GameObject::GameObject(std::string aName, std::string aDesc, std::string aId[2],
 	fName = aName;
 	fDescription = aDesc;
 	fShortdesc = fName + "(" + FirstId() + ")";
-
-	for (unsigned int i = 0; i < 4; i++)
-	{
-		fResistances[i] = 0;
-	}
+	fResistance = new Resistance();
 }
 
-GameObject::GameObject(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, int aResistance[4]) : IdeableObject(aId)
+GameObject::GameObject(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, Resistance* aResistance) : IdeableObject(aId)
 {
 	fIdObject = new IdeableObject(aId);
 	fDamage = aDmg;
 	fName = aName;
 	fDescription = aDesc;
 	fShortdesc = fName + "(" + FirstId() + ")";
-
-	for (unsigned int i = 0; i < 4; i++)
-	{
-		fResistances[i] = aResistance[i];
-	}
+	fResistance = aResistance;
+	
 }
 
 GameObject::~GameObject()
@@ -55,20 +44,20 @@ const Damage* GameObject::getDamage()
 
 int GameObject::getFireResistance()
 {
-	return fResistances[0];
+	return fResistance->getFireRes();
 }
 
 int GameObject::getIceResistance()
 {
-	return fResistances[1];
+	return fResistance->getIceRes();
 }
 
 int GameObject::getLightningResistance()
 {
-	return fResistances[2];
+	return fResistance->getLightningRes();
 }
 
 int GameObject::getDarkResistance()
 {
-	return fResistances[3];
+	return fResistance->getDarkRes();
 }

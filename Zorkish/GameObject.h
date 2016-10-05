@@ -1,6 +1,7 @@
 #pragma once
 #include "IdeableObject.h"
 #include "Damage.h"
+#include "Resistance.h"
 
 /// <summary>
 /// A gameobject the base class for all objects
@@ -15,13 +16,13 @@ protected:
 	std::string fShortdesc;								// a shorter description
 	std::string fName;									// name of object
 	Damage* fDamage;									// Damage object
+	Resistance* fResistance;
 private:
 	IdeableObject* fIdObject;							// object id's
-	int fResistances[4];								// Resistances 0, fire, 1 ice, 2 lightning, 3 dark.
 public:
 	GameObject(std::string aName, std::string aDesc, std::string aId[2]);
 	GameObject(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg);
-	GameObject(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, int aResistance[4]);
+	GameObject(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, Resistance* aResistance);
 	~GameObject();
 
 	// Properties
@@ -29,6 +30,7 @@ public:
 	virtual std::string getShortDesc() { return fShortdesc; };		// Returns short description
 	virtual std::string getFullDesc() = 0;					// Returns fullDesc
 	const Damage* getDamage();
+	const Resistance* getResistance();
 
 	// Resistances
 	int getFireResistance();

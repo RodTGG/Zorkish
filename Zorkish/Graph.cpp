@@ -54,17 +54,8 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 	int direction = getDirection(aDirection);
 
 	// Copy nodes to temp nodes
-	for (unsigned int i = 0; i < adjlist.size(); i++)
-	{
-		if (adjlist[i]->fName == aNode1)
-		{
-			a = adjlist[i];
-		}
-		if (adjlist[i]->fName == aNode2)
-		{
-			b = adjlist[i];
-		}
-	}
+	a = getNode(aNode1);
+	b = getNode(aNode2);
 
 	// Check if nodes arent neighbors
 	if (!a->hasNeighbor(b) && !b->hasNeighbor(a))
@@ -92,17 +83,8 @@ void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDir
 	}
 
 	// Override node data
-	for (unsigned int i = 0; i < adjlist.size(); i++)
-	{
-		if (adjlist[i]->fName == aNode1)
-		{
-			adjlist[i] = a;
-		}
-		if (adjlist[i]->fName == aNode2)
-		{
-			adjlist[i] = b;
-		}
-	}
+	setNode(a);
+	setNode(b);
 }
 
 int Graph::getDirection(std::string aDirection)
@@ -121,6 +103,44 @@ int Graph::getDirection(std::string aDirection)
 	if (result == -1)
 	{
 		Error::Display("Error in Graph, getDirection unable to convert direction: " + aDirection);
+	}
+
+	return result;
+}
+
+Damage* Graph::getDamage(std::string aDamage)
+{
+	Damage* result = new Damage();
+	std::vector<std::string> temp;
+	Tokenizer(aDamage, temp, " ");
+
+	if (temp.size() < 4)
+	{
+		Error::Display("Error in file, damage didnt match arguments");
+	}
+	else
+	{
+		int lValues[4] = { std::stoi(temp[0]), std::stoi(temp[1]), std::stoi(temp[2]), std::stoi(temp[3]) };
+		result = new Damage(lValues);
+	}
+
+	return result;
+}
+
+Resistance* Graph::getResistance(std::string aResistance)
+{
+	Resistance* result = new Resistance();
+	std::vector<std::string> temp;
+	Tokenizer(aResistance, temp, " ");
+
+	if (temp.size() < 4)
+	{
+		Error::Display("Error in file, damage didnt match arguments");
+	}
+	else
+	{
+		int lValues[4] = { std::stoi(temp[0]), std::stoi(temp[1]), std::stoi(temp[2]), std::stoi(temp[3]) };
+		result = new Resistance(lValues);
 	}
 
 	return result;
@@ -199,7 +219,7 @@ void Graph::readFile(std::string aFile)
 							}
 						}
 					}
-					if (line != "" && fTokens[0] == "[Connections]")
+					else if (line != "" && fTokens[0] == "[Connections]")
 					{
 						while (!istream.eof()) {
 							fTokens.clear();
@@ -219,13 +239,74 @@ void Graph::readFile(std::string aFile)
 							}
 						}
 					}
+					else if (line != "" && fTokens[0] == "[Items]")
+					{
+						while (!istream.eof()) {
+							fTokens.clear();
+							std::getline(istream, line);
+							Tokenizer(line, fTokens);
+
+							if (line != "" && fTokens.size() == 7)
+							{
+								if (fTokens[1] == "i") 
+								{
+									//Item* myItem = new Item();
+								}
+								else if (fTokens[1] == "c")
+								{
+								
+								}
+								else 
+								{
+									Error::Display("Error reading from adventure filre, prefix wasnt i or c");
+								}
+							}
+							else if (line != "" && fTokens.size() == 8)
+							{
+								true;
+							}
+							else
+							{
+								break;
+							}
+						}
+					}
 				}
 			}
 		}
+
 	}
 	else
 	{
 		Error::Display("Unable to open file: " + aFile + "\nMake sure the file exists.");
+	}
+}
+
+MapNode* Graph::getNode(std::string aName)
+{
+	MapNode* result = NULL;
+
+	for (unsigned int i = 0; i < adjlist.size(); i++)
+	{
+		if (adjlist[i]->fName == aName) 
+		{
+			result = adjlist[i];
+			break;
+		}
+	}
+
+	return result;
+}
+
+void Graph::setNode(MapNode* aNode)
+{
+	for (unsigned int i = 0; i < adjlist.size(); i++)
+	{
+		if (adjlist[i]->fName == aNode->fName)
+		{
+			adjlist[i] = aNode;
+			break;
+		}
 	}
 }
 

@@ -11,7 +11,7 @@ Character::Character(std::string aName, std::string aDesc, std::string aId[2], D
 	fInventory = new Container("myInventory", "Your invetory", new std::string[2]{ "inv","Inv" });
 }
 
-Character::Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, int aResistance[4]) : GameObject(aName, aDesc, aId, aDmg, aResistance)
+Character::Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, Resistance* aResistance) : GameObject(aName, aDesc, aId, aDmg, aResistance)
 {
 	fInventory = new Container("myInventory", "Your invetory", new std::string[2]{ "inv","Inv" });
 }

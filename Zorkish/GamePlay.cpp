@@ -26,7 +26,6 @@ void GamePlay::setupGame()
 {
 	fGraph->readFile("Adventure.txt");
 	fPlayer->setLocation(fGraph->adjlist[0]);
-	system("color 0b");
 }
 
 void GamePlay::display()

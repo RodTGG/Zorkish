@@ -13,9 +13,9 @@ class Character :
 	public GameObject
 {
 public:
-	Character(std::string aName, std::string aDesc, std::string aId[2]);									// Default contructor, damage 0, resitance 0
-	Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg);						// Specified damage
-	Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, int aResistance[4]);	// Specified damage and resistance
+	Character(std::string aName, std::string aDesc, std::string aId[2]);										// Default contructor, damage 0, resitance 0
+	Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg);							// Specified damage
+	Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, Resistance* aResistance);	// Specified damage and resistance
 	~Character();
 
 	GameObject* Locate(std::string aId);			// Locates object, character or item in inv
