@@ -18,3 +18,14 @@
 1,4,W
 3,4,S
 2,4,N
+
+#items must follow this order, map node, prefix, item name, item description, two identifiers, and damage
+#alternate to add to container, map node, container, prefix, etc
+#leave damage blank for 0 damage
+#e.g. 1,i,Sword,A bright sword,sword,swurd,0,0,0,10
+#e.g. 1,Chest,i,sword,coolsword,sord,sword,1,2,3,4
+[Items]
+1,
+
+#Characters
+[Characters]

@@ -43,7 +43,7 @@ void Character::receiveDamage(const Damage* aDamage)
 
 std::string Character::getFullDesc()
 {
-	return  fName + "\n" + fDescription + fInventory->getFullDesc();
+	return  "Name: " + fName + "\n" + fDescription + "\nyou have: " + fInventory->getShortDesc();
 }
 
 GameObject * Character::Locate(std::string aId)

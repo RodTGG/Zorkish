@@ -64,7 +64,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject)
 			Error::Display("Error unable take" + aObject + " from mapnode " + p->getLocation()->fName + " inventory...");
 		}
 
-		result = "You grabbed " + p->Locate(aObject)->getFullDesc();
+		result = "You grabbed " + aObject + " " + p->getInventory()->Fetch(aObject)->getFullDesc();
 	}
 	else
 	{
@@ -86,14 +86,15 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 		if (myContainer != NULL)
 		{
 			p->getInventory()->Put(p->getLocation()->fInventory->getContainer(aContainer)->Take(aObject));
+
+			if (!p->getInventory()->HasItem(aObject))
+			{
+				Error::Display("Unable to grab " + aObject + " from " + aContainer + "...");
+			}
 		}
 		else
 		{
-			result = "You cant put " + aObject + " in " + aContainer;
-		}
-		if (!p->getInventory()->HasItem(aObject))
-		{
-			Error::Display("Unable to grab " + aObject + " from " + aContainer + "...");
+			result = "You dont have " + aContainer;
 		}
 	}
 	else if (p->Locate(aContainer) == NULL)
@@ -126,7 +127,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 			}
 			else
 			{
-				result = aContainer + " does not have item sword...";
+				result = aContainer + " does not have item" + aObject + "...";
 			}
 		}
 		else

@@ -3,14 +3,6 @@
 #include "CharacterContainer.h"
 #include "Character.h"
 
-MapNode::MapNode()
-{
-	fCharacters = new CharacterContainer();
-	fInventory = new Container("mapInv", "items on the floor", new std::string[2]{ "map","floor" });
-	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
-	fCharacters->addChars(new Character("Squirell", "da squirell", new std::string[2]{ "squirell","hehexd" }));
-}
-
 MapNode::MapNode(std::string aName, std::string aDesc)
 {
 	fCharacters = new CharacterContainer();
@@ -25,6 +17,8 @@ MapNode::MapNode(std::string aName, std::string aDesc)
 	}
 
 	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
+	fCharacters->addChars(new Character("Squirell", "da squirell", new std::string[2]{ "squirell","hehexd" }));
+	fInventory->Put(new Container("chest", "a kawaii chest", new std::string[2]{ "chest","chest" }));
 	fCharacters->addChars(new Character("Squirell", "da squirell", new std::string[2]{ "squirell","hehexd" }));
 }
 

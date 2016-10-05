@@ -26,7 +26,7 @@ public:
 
 	// Properties
 	std::string getName() { return fName; };				// Returns object name
-	std::string getShortDesc() { return fShortdesc; };		// Returns short description
+	virtual std::string getShortDesc() { return fShortdesc; };		// Returns short description
 	virtual std::string getFullDesc() = 0;					// Returns fullDesc
 	const Damage* getDamage();
 

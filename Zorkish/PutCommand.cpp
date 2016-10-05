@@ -71,17 +71,23 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 
 	if (p->getLocation()->fInventory->HasItem(aContainer))
 	{
-		p->getLocation()->fInventory->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
-
-		result = "You put " + aObject + " in " + aContainer;
-
-		if (p->getInventory()->HasItem(aObject))
+		if (p->AreYou(aObject)) 
 		{
-			Error::Display("Unable to remove " + aObject + " from " + aContainer);
+			result = "You hear a tear and stop.";
 		}
-		if (!p->getLocation()->fInventory->getContainer(aContainer)->HasItem(aObject))
+		else
 		{
-			Error::Display("Unable to add " + aObject + " to " + aContainer);
+			p->getLocation()->fInventory->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
+			result = "You put " + aObject + " in " + aContainer;
+
+			if (p->getInventory()->HasItem(aObject))
+			{
+				Error::Display("Unable to remove " + aObject + " from " + aContainer);
+			}
+			if (!p->getLocation()->fInventory->getContainer(aContainer)->HasItem(aObject))
+			{
+				Error::Display("Unable to add " + aObject + " to " + aContainer);
+			}
 		}
 	}
 	else if (p->Locate(aContainer) == NULL)

@@ -21,4 +21,5 @@ public:
 	virtual std::string ItemList();						// Returns a string with a lits of all items
 	virtual Container* getContainer(std::string aName);
 	std::string getFullDesc() override;
+	std::string getShortDesc() override;
 };

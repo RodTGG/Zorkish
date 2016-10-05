@@ -33,6 +33,7 @@ int main(int argc, char* argv[])
 	Graph* myGraph = new Graph(true);
 	myGraph->readFile("Adventure.txt");
 	myGraph->printGraph();
+	std::cout << myGraph->adjlist[0]->fInventory->ItemList() << std::endl;
 #endif
 #if DEBUG == 3
 	CharacterContainer* myCC = new CharacterContainer();

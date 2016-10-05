@@ -12,6 +12,7 @@ public:
 
 	static void Display(std::string aMsg)
 	{
+		system("color 04");
 		std::cout << aMsg << std::endl;
 		exit(1);
 	}

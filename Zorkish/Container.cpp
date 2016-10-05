@@ -98,12 +98,17 @@ std::string Container::ItemList()
 
 	for (unsigned int i = 0; i < fItems.size(); i++)
 	{
-		result += fItems[i]->getName() + "\t" + fItems[i]->getFullDesc() + "\n";
+		result += "\t"+ fItems[i]->getName() + " " + fItems[i]->getFullDesc() + "\n";
 	}
 	return result;
 }
 
 std::string Container::getFullDesc()
 {
-	return  "contains:\n" + ItemList();
+	return  "\ncontains:\n\t" + ItemList();
+}
+
+std::string Container::getShortDesc()
+{
+	return "\n" + ItemList();
 }
