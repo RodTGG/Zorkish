@@ -24,9 +24,11 @@ GamePlay::~GamePlay()
 
 void GamePlay::setupGame()
 {
-	fPlayer->getInventory()->Put(new Item("key", "a key", new std::string[2]{"key", "akey"}));
 	fGraph->readFile("Adventure.txt");
 	fPlayer->setLocation(fGraph->adjlist[0]);
+
+	fPlayer->getInventory()->Put(new Item("key", "a key", new std::string[2]{ "key", "akey" }));
+	fPlayer->getLocation()->fInventory->Put(new Container("chest", "a Chest", true, "key", new std::string[2]{ "chest","chust" }));
 }
 
 void GamePlay::display()
@@ -81,6 +83,7 @@ int GamePlay::handle_event()
 		}
 
 		fPlayer->getLocation()->update();
+		fPlayer->update();
 
 	} while (usrInput != "quit");
 

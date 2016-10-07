@@ -20,9 +20,12 @@ Character::~Character()
 {
 }
 
-void Character::updateCharacter()
+void Character::update()
 {
-	
+	for (unsigned int i = 0; i < fInventory->fItems.size(); i++) 
+	{
+		fInventory->fItems[i]->update();
+	}
 }
 
 void Character::receiveDamage(const Damage* aDamage)

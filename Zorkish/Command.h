@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.h"
+#include "BlackBoard.h"
 
 class Command
 {
@@ -11,4 +12,6 @@ public:
 	virtual std::string name() { return fname; };
 private:
 	std::string fname;
+protected:
+	BlackBoard* fBlackboard = new BlackBoard();
 };

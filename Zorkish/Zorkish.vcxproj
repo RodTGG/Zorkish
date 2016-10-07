@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="About.h" />
     <ClInclude Include="AttackCommand.h" />
+    <ClInclude Include="BlackBoard.h" />
     <ClInclude Include="BoxWorld.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="CharacterContainer.h" />
@@ -188,6 +189,7 @@
   <ItemGroup>
     <ClCompile Include="About.cpp" />
     <ClCompile Include="AttackCommand.cpp" />
+    <ClCompile Include="BlackBoard.cpp" />
     <ClCompile Include="BoxWorld.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="CharacterContainer.cpp" />

@@ -19,6 +19,8 @@ protected:
 	Resistance* fResistance;
 private:
 	IdeableObject* fIdObject;							// object id's
+	std::vector<std::string> bMessages;
+	bool fSubscribed = true;
 public:
 	GameObject(std::string aName, std::string aDesc, std::string aId[2]);
 	GameObject(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg);
@@ -26,15 +28,19 @@ public:
 	~GameObject();
 
 	// Properties
-	std::string getName() { return fName; };				// Returns object name
+	void addBMessage(std::string aMessage);
+	virtual void update();
+
+	std::string getName() { return fName; };						// Returns object name
 	virtual std::string getShortDesc() { return fShortdesc; };		// Returns short description
-	virtual std::string getFullDesc() = 0;					// Returns fullDesc
+	virtual std::string getFullDesc() = 0;							// Returns fullDesc
 	const Damage* getDamage();
-	const Resistance* getResistance();
 
 	// Resistances
 	int getFireResistance();
 	int getLightningResistance();
 	int getDarkResistance();
 	int getIceResistance();
+
+	bool isSubscribed() { return fSubscribed; };
 };

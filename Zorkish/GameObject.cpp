@@ -61,3 +61,24 @@ int GameObject::getDarkResistance()
 {
 	return fResistance->getDarkRes();
 }
+
+void GameObject::update() 
+{
+	std::string lMessage = "";
+	if (!bMessages.empty())
+	{
+		lMessage = bMessages.front();
+		bMessages.erase(bMessages.begin());
+
+		if (lMessage == "look") 
+		{
+			std::cout << fName + "\t" + getFullDesc() << std::endl;
+		}
+	}
+	
+}
+
+void GameObject::addBMessage(std::string aMessage) 
+{
+	bMessages.push_back(aMessage);
+}

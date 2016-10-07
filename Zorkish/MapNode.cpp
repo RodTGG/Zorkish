@@ -7,7 +7,6 @@ MapNode::MapNode(std::string aName, std::string aDesc)
 {
 	fCharacters = new CharacterContainer();
 	fInventory = new Container("mapInv", "items on the floor", new std::string[2]{ "map","floor" });
-	fInventory->Put(new Container("chest", "theer", true, "key", new std::string[2]{ "chest","chust" }));
 
 	fName = aName;
 	fDescription = aDesc;
@@ -77,6 +76,10 @@ void MapNode::update()
 {
 	for (unsigned int i = 0; i < fCharacters->fChars.size(); i++)
 	{
-		fCharacters->fChars[i]->updateCharacter();
+		fCharacters->fChars[i]->update();
+	}
+	for (unsigned int i = 0; i < fInventory->fItems.size(); i++)
+	{
+		fInventory->fItems[i]->update();
 	}
 }

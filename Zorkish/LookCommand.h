@@ -11,5 +11,7 @@ public:
 	std::string Execute(Player* p, std::vector<std::string> aText) override;
 	std::string lookAtIn(Player* p, std::string aItem);
 	std::string lookAtIn(Player* p, std::string aItem, std::string aContainer);
+
+	void blackbMessage(Player* aP);
 private:
 };

@@ -25,7 +25,7 @@ public:
 	const bool isAlive();							// Returns alive state
 
 	void receiveDamage(const Damage* aDamage);		// Takes damage
-	void updateCharacter();							// Updates Character
+	void update() override;							// Updates Character
 
 	Container* getInventory();						// Returns invetory
 	MapNode* getLocation();							// Returns current mapnode

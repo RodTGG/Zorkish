@@ -13,7 +13,12 @@ std::string LookCommand::Execute(Player* p, std::vector<std::string> aText)
 {
 	std::string result = "";
 
-	if (aText.size() >= 3 && aText.size() <= 5)
+	if (aText[1] == "at" && aText[2] == "all") 
+	{
+		blackbMessage(p);
+	}
+
+	else if (aText.size() >= 3 && aText.size() <= 5)
 	{
 		if (aText[1] != "at" && aText[1] != "in")
 		{
@@ -121,4 +126,9 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem, std::string aCon
 	}
 
 	return result;
+}
+
+void LookCommand::blackbMessage(Player* aP)
+{
+	fBlackboard->SendMessage(aP, "look");
 }
