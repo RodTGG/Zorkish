@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Graph.h"
+#include "Character.h"
 
 Graph::Graph(bool aDebugging)
 {
@@ -48,8 +49,8 @@ void Graph::addNode(MapNode* aNode)
 /// <param name="aNode2">name of node2.</param>
 void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDirection)
 {
-	MapNode* a = NULL;
-	MapNode* b = NULL;
+	MapNode* a;
+	MapNode* b;
 
 	int direction = getDirection(aDirection);
 
@@ -165,6 +166,55 @@ void Graph::printGraph()
 	}
 }
 
+bool Graph::hasNode(std::string aName)
+{
+	bool result = false;
+
+	for (unsigned int i = 0; i < adjlist.size(); i++)
+	{
+		if (adjlist[i]->fName == aName)
+		{
+			result = true;
+			break;
+		}
+	}
+
+	return result;
+}
+
+MapNode* Graph::getNode(std::string aName)
+{
+	MapNode* result = NULL;
+
+	for (unsigned int i = 0; i < adjlist.size(); i++)
+	{
+		if (adjlist[i]->fName == aName)
+		{
+			result = adjlist[i];
+			break;
+		}
+	}
+
+	return result;
+}
+
+void Graph::setNode(MapNode* aNode)
+{
+	for (unsigned int i = 0; i < adjlist.size(); i++)
+	{
+		if (adjlist[i]->fName == aNode->fName)
+		{
+			adjlist[i] = aNode;
+			break;
+		}
+	}
+}
+
+std::string Graph::fileName()
+{
+	return fName;
+}
+
 /// <summary>
 /// Reads the file from specified file.
 /// </summary>
@@ -197,7 +247,7 @@ void Graph::readFile(std::string aFile)
 					if (fTokens[0] == "[Nodes]")
 					{
 						if (fDebugging) {
-							std::cout << "Reading nodes" << std::endl;
+							std::cout << "Reading nodes..." << std::endl;
 						}
 						fTokens.clear();
 						while (!istream.eof())
@@ -209,7 +259,7 @@ void Graph::readFile(std::string aFile)
 							{
 								addNode(new MapNode(fTokens[0], fTokens[1]));
 								if (fDebugging) {
-									std::cout << "Added node" << std::endl;
+									std::cout << "Added node: " + fTokens[0] + "," + fTokens[1] << std::endl;
 								}
 								fTokens.clear();
 							}
@@ -229,8 +279,9 @@ void Graph::readFile(std::string aFile)
 							if (line != "")
 							{
 								addNeighbor(fTokens[0], fTokens[1], fTokens[2]);
-								if (fDebugging) {
-									std::cout << "Added neighbor" << std::endl;
+								if (fDebugging)
+								{
+									std::cout << "Added neighbor: " + fTokens[0] + " to " + fTokens[1] + ",direction: " + fTokens[2] << std::endl;
 								}
 							}
 							else
@@ -246,24 +297,117 @@ void Graph::readFile(std::string aFile)
 							std::getline(istream, line);
 							Tokenizer(line, fTokens);
 
-							if (line != "" && fTokens.size() == 7)
+							if (line != "")
 							{
-								if (fTokens[1] == "i") 
+								if (fTokens[1] == "i")
 								{
-									//Item* myItem = new Item();
+									if (fTokens[6] == "null")
+									{
+										Item* myItem = new Item(fTokens[2], fTokens[3], new std::string[2]{ fTokens[4], fTokens[5] });
+										getNode(fTokens[0])->fInventory->Put(myItem);
+										if (fDebugging)
+										{
+											std::cout << "Added item: " + fTokens[2] << std::endl;
+										}
+									}
+									else
+									{
+										Item* myItem = new Item(fTokens[2], fTokens[3], new std::string[2]{ fTokens[4], fTokens[5] }, getDamage(fTokens[6]));
+										getNode(fTokens[0])->fInventory->Put(myItem);
+										if (fDebugging)
+										{
+											std::cout << "Added item: " + fTokens[2] << std::endl;
+										}
+									}
 								}
 								else if (fTokens[1] == "c")
 								{
-								
+									Container* myItem = new Container(fTokens[2], fTokens[3], new std::string[2]{ fTokens[4], fTokens[5] });
+									getNode(fTokens[0])->fInventory->Put(myItem);
+									if (fDebugging)
+									{
+										std::cout << "Added container: " + fTokens[2] << std::endl;
+									}
 								}
-								else 
+								else
 								{
-									Error::Display("Error reading from adventure filre, prefix wasnt i or c");
+									if (fTokens[2] == "i")
+									{
+										if (fTokens[7] == "null")
+										{
+											Item* myItem = new Item(fTokens[3], fTokens[4], new std::string[2]{ fTokens[5], fTokens[6] });
+											getNode(fTokens[0])->fInventory->getContainer(fTokens[1])->Put(myItem);
+											if (fDebugging)
+											{
+												std::cout << "Added item: " + fTokens[3] + " in " + fTokens[0] + " in " + fTokens[1] << std::endl;
+											}
+										}
+										else
+										{
+											Item* myItem = new Item(fTokens[3], fTokens[4], new std::string[2]{ fTokens[5], fTokens[6] }, getDamage(fTokens[7]));
+											getNode(fTokens[0])->fInventory->getContainer(fTokens[1])->Put(myItem);
+											if (fDebugging)
+											{
+												std::cout << "Added item: " + fTokens[3] + " in " + fTokens[0] + " in " + fTokens[1] << std::endl;
+											}
+										}
+									}
+									else if (fTokens[2] == "c")
+									{
+										Container* myItem = new Container(fTokens[3], fTokens[4], new std::string[2]{ fTokens[5], fTokens[6] });
+										getNode(fTokens[0])->fInventory->getContainer(fTokens[1])->Put(myItem);
+										if (fDebugging)
+										{
+											std::cout << "Added " + fTokens[3] + " in " + fTokens[0] + " in " + fTokens[1] << std::endl;
+										}
+									}
 								}
 							}
-							else if (line != "" && fTokens.size() == 8)
+							else
 							{
-								true;
+								break;
+							}
+						}
+					}
+					else if (line != "" && fTokens[0] == "[Characters]")
+					{
+						while (!istream.eof()) {
+							fTokens.clear();
+							std::getline(istream, line);
+							Tokenizer(line, fTokens);
+
+							if (line != "")
+							{
+								if (fTokens.size() == 7)
+								{
+									if (fTokens[5] == "null" && fTokens[6] == "null") 
+									{
+										Character* myChar = new Character(fTokens[1], fTokens[2], new std::string[2]{fTokens[3],fTokens[4]});
+										getNode(fTokens[0])->fCharacters->addChars(myChar);
+										if (fDebugging)
+										{
+											std::cout << "Added " + fTokens[1] + " in " + fTokens[0] + "," + fTokens[2] + " damage: 0" + " resistance: 0" << std::endl;
+										}
+									}
+									else if (fTokens[5] != "null" && fTokens[6] == "null")
+									{
+										Character* myChar = new Character(fTokens[1], fTokens[2], new std::string[2]{ fTokens[3],fTokens[4]}, getDamage(fTokens[5]));
+										getNode(fTokens[0])->fCharacters->addChars(myChar);
+										if (fDebugging)
+										{
+											std::cout << "Added " + fTokens[1] + " in " + fTokens[0] + "," + fTokens[2] + " damage: "+ fTokens[5] + " resistance: 0" << std::endl;
+										}
+									}
+									else 
+									{
+										Character* myChar = new Character(fTokens[1], fTokens[2], new std::string[2]{ fTokens[3],fTokens[4] }, getDamage(fTokens[5]), getResistance(fTokens[6]));
+										getNode(fTokens[0])->fCharacters->addChars(myChar);
+										if (fDebugging)
+										{
+											std::cout << "Added " + fTokens[1] + " in " + fTokens[0] + "," + fTokens[2] + " damage: " + fTokens[5] + " resistance: " + fTokens[6] << std::endl;
+										}
+									}
+								}
 							}
 							else
 							{
@@ -274,43 +418,9 @@ void Graph::readFile(std::string aFile)
 				}
 			}
 		}
-
 	}
 	else
 	{
 		Error::Display("Unable to open file: " + aFile + "\nMake sure the file exists.");
 	}
-}
-
-MapNode* Graph::getNode(std::string aName)
-{
-	MapNode* result = NULL;
-
-	for (unsigned int i = 0; i < adjlist.size(); i++)
-	{
-		if (adjlist[i]->fName == aName) 
-		{
-			result = adjlist[i];
-			break;
-		}
-	}
-
-	return result;
-}
-
-void Graph::setNode(MapNode* aNode)
-{
-	for (unsigned int i = 0; i < adjlist.size(); i++)
-	{
-		if (adjlist[i]->fName == aNode->fName)
-		{
-			adjlist[i] = aNode;
-			break;
-		}
-	}
-}
-
-std::string Graph::fileName()
-{
-	return fName;
 }

@@ -11,6 +11,13 @@ Container::Container(std::string aName, std::string aDesc, std::string aId[2]) :
 	bContainer = true;
 }
 
+Container::Container(std::string aName, std::string aDesc, bool aLocked, std::string aKey,std::string aId[2]) : Item(aName, aDesc, aId)
+{
+	bContainer = true;
+	fLocked = aLocked;
+	fKey = aKey;
+}
+
 Container::~Container()
 {
 }
@@ -98,17 +105,32 @@ std::string Container::ItemList()
 
 	for (unsigned int i = 0; i < fItems.size(); i++)
 	{
-		result += "\t"+ fItems[i]->getName() + " " + fItems[i]->getFullDesc() + "\n";
+		result += fItems[i]->getName() + " " + fItems[i]->getFullDesc() + "\n";
 	}
 	return result;
 }
 
 std::string Container::getFullDesc()
 {
-	return  "\ncontains:\n\t" + ItemList();
+	return  "contains:\n" + ItemList();
 }
 
 std::string Container::getShortDesc()
 {
 	return "\n" + ItemList();
+}
+
+bool Container::isLocked() 
+{
+	return fLocked;
+}
+
+void Container::open(Item* aKey)
+{
+	if (fKey == aKey->getName()) 
+	{
+		fLocked = false;
+	}
+
+	std::cout << fName + " is open" << std::endl;
 }

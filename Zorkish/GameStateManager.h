@@ -23,11 +23,11 @@ public:
 	void ExecuteState();						// Executes the states logic
 private:
 	bool fDebug = false;
-	int fnextState = NULL;						// Id of next state
+	int fnextState;						// Id of next state
 
-	GameState* fState = NULL;					// GameState object pointer
-	Player* fPlayer = NULL;				// Player object pointer
-	GameMode* fGameMode = NULL;					// GameMode object pointer
+	GameState* fState;					// GameState object pointer
+	Player* fPlayer;				// Player object pointer
+	GameMode* fGameMode;					// GameMode object pointer
 protected:
 	bool DebugMode();
 };

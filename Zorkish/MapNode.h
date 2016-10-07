@@ -14,6 +14,8 @@ public:
 	CharacterContainer* fCharacters;
 	Container* fInventory;														// mapnodes inventory and items
 
+	void update();
+
 	MapNode(std::string aName, std::string aDesc);								// constructor with just description
 	MapNode(std::string aName, std::string aDesc, Item aItems[]);				// constructor with items
 	~MapNode();

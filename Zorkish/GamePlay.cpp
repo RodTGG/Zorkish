@@ -24,6 +24,7 @@ GamePlay::~GamePlay()
 
 void GamePlay::setupGame()
 {
+	fPlayer->getInventory()->Put(new Item("key", "a key", new std::string[2]{"key", "akey"}));
 	fGraph->readFile("Adventure.txt");
 	fPlayer->setLocation(fGraph->adjlist[0]);
 }
@@ -37,7 +38,6 @@ void GamePlay::display()
 void GamePlay::logic()
 {
 	setupGame();
-	fPlayer->getInventory()->Put(new Item("Sword", "A mighty Sword", new std::string[2]{ "sword","heartseeker" }));
 }
 
 int GamePlay::handle_event()
@@ -79,6 +79,9 @@ int GamePlay::handle_event()
 		{
 			std::cout << fCommandProcessor->executeCommand(fPlayer, usrInput) << std::endl;
 		}
+
+		fPlayer->getLocation()->update();
+
 	} while (usrInput != "quit");
 
 	return returnState;

@@ -7,6 +7,7 @@ MapNode::MapNode(std::string aName, std::string aDesc)
 {
 	fCharacters = new CharacterContainer();
 	fInventory = new Container("mapInv", "items on the floor", new std::string[2]{ "map","floor" });
+	fInventory->Put(new Container("chest", "theer", true, "key", new std::string[2]{ "chest","chust" }));
 
 	fName = aName;
 	fDescription = aDesc;
@@ -15,10 +16,6 @@ MapNode::MapNode(std::string aName, std::string aDesc)
 	{
 		fNeighbor.push_back(NULL);
 	}
-
-	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
-	fCharacters->addChars(new Character("Squirell", "da squirell", new std::string[2]{ "squirell","hehexd" }));
-	fInventory->Put(new Container("chest", "a kawaii chest", new std::string[2]{ "chest","chest" }));
 }
 
 MapNode::MapNode(std::string aName, std::string aDesc, Item aItems[])
@@ -33,10 +30,6 @@ MapNode::MapNode(std::string aName, std::string aDesc, Item aItems[])
 	{
 		fNeighbor.push_back(NULL);
 	}
-
-	fInventory->Put(new Container("Bag", "a kawaii bag", new std::string[2]{ "bag","beg" }));
-	fCharacters->addChars(new Character("Squirell", "da squirell", new std::string[2]{ "squirell","hehexd" }));
-	fInventory->Put(new Container("chest", "a kawaii chest", new std::string[2]{ "chest","chest" }));
 }
 
 MapNode::~MapNode()
@@ -78,4 +71,12 @@ bool MapNode::hasNeighbor(MapNode* aNode)
 		}
 	}
 	return false;
+}
+
+void MapNode::update()
+{
+	for (unsigned int i = 0; i < fCharacters->fChars.size(); i++)
+	{
+		fCharacters->fChars[i]->updateCharacter();
+	}
 }

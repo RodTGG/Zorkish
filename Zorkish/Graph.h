@@ -16,10 +16,14 @@ public:
 	void printGraph();
 	void addNode(MapNode* aNode);
 	void addNeighbor(std::string aNode1, std::string aNode2, std::string aDirection);
+
+	//Node functions
+	bool hasNode(std::string aName);
 	MapNode* getNode(std::string aName);
 	void setNode(MapNode* aNode);
-	int getDirection(std::string aDirection);
 
+	// Creating game
+	int getDirection(std::string aDirection);
 	Damage* getDamage(std::string aDamage);
 	Resistance* getResistance(std::string aResistance);
 	std::string fileName();

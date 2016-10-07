@@ -22,10 +22,7 @@ Character::~Character()
 
 void Character::updateCharacter()
 {
-	if (fHp <= 0)
-	{
-		fAlive = false;
-	}
+	
 }
 
 void Character::receiveDamage(const Damage* aDamage)
@@ -39,6 +36,11 @@ void Character::receiveDamage(const Damage* aDamage)
 	resultDmg += dmgTemp.getDarkDmg() - getDarkResistance();
 
 	fHp -= resultDmg;
+
+	if (fHp <= 0)
+	{
+		fAlive = false;
+	}
 }
 
 std::string Character::getFullDesc()
@@ -48,7 +50,7 @@ std::string Character::getFullDesc()
 
 GameObject * Character::Locate(std::string aId)
 {
-	GameObject* result = NULL;
+	GameObject* result;;
 
 	if (AreYou(aId))
 	{

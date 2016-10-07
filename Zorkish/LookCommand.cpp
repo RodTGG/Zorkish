@@ -68,7 +68,21 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem)
 	else {
 		if (p->getLocation()->fInventory->HasItem(aItem))
 		{
-			result = p->getLocation()->fInventory->Fetch(aItem)->getFullDesc();
+			if (p->getLocation()->fInventory->Fetch(aItem)->isContainer()) 
+			{
+				if (p->getLocation()->fInventory->getContainer(aItem)->isLocked())
+				{
+					result = "You cant look inside its locked.";
+				}
+				else 
+				{
+					result = p->getLocation()->fInventory->Fetch(aItem)->getFullDesc();
+				}
+			}
+			else
+			{
+				result = p->getLocation()->fInventory->Fetch(aItem)->getFullDesc();
+			}
 		}
 		else
 		{
@@ -92,7 +106,7 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem, std::string aCon
 
 	if (p->Locate(aContainer) == NULL)
 	{
-		result = "You do not have" + aContainer;
+		result = "You do not have " + aContainer;
 	}
 	else
 	{

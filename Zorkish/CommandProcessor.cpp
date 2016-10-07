@@ -4,7 +4,8 @@
 #include "LookCommand.h"
 #include "GrabCommand.h"
 #include "PutCommand.h"
-#include "Attack.h"
+#include "AttackCommand.h"
+#include "OpenCommand.h"
 
 CommandProcessor::CommandProcessor()
 {
@@ -16,7 +17,8 @@ CommandProcessor::CommandProcessor()
 	addCommand(new GrabCommand("take"));
 	addCommand(new PutCommand("put"));
 	addCommand(new PutCommand("drop"));
-	addCommand(new Attack("attack"));
+	addCommand(new AttackCommand("attack"));
+	addCommand(new OpenCommand("open"));
 }
 
 CommandProcessor::~CommandProcessor()
@@ -95,7 +97,7 @@ bool CommandProcessor::hasCommand(std::string aCommand)
 
 Command* CommandProcessor::getCommand(std::string aCommand)
 {
-	Command* result = NULL;
+	Command* result;
 
 	if (hasCommand(aCommand))
 	{

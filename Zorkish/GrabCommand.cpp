@@ -85,11 +85,10 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 
 		if (myContainer != NULL)
 		{
-			p->getInventory()->Put(p->getLocation()->fInventory->getContainer(aContainer)->Take(aObject));
-
-			if (!p->getInventory()->HasItem(aObject))
+			if (myContainer->HasItem(aObject)) 
 			{
-				Error::Display("Unable to grab " + aObject + " from " + aContainer + "...");
+				p->getInventory()->Put(p->getLocation()->fInventory->getContainer(aContainer)->Take(aObject));
+				result = "You grabbed " + aObject + " from " + aContainer;
 			}
 		}
 		else
@@ -115,15 +114,6 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 			{
 				p->getInventory()->Put(myContainer->Take(aObject));
 				result = p->Locate(aObject)->getFullDesc();
-
-				if (p->getLocation()->fInventory->HasItem(aObject))
-				{
-					Error::Display("");
-				}
-				if (!p->Locate(aObject))
-				{
-					Error::Display("");
-				}
 			}
 			else
 			{

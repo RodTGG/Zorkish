@@ -24,7 +24,7 @@ void SelectAdventure::logic()
 int SelectAdventure::handle_event()
 {
 	int resultState = States::STATE_MAINMENU;
-	int usrInput = NULL;
+	int usrInput = 0;
 
 	std::cout << "Select 1-3:>";
 	std::cin >> usrInput;

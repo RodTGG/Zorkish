@@ -43,15 +43,24 @@
     <Filter Include="Source Files\Characters">
       <UniqueIdentifier>{09e7f7a0-f9ed-4610-8e4e-b202e234a98b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Properties">
+      <UniqueIdentifier>{ee02382f-66eb-4b08-92a0-d9f565341090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Properties">
+      <UniqueIdentifier>{d18df316-422f-42fd-8bdc-f97954dd66fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Items">
+      <UniqueIdentifier>{50f1126b-da53-4752-956a-d0419a1f31f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Items">
+      <UniqueIdentifier>{feb5b8d6-ae94-4866-b9ea-336a55719c3c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="States.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameState.h">
@@ -99,9 +108,6 @@
     <ClInclude Include="GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MapNode.h">
       <Filter>Header Files\Map</Filter>
     </ClInclude>
@@ -135,23 +141,32 @@
     <ClInclude Include="Character.h">
       <Filter>Header Files\Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Container.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Exit.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="Damage.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Resistance.h">
+      <Filter>Header Files\Properties</Filter>
     </ClInclude>
-    <ClInclude Include="Attack.h">
+    <ClInclude Include="Damage.h">
+      <Filter>Header Files\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackCommand.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
-    <ClInclude Include="CharacterContainer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Items</Filter>
     </ClInclude>
-    <ClInclude Include="Resistance.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Container.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterContainer.h">
+      <Filter>Header Files\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="States.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenCommand.h">
+      <Filter>Header Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -200,9 +215,6 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Graph.cpp">
       <Filter>Source Files\Map</Filter>
     </ClCompile>
@@ -224,9 +236,6 @@
     <ClCompile Include="PutCommand.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
-    <ClCompile Include="Container.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\Characters</Filter>
     </ClCompile>
@@ -237,16 +246,25 @@
       <Filter>Source Files\States</Filter>
     </ClCompile>
     <ClCompile Include="Damage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Attack.cpp">
-      <Filter>Source Files\Commands</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterContainer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Properties</Filter>
     </ClCompile>
     <ClCompile Include="Resistance.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Container.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterContainer.cpp">
+      <Filter>Source Files\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenCommand.cpp">
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

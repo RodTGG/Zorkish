@@ -20,16 +20,16 @@
 2,4,N
 
 #items must follow this order, map node, prefix, item name, item description, two identifiers, and damage
-#alternate to add to container, map node, container, prefix, etc
-#write null for empty fields
+#alternate to add to container, map node, container, prefix, etc, leave blank for damage
+#write null for default to 0 damage on items
 #e.g. 1,i,Sword,A bright sword,sword,swurd,0 0 0 0
 #e.g. 1,Chest,i,sword,coolsword,sord,sword,null
 [Items]
-1,c,bag,a kawaii bag,bag,beg,null
+1,c,locked,key,bag,a kawaii bag,bag,beg,null
 1,bag,i,gun,a gun,gun,gen,20 0 0 0
 
 #Characters must follow this order, map node, name, description, two ids, damage, resistance
 #damage and resistance is optional, replace with null, defaults to 0
-#e.g. Squirell,a squirell,squirell,sq,null,null
+#e.g. 1,Squirell,a squirell,squirell,sq,null,null
 [Characters]
-Squirell,a squirell,squirell,sq,1 0 0 0,null
+1,Squirell,a squirell,squirell,sq,1 0 0 0,null

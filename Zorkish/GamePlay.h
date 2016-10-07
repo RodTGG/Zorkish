@@ -19,10 +19,10 @@ public:
 	void setupGame();
 private:
 	Player* fPlayer;
-	Graph* fGraph = NULL;
-	GameMode* fGameMode = NULL;
+	Graph* fGraph;
+	GameMode* fGameMode;;
 	bool fDebugging = false;
 
 protected:
-	CommandProcessor* fCommandProcessor = NULL;
+	CommandProcessor* fCommandProcessor;;
 };

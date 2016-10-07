@@ -19,7 +19,7 @@ std::string PutCommand::Execute(Player* p, std::vector<std::string> aText)
 		{
 			result = "Put what?";
 		}
-		else if (aText[2] != "in")
+		else if (aText[2] != "in" && aText[2] != "from")
 		{
 			result = "in is needed";
 		}
@@ -51,17 +51,25 @@ std::string PutCommand::putItem(Player* p, std::string aObject)
 {
 	std::string result = "";
 
-	p->getLocation()->fInventory->Put(p->getInventory()->Take(aObject));
-	result = "You dropped " + aObject;
-
 	if (p->getInventory()->HasItem(aObject))
 	{
-		Error::Display("Unable to take " + aObject + " from player");
+		p->getLocation()->fInventory->Put(p->getInventory()->Take(aObject));
+		result = "You dropped " + aObject;
+
+		if (p->getInventory()->HasItem(aObject))
+		{
+			Error::Display("Unable to take " + aObject + " from player");
+		}
+		if (!p->getLocation()->fInventory->HasItem(aObject))
+		{
+			Error::Display("Unable to add " + aObject + " to mapnode");
+		}
 	}
-	if (!p->getLocation()->fInventory->HasItem(aObject))
+	else
 	{
-		Error::Display("Unable to add " + aObject + "to mapnode");
+		result = "You do not have " + aObject;
 	}
+
 	return result;
 }
 
@@ -69,38 +77,37 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 {
 	std::string result = "";
 
-	if (p->getLocation()->fInventory->HasItem(aContainer))
+	if (!p->getInventory()->HasItem(aObject))
 	{
-		if (p->AreYou(aObject)) 
+		result = "You do not have " + aObject;
+	}
+	else if (p->getLocation()->fInventory->HasItem(aContainer))
+	{
+		if (p->AreYou(aObject))
 		{
 			result = "You hear a tear and stop.";
 		}
 		else
 		{
-			p->getLocation()->fInventory->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
-			result = "You put " + aObject + " in " + aContainer;
-
-			if (p->getInventory()->HasItem(aObject))
+			if (p->getLocation()->fInventory->getContainer(aContainer)->isLocked())
 			{
-				Error::Display("Unable to remove " + aObject + " from " + aContainer);
+				result = "Its locked.";
 			}
-			if (!p->getLocation()->fInventory->getContainer(aContainer)->HasItem(aObject))
+			else 
 			{
-				Error::Display("Unable to add " + aObject + " to " + aContainer);
+				p->getLocation()->fInventory->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
+				result = "You put " + aObject + " in " + aContainer;
 			}
 		}
 	}
-	else if (p->Locate(aContainer) == NULL)
+	else if (!p->getInventory()->HasItem(aContainer))
 	{
 		result = "You do not have " + aContainer;
 	}
 	else if (p->Locate(aObject) == p)
 	{
 		result = "You try to fit in " + aContainer + " but only get half way :(";
-	}
-	else if (p->Locate(aObject) == NULL)
-	{
-		result = "You do not have " + aObject;
+
 	}
 	else
 	{
@@ -112,14 +119,14 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 		{
 			Container* myContainer = p->getInventory()->getContainer(aContainer);
 
-			if (!myContainer == NULL)
+			if (myContainer->isLocked())
 			{
-				p->getInventory()->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
-				result = "You put " + aObject + " in " + aContainer;
+				result = "Its locked.";
 			}
 			else
 			{
-				result = "You cant put " + aObject + " in " + aContainer;
+				p->getInventory()->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
+				result = "You put " + aObject + " in " + aContainer;
 			}
 		}
 	}

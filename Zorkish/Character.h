@@ -24,7 +24,7 @@ public:
 	const int getHp();								// Returns hp
 	const bool isAlive();							// Returns alive state
 
-	void receiveDamage(const Damage* aDamage);			// Takes damage
+	void receiveDamage(const Damage* aDamage);		// Takes damage
 	void updateCharacter();							// Updates Character
 
 	Container* getInventory();						// Returns invetory
@@ -32,7 +32,7 @@ public:
 	virtual std::string getFullDesc() override;		// Full description (item list)
 
 private:
-	MapNode* flocation = NULL;						// Character location
+	MapNode* flocation;						// Character location
 protected:
 	int fHp = 100;									// Default hp, this allows new entities to have a default hp and not need pass as param
 	bool fAlive = true;								// Player alive state

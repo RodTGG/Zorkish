@@ -24,7 +24,7 @@ int MainMenu::handle_event()
 {
 	bool valid = false;
 	int resultState = States::STATE_MAINMENU;
-	int usrInput = NULL;
+	int usrInput = 0;
 
 	do {
 		std::cout << "Select 1-5:>";
