@@ -163,6 +163,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TestAttack.cpp" />
     <ClCompile Include="TestGrabCommand.cpp" />
     <ClCompile Include="TestPutCommand.cpp" />
     <ClCompile Include="TestMap.cpp" />

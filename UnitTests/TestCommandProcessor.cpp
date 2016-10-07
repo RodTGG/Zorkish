@@ -25,16 +25,7 @@ namespace TestCommandProcessor
 			Graph* myGraph = new Graph();
 			MoveCommand* move = new MoveCommand("go");
 
-			myGraph->addNode(new MapNode("1", "a cool map"));
-			myGraph->addNode(new MapNode("2", "a warm map"));
-			myGraph->addNode(new MapNode("3", "a cold map"));
-			myGraph->addNode(new MapNode("4", "a hot map"));
-
-			myGraph->addNeighbor("1", "2", "N");
-			myGraph->addNeighbor("1", "3", "E");
-			myGraph->addNeighbor("1", "4", "W");
-			myGraph->addNeighbor("2", "4", "S");
-			myGraph->addNeighbor("3", "4", "W");
+			myGraph->readFile("Adventure.txt");
 
 			p->setLocation(myGraph->adjlist[0]);
 			if ((p->getLocation(), myGraph->adjlist[0]))
@@ -67,16 +58,7 @@ namespace TestCommandProcessor
 			Graph* myGraph = new Graph();
 			LookCommand* look = new LookCommand("look");
 
-			myGraph->addNode(new MapNode("1", "a cool map"));
-			myGraph->addNode(new MapNode("2", "a warm map"));
-			myGraph->addNode(new MapNode("3", "a cold map"));
-			myGraph->addNode(new MapNode("4", "a hot map"));
-
-			myGraph->addNeighbor("1", "2", "N");
-			myGraph->addNeighbor("1", "3", "E");
-			myGraph->addNeighbor("1", "4", "W");
-			myGraph->addNeighbor("2", "4", "S");
-			myGraph->addNeighbor("3", "4", "W");
+			myGraph->readFile("Adventure.txt");
 
 			p->setLocation(myGraph->adjlist[0]);
 
@@ -93,16 +75,7 @@ namespace TestCommandProcessor
 			GrabCommand* grab = new GrabCommand("grab");
 			Item* gun = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun", "pistol" });
 
-			myGraph->addNode(new MapNode("1", "a cool map"));
-			myGraph->addNode(new MapNode("2", "a warm map"));
-			myGraph->addNode(new MapNode("3", "a cold map"));
-			myGraph->addNode(new MapNode("4", "a hot map"));
-
-			myGraph->addNeighbor("1", "2", "N");
-			myGraph->addNeighbor("1", "3", "E");
-			myGraph->addNeighbor("1", "4", "W");
-			myGraph->addNeighbor("2", "4", "S");
-			myGraph->addNeighbor("3", "4", "W");
+			myGraph->readFile("Adventure.txt");
 
 			p->setLocation(myGraph->adjlist[0]);
 			p->getLocation()->fInventory->Put(gun);
@@ -123,16 +96,7 @@ namespace TestCommandProcessor
 			PutCommand* put = new PutCommand("put");
 			Item* gun = new Item("9mm", "a 9mm weapon", new std::string[2]{ "gun", "pistol" });
 
-			myGraph->addNode(new MapNode("1", "a cool map"));
-			myGraph->addNode(new MapNode("2", "a warm map"));
-			myGraph->addNode(new MapNode("3", "a cold map"));
-			myGraph->addNode(new MapNode("4", "a hot map"));
-
-			myGraph->addNeighbor("1", "2", "N");
-			myGraph->addNeighbor("1", "3", "E");
-			myGraph->addNeighbor("1", "4", "W");
-			myGraph->addNeighbor("2", "4", "S");
-			myGraph->addNeighbor("3", "4", "W");
+			myGraph->readFile("Adventure.txt");
 
 			p->getInventory()->Put(gun);
 			p->setLocation(myGraph->adjlist[0]);

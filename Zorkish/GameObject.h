@@ -2,6 +2,7 @@
 #include "IdeableObject.h"
 #include "Damage.h"
 #include "Resistance.h"
+#include "stdafx.h"
 
 /// <summary>
 /// A gameobject the base class for all objects
