@@ -13,7 +13,7 @@ void MainMenu::display()
 {
 	std::cout << "Zorkish :: Main Menu" << std::endl;
 	std::cout << "----------------------------------" << std::endl;
-	std::cout << "Welcome to Zorkish Adventures\n1. Select Adventure and play\n2. Hall of Fame\n3. Help\n4. About\n5. Quit" << std::endl;
+	std::cout << "Welcome to Zorkish Adventures\n1. Play\n2. Hall of Fame\n3. Help\n4. About\n5. Quit" << std::endl;
 }
 
 void MainMenu::logic()
@@ -35,7 +35,7 @@ int MainMenu::handle_event()
 		switch (usrInput)
 		{
 		case 1:
-			resultState = States::STATE_SELECTADVENTURE;
+			resultState = States::STATE_GAMEPLAY;
 			valid = true;
 			break;
 		case 2:

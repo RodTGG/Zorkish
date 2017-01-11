@@ -78,9 +78,6 @@
     <ClInclude Include="Help.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="SelectAdventure.h">
-      <Filter>Header Files\States</Filter>
-    </ClInclude>
     <ClInclude Include="HallofFame.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
@@ -88,15 +85,6 @@
       <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="GameMode.h">
-      <Filter>Header Files\GameModes</Filter>
-    </ClInclude>
-    <ClInclude Include="MountainWorld.h">
-      <Filter>Header Files\GameModes</Filter>
-    </ClInclude>
-    <ClInclude Include="WaterWorld.h">
-      <Filter>Header Files\GameModes</Filter>
-    </ClInclude>
-    <ClInclude Include="BoxWorld.h">
       <Filter>Header Files\GameModes</Filter>
     </ClInclude>
     <ClInclude Include="GamePlay.h">
@@ -188,9 +176,6 @@
     <ClCompile Include="Help.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="SelectAdventure.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
     <ClCompile Include="HallofFame.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
@@ -199,15 +184,6 @@
     </ClCompile>
     <ClCompile Include="GameStateManager.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BoxWorld.cpp">
-      <Filter>Source Files\GameModes</Filter>
-    </ClCompile>
-    <ClCompile Include="MountainWorld.cpp">
-      <Filter>Source Files\GameModes</Filter>
-    </ClCompile>
-    <ClCompile Include="WaterWorld.cpp">
-      <Filter>Source Files\GameModes</Filter>
     </ClCompile>
     <ClCompile Include="GamePlay.cpp">
       <Filter>Source Files\States</Filter>

@@ -4,12 +4,8 @@
 #include "MainMenu.h"
 #include "About.h"
 #include "Help.h"
-#include "SelectAdventure.h"
 #include "HallofFame.h"
 #include "NewHighScore.h"
-#include "MountainWorld.h"
-#include "WaterWorld.h"
-#include "BoxWorld.h"
 #include "GamePlay.h"
 #include "Exit.h"
 
@@ -48,9 +44,6 @@ void GameStateManager::change_state()
 	case States::STATE_NEWHIGHSCORE:
 		fState = new NewHighScore(fPlayer, fGameMode);
 		break;
-	case States::STATE_SELECTADVENTURE:
-		fState = new SelectAdventure();
-		break;
 	case States::STATE_VIEWHALLOFFAME:
 		fState = new HallofFame();
 		break;
@@ -59,21 +52,6 @@ void GameStateManager::change_state()
 		break;
 	case States::STATE_EXIT:
 		fState = new Exit();
-		break;
-	case States::GAME_MOUNTAINWORLD:
-		fGameMode = new MountainWorld();
-		set_next_state(States::STATE_GAMEPLAY);
-		change_state();
-		break;
-	case States::GAME_WATERWORLD:
-		fGameMode = new WaterWorld();
-		set_next_state(States::STATE_GAMEPLAY);
-		change_state();
-		break;
-	case States::GAME_BOXWORLD:
-		fGameMode = new BoxWorld();
-		set_next_state(States::STATE_GAMEPLAY);
-		change_state();
 		break;
 	}
 }

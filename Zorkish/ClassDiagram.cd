@@ -1,189 +1,182 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="About">
-    <Position X="6.75" Y="3.5" Width="1.5" />
+    <Position X="5.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAIAAAAAAAAAAAEAAAAAAAAAAAEAAAAAAAAAAAAgAAA=</HashCode>
       <FileName>About.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BoxWorld">
-    <Position X="10.5" Y="8.5" Width="1.5" />
+    <Position X="5.5" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
       <FileName>BoxWorld.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Command">
-    <Position X="14.25" Y="10.5" Width="1.5" />
+    <Position X="9.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAQAAAAABAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAQAAAAACAAAAQAAAAABAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Command.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="CommandProcessor">
-    <Position X="22.75" Y="2.25" Width="1.5" />
+  <Class Name="CommandProcessor" Collapsed="true">
+    <Position X="22.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAgEIAAAAAAAAAAAAAEAACgCIAAA=</HashCode>
       <FileName>CommandProcessor.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameMode">
-    <Position X="12.75" Y="6.25" Width="1.5" />
+    <Position X="7.25" Y="14.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAgAAAAABAEA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAEAAAAAgAAAAABAEA=</HashCode>
       <FileName>GameMode.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameObject">
-    <Position X="6.75" Y="9.25" Width="1.5" />
+    <Position X="17.25" Y="10.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>ABAAAAAACAAAAQgAIIAAAAQAAAAEAAAAAAAAAAIAAAA=</HashCode>
+      <HashCode>ABAACAAAAAAAMAAChACQCAIAAoAAACAAAAwFAAIEAAA=</HashCode>
       <FileName>GameObject.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GamePlay">
-    <Position X="9" Y="3.5" Width="1.5" />
+    <Position X="8" Y="3.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>BAAAgQAAAAIAEAAgAAAAAAAAAAEAAAAAAAAAAAAgAAA=</HashCode>
+      <HashCode>BAAAAQAAAAIAAAAAEEAAAAAAAAEAIAAACAABAAAgEAA=</HashCode>
       <FileName>GamePlay.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameState" Collapsed="true">
-    <Position X="13.5" Y="2.25" Width="1.5" />
+    <Position X="13" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAAAgAAAAAAAAAAAAAkAAAAAAAAAAAAgIgA=</HashCode>
       <FileName>GameState.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="GameStateManager">
-    <Position X="24.5" Y="2.25" Width="1.5" />
+  <Class Name="GameStateManager" Collapsed="true">
+    <Position X="24.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAIACAAIAAASAAAAAAAIAAABAFABAAEAA=</HashCode>
+      <HashCode>IAAAAAAEAAAAIAAAAIAAASAAAAAAAIAAABAFABEAEAA=</HashCode>
       <FileName>GameStateManager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GrabCommand">
-    <Position X="13.25" Y="13" Width="2" />
+    <Position X="8" Y="11.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAEAAwAAAAAAAAAAA=</HashCode>
       <FileName>GrabCommand.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Graph">
-    <Position X="26.25" Y="2.25" Width="1.5" />
+  <Class Name="Graph" Collapsed="true">
+    <Position X="26" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAhAAAAAEAAAAAAIAAAAAAAAACgAAAgAAAAAABE=</HashCode>
+      <HashCode>AgAACAhAAAAAEAAAAEAYAAAAAAAACDgAAEkAIAAAABE=</HashCode>
       <FileName>Graph.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HallofFame">
-    <Position X="18" Y="3.5" Width="1.5" />
+    <Position X="17.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAEAAAAAAAAAAAAAAAAAAEAEAAAAAAAAAAAAgAAA=</HashCode>
       <FileName>HallofFame.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Help">
-    <Position X="11.25" Y="3.5" Width="1.5" />
+    <Position X="10.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAABAAAIAAAAAAAAAAAAAAEAAAAAAAAAAAAgAAA=</HashCode>
       <FileName>Help.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="IdeableObject">
-    <Position X="6.75" Y="6.75" Width="1.5" />
+    <Position X="17.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAACBAAAAAIAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAACBAAAAAIAAEAAAAAAAAAAAIAAAA=</HashCode>
       <FileName>IdeableObject.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Inventory">
-    <Position X="22.75" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAgAAAAAAAABAAAkAgAAAAAAAAAAAAAEAAgAAAAg=</HashCode>
-      <FileName>Inventory.h</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Item">
-    <Position X="5.5" Y="13" Width="1.5" />
+    <Position X="17.5" Y="16.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAIAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQCAAAAAAAAAAAAAEAAAAAAAAAAgAQAAAAAA=</HashCode>
       <FileName>Item.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="LookCommand">
-    <Position X="15.5" Y="13" Width="2" />
+    <Position X="10.75" Y="11.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAQAAQAAAAAAAAAAIAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAYAAQAAAAAAAAAAIAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>LookCommand.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MainMenu">
-    <Position X="20.25" Y="3.5" Width="1.5" />
+    <Position X="20" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAACAAAAAAAAAAAQAAEAAAAAAAAAAAAgAAA=</HashCode>
       <FileName>MainMenu.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="MapNode">
-    <Position X="24.5" Y="6.25" Width="1.5" />
+  <Class Name="MapNode" Collapsed="true">
+    <Position X="22.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABQAAIQAAgAAQQAAAAAAAAAAAAAAAAAAAIAAAAAAAQ=</HashCode>
+      <HashCode>BAAAAAASAAAAAQQAAABQAAIAAAAAAAAAAEAAAAAEIAQ=</HashCode>
       <FileName>MapNode.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MountainWorld">
-    <Position X="12.75" Y="8.5" Width="1.5" />
+    <Position X="7.75" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MountainWorld.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MoveCommand">
-    <Position X="11" Y="13" Width="1.75" />
+    <Position X="5.5" Y="11.25" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAgAAAQAAAAEAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
       <FileName>MoveCommand.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NewHighScore">
-    <Position X="15.75" Y="3.5" Width="1.5" />
+    <Position X="15.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAAAEAAAAAAAAAAAAAECAAAIAAAAAAAgEAA=</HashCode>
       <FileName>NewHighScore.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Player">
-    <Position X="7.75" Y="13" Width="1.5" />
+  <Class Name="Player" Collapsed="true">
+    <Position X="24.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAABAAAAAIQIAAAARCAYABAAIABAAQQAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAABAACAAAAAAQAAQBA=</HashCode>
       <FileName>Player.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PutCommand">
-    <Position X="17.75" Y="13" Width="2" />
+    <Position X="13.5" Y="11.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAQAAAAACAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PutCommand.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SelectAdventure">
-    <Position X="13.5" Y="3.5" Width="1.5" />
+    <Position X="13" Y="3.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>BAIAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAAAgAAA=</HashCode>
       <FileName>SelectAdventure.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WaterWorld">
-    <Position X="15" Y="8.5" Width="1.5" />
+    <Position X="10" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>WaterWorld.h</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="States">
-    <Position X="22.75" Y="8.75" Width="1.5" />
+    <Position X="22.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAQBAhAAAAAAAABAAAAABAAgAAQIAAAAAAAE=</HashCode>
       <FileName>States.h</FileName>
