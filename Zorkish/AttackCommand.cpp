@@ -9,13 +9,6 @@ AttackCommand::~AttackCommand()
 {
 }
 
-/// <summary>
-/// Executes command
-/// Two possible combinations, Attack object and Attack object with.
-/// </summary>
-/// <param name="p">The p.</param>
-/// <param name="aText">a text.</param>
-/// <returns>result</returns>
 std::string AttackCommand::Execute(Player* p, std::vector<std::string> aText)
 {
 	std::string result = "";
@@ -54,14 +47,6 @@ std::string AttackCommand::Execute(Player* p, std::vector<std::string> aText)
 	return result;
 }
 
-/// <summary>
-/// Executes command
-/// Receives attack object
-/// Deals 1 damage if player hits themselves, regardless of item.
-/// </summary>
-/// <param name="p">The p.</param>
-/// <param name="aText">a text.</param>
-/// <returns>result</returns>
 std::string AttackCommand::Attack(Player* aPlayer, std::string aObject)
 {
 	std::string result = "";
