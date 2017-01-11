@@ -10,7 +10,7 @@ private:
 public:
 	Container();
 	Container(std::string aName, std::string aDesc, std::string aId[2]);
-	Container(std::string aName, std::string aDesc, bool aLocked, std::string aKey,std::string aId[2]);
+	Container(std::string aName, std::string aDesc, bool aLocked, std::string aKey, std::string aId[2]);
 	~Container();
 
 	std::vector<Item*> fItems;

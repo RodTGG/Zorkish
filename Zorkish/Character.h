@@ -5,37 +5,119 @@
 
 /// <summary>
 /// Character base class
-///	Character can receive damage
+///	Character can receive damage which is substracted from their resistance
 /// </summary>
 /// <seealso cref="GameObject" />
-
 class Character :
 	public GameObject
 {
 public:
-	Character(std::string aName, std::string aDesc, std::string aId[2]);										// Default contructor, damage 0, resitance 0
-	Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg);							// Specified damage
-	Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, Resistance* aResistance);	// Specified damage and resistance
+	/// <summary>
+	/// Default constructor, Initializes a new instance of the <see cref="Character"/> class.
+	/// hp 100, damage 0, resistance 0
+	/// </summary>
+	/// <param name="aName">a name.</param>
+	/// <param name="aDesc">a desc.</param>
+	/// <param name="aId">a identifier.</param>
+	Character(std::string aName, std::string aDesc, std::string aId[2]);
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="Character"/> class.
+	/// hp, 100, resistance 0
+	/// </summary>
+	/// <param name="aName">a name.</param>
+	/// <param name="aDesc">a desc.</param>
+	/// <param name="aId">a identifier.</param>
+	/// <param name="aDmg">a DMG.</param>
+	Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg);
+
+	/// <summary>
+	/// Initializes a new instance of the <see cref="Character"/> class.
+	/// hp 100
+	/// </summary>
+	/// <param name="aName">a name.</param>
+	/// <param name="aDesc">a desc.</param>
+	/// <param name="aId">a identifier.</param>
+	/// <param name="aDmg">a DMG.</param>
+	/// <param name="aResistance">a resistance.</param>
+	Character(std::string aName, std::string aDesc, std::string aId[2], Damage* aDmg, Resistance* aResistance);
+
+	/// <summary>
+	/// Finalizes an instance of the <see cref="Character"/> class.
+	/// </summary>
 	~Character();
 
-	GameObject* Locate(std::string aId);			// Locates object, character or item in inv
-	void setLocation(MapNode* aLocation);			// Sets the Location
+	/// <summary>
+	/// Locates the specified item.
+	/// </summary>
+	/// <param name="aId">a identifier for object.</param>
+	/// <returns>GameObject pointer</returns>
+	GameObject* Locate(std::string aId);
 
-	const int getHp();								// Returns hp
-	const bool isAlive();							// Returns alive state
+	/// <summary>
+	/// Sets the location.
+	/// </summary>
+	/// <param name="aLocation">a location.</param>
+	void setLocation(MapNode* aLocation);
 
-	void receiveDamage(const Damage* aDamage);		// Takes damage
-	void update() override;							// Updates Character
+	/// <summary>
+	/// Gets the hp.
+	/// </summary>
+	/// <returns>Int, character hp</returns>
+	const int getHp();
 
-	Container* getInventory();						// Returns invetory
-	MapNode* getLocation();							// Returns current mapnode
-	virtual std::string getFullDesc() override;		// Full description (item list)
+	/// <summary>
+	/// Determines whether this instance is alive.
+	/// </summary>
+	/// <returns>bool, true if player is alive</returns>
+	const bool isAlive();
 
+	/// <summary>
+	/// Receives the damage.
+	/// </summary>
+	/// <param name="aDamage">a damage.</param>
+	void receiveDamage(const Damage* aDamage);
+
+	/// <summary>
+	/// Updates this instance.
+	/// </summary>
+	void update() override;
+
+	/// <summary>
+	/// Gets the inventory.
+	/// </summary>
+	/// <returns>Container pointer</returns>
+	Container* getInventory();
+
+	/// <summary>
+	/// Gets the location.
+	/// </summary>
+	/// <returns>MapNode pointer</returns>
+	MapNode* getLocation();
+
+	/// <summary>
+	/// Gets the full desc.
+	/// </summary>
+	/// <returns>string, description of this</returns>
+	virtual std::string getFullDesc() override;
 private:
-	MapNode* flocation;						// Character location
+	/// <summary>
+	/// The flocation
+	/// </summary>
+	MapNode* flocation;
 protected:
-	int fHp = 100;									// Default hp, this allows new entities to have a default hp and not need pass as param
-	bool fAlive = true;								// Player alive state
+	/// <summary>
+	/// The f hp
+	/// </summary>
+	int fHp = 100;
 
-	Container* fInventory;							// Inventory
+	/// <summary>
+	/// The f alive
+	/// </summary>
+	bool fAlive = true;
+
+	/// <summary>
+	/// The f inventory
+	/// </summary>
+	Container* fInventory;
 };

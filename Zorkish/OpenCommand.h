@@ -11,4 +11,3 @@ public:
 	std::string Open(Player* aPlayer, std::string aObject);
 	std::string OpenWith(Player* aPlayer, std::string aObject, std::string aItem);
 };
-

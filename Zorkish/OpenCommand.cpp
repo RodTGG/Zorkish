@@ -1,17 +1,15 @@
 #include "stdafx.h"
 #include "OpenCommand.h"
 
-
 OpenCommand::OpenCommand(std::string aName) : Command(aName)
 {
 }
-
 
 OpenCommand::~OpenCommand()
 {
 }
 
-std::string OpenCommand::Execute(Player* aPlayer, std::vector<std::string> aText) 
+std::string OpenCommand::Execute(Player* aPlayer, std::vector<std::string> aText)
 {
 	std::string result = "";
 
@@ -64,7 +62,7 @@ std::string OpenCommand::Open(Player* aPlayer, std::string aObject)
 		{
 			result = "You cant open that...";
 		}
-		else 
+		else
 		{
 			if (aPlayer->getLocation()->fInventory->getContainer(aObject)->isLocked())
 			{
@@ -93,7 +91,7 @@ std::string OpenCommand::OpenWith(Player* aPlayer, std::string aObject, std::str
 		result = "To open yourself, you must first open your heart.\n";
 		result += "You feel sad, looks like trying to find a deeper meaning for life just isnt for you.\n";
 	}
-	else if (!aPlayer->getInventory()->HasItem(aItem)) 
+	else if (!aPlayer->getInventory()->HasItem(aItem))
 	{
 		result = "You dont have " + aItem;
 	}
@@ -114,7 +112,7 @@ std::string OpenCommand::OpenWith(Player* aPlayer, std::string aObject, std::str
 				{
 					result = "You failed to open the chest with this key\n";
 				}
-				else 
+				else
 				{
 					aPlayer->getInventory()->Take(aItem);
 					result = "You succeed!";
@@ -126,7 +124,7 @@ std::string OpenCommand::OpenWith(Player* aPlayer, std::string aObject, std::str
 			}
 		}
 	}
-	else if (aPlayer->getInventory()->HasItem(aObject)) 
+	else if (aPlayer->getInventory()->HasItem(aObject))
 	{
 		if (!aPlayer->getInventory()->Fetch(aObject)->isContainer())
 		{

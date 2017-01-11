@@ -30,7 +30,7 @@ namespace TestAttack
 			p->setLocation(myGraph->adjlist[0]);
 
 			Assert::IsTrue(p->getInventory()->HasItem("gun"));
-			attack->Attack(p,"Squirell");
+			attack->Attack(p, "Squirell");
 			Assert::IsTrue(p->getLocation()->fCharacters->getChar("squirell")->getHp() < 100);
 		}
 	};

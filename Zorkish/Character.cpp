@@ -22,7 +22,7 @@ Character::~Character()
 
 void Character::update()
 {
-	for (unsigned int i = 0; i < fInventory->fItems.size(); i++) 
+	for (unsigned int i = 0; i < fInventory->fItems.size(); i++)
 	{
 		fInventory->fItems[i]->update();
 	}

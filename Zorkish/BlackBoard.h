@@ -9,4 +9,3 @@ public:
 
 	void SendMessage(Player* aP, std::string aMessage);
 };
-

@@ -93,7 +93,7 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 			{
 				result = "Its locked.";
 			}
-			else 
+			else
 			{
 				p->getLocation()->fInventory->getContainer(aContainer)->Put(p->getInventory()->Take(aObject));
 				result = "You put " + aObject + " in " + aContainer;
@@ -107,7 +107,6 @@ std::string PutCommand::putItem(Player* p, std::string aObject, std::string aCon
 	else if (p->Locate(aObject) == p)
 	{
 		result = "You try to fit in " + aContainer + " but only get half way :(";
-
 	}
 	else
 	{

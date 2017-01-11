@@ -84,7 +84,6 @@ int GamePlay::handle_event()
 
 		fPlayer->getLocation()->update();
 		fPlayer->update();
-
 	} while (usrInput != "quit");
 
 	return returnState;

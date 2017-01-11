@@ -5,7 +5,7 @@ public:
 	Resistance();
 	Resistance(int aRes[4]);
 	~Resistance();
-	
+
 	int getFireRes();
 	int getIceRes();
 	int getLightningRes();
@@ -17,4 +17,3 @@ public:
 private:
 	int fRes[4];
 };
-

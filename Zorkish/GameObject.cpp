@@ -29,7 +29,6 @@ GameObject::GameObject(std::string aName, std::string aDesc, std::string aId[2],
 	fDescription = aDesc;
 	fShortdesc = fName + "(" + FirstId() + ")";
 	fResistance = aResistance;
-	
 }
 
 GameObject::~GameObject()
@@ -62,7 +61,7 @@ int GameObject::getDarkResistance()
 	return fResistance->getDarkRes();
 }
 
-void GameObject::update() 
+void GameObject::update()
 {
 	std::string lMessage = "";
 	if (!bMessages.empty())
@@ -70,15 +69,14 @@ void GameObject::update()
 		lMessage = bMessages.front();
 		bMessages.erase(bMessages.begin());
 
-		if (lMessage == "look") 
+		if (lMessage == "look")
 		{
 			std::cout << fName + "\t" + getFullDesc() << std::endl;
 		}
 	}
-	
 }
 
-void GameObject::addBMessage(std::string aMessage) 
+void GameObject::addBMessage(std::string aMessage)
 {
 	bMessages.push_back(aMessage);
 }

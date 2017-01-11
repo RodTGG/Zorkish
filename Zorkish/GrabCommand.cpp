@@ -85,7 +85,7 @@ std::string GrabCommand::grabItem(Player* p, std::string aObject, std::string aC
 
 		if (myContainer != NULL)
 		{
-			if (myContainer->HasItem(aObject)) 
+			if (myContainer->HasItem(aObject))
 			{
 				p->getInventory()->Put(p->getLocation()->fInventory->getContainer(aContainer)->Take(aObject));
 				result = "You grabbed " + aObject + " from " + aContainer;

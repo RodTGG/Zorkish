@@ -11,7 +11,7 @@ Container::Container(std::string aName, std::string aDesc, std::string aId[2]) :
 	bContainer = true;
 }
 
-Container::Container(std::string aName, std::string aDesc, bool aLocked, std::string aKey,std::string aId[2]) : Item(aName, aDesc, aId)
+Container::Container(std::string aName, std::string aDesc, bool aLocked, std::string aKey, std::string aId[2]) : Item(aName, aDesc, aId)
 {
 	bContainer = true;
 	fLocked = aLocked;
@@ -120,14 +120,14 @@ std::string Container::getShortDesc()
 	return "\n" + ItemList();
 }
 
-bool Container::isLocked() 
+bool Container::isLocked()
 {
 	return fLocked;
 }
 
 void Container::open(Item* aKey)
 {
-	if (fKey == aKey->getName()) 
+	if (fKey == aKey->getName())
 	{
 		fLocked = false;
 	}

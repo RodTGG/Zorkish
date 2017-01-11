@@ -1,11 +1,9 @@
 #include "stdafx.h"
 #include "BlackBoard.h"
 
-
 BlackBoard::BlackBoard()
 {
 }
-
 
 BlackBoard::~BlackBoard()
 {
@@ -13,7 +11,7 @@ BlackBoard::~BlackBoard()
 
 void BlackBoard::SendMessage(Player* aP, std::string aMessage)
 {
-	for (unsigned int i = 0; i < aP->getLocation()->fCharacters->fChars.size();i++) 
+	for (unsigned int i = 0; i < aP->getLocation()->fCharacters->fChars.size(); i++)
 	{
 		if (aP->getLocation()->fCharacters->fChars[i]->isSubscribed())
 		{

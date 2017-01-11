@@ -13,7 +13,7 @@ std::string LookCommand::Execute(Player* p, std::vector<std::string> aText)
 {
 	std::string result = "";
 
-	if (aText[1] == "at" && aText[2] == "all") 
+	if (aText[1] == "at" && aText[2] == "all")
 	{
 		blackbMessage(p);
 	}
@@ -73,13 +73,13 @@ std::string LookCommand::lookAtIn(Player* p, std::string aItem)
 	else {
 		if (p->getLocation()->fInventory->HasItem(aItem))
 		{
-			if (p->getLocation()->fInventory->Fetch(aItem)->isContainer()) 
+			if (p->getLocation()->fInventory->Fetch(aItem)->isContainer())
 			{
 				if (p->getLocation()->fInventory->getContainer(aItem)->isLocked())
 				{
 					result = "You cant look inside its locked.";
 				}
-				else 
+				else
 				{
 					result = p->getLocation()->fInventory->Fetch(aItem)->getFullDesc();
 				}

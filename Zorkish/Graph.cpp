@@ -380,9 +380,9 @@ void Graph::readFile(std::string aFile)
 							{
 								if (fTokens.size() == 7)
 								{
-									if (fTokens[5] == "null" && fTokens[6] == "null") 
+									if (fTokens[5] == "null" && fTokens[6] == "null")
 									{
-										Character* myChar = new Character(fTokens[1], fTokens[2], new std::string[2]{fTokens[3],fTokens[4]});
+										Character* myChar = new Character(fTokens[1], fTokens[2], new std::string[2]{ fTokens[3],fTokens[4] });
 										getNode(fTokens[0])->fCharacters->addChars(myChar);
 										if (fDebugging)
 										{
@@ -391,14 +391,14 @@ void Graph::readFile(std::string aFile)
 									}
 									else if (fTokens[5] != "null" && fTokens[6] == "null")
 									{
-										Character* myChar = new Character(fTokens[1], fTokens[2], new std::string[2]{ fTokens[3],fTokens[4]}, getDamage(fTokens[5]));
+										Character* myChar = new Character(fTokens[1], fTokens[2], new std::string[2]{ fTokens[3],fTokens[4] }, getDamage(fTokens[5]));
 										getNode(fTokens[0])->fCharacters->addChars(myChar);
 										if (fDebugging)
 										{
-											std::cout << "Added " + fTokens[1] + " in " + fTokens[0] + "," + fTokens[2] + " damage: "+ fTokens[5] + " resistance: 0" << std::endl;
+											std::cout << "Added " + fTokens[1] + " in " + fTokens[0] + "," + fTokens[2] + " damage: " + fTokens[5] + " resistance: 0" << std::endl;
 										}
 									}
-									else 
+									else
 									{
 										Character* myChar = new Character(fTokens[1], fTokens[2], new std::string[2]{ fTokens[3],fTokens[4] }, getDamage(fTokens[5]), getResistance(fTokens[6]));
 										getNode(fTokens[0])->fCharacters->addChars(myChar);

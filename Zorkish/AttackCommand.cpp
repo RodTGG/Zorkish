@@ -66,7 +66,7 @@ std::string AttackCommand::Attack(Player* aPlayer, std::string aObject)
 {
 	std::string result = "";
 
-	if(aPlayer->AreYou(aObject))
+	if (aPlayer->AreYou(aObject))
 	{
 		result = "Ouch! you hit yourself. Your stats go down... and your self-esteem.";
 		aPlayer->receiveDamage(aPlayer->getDamage());
@@ -84,11 +84,11 @@ std::string AttackCommand::Attack(Player* aPlayer, std::string aObject)
 			result += "You killed " + aObject;
 		}
 	}
-	else if(!aPlayer->getLocation()->fCharacters->hasChar(aObject))
+	else if (!aPlayer->getLocation()->fCharacters->hasChar(aObject))
 	{
 		result = "You check the room but find no one named " + aObject;
 	}
-	else 
+	else
 	{
 		result = "You cant hit " + aObject;
 	}
@@ -102,19 +102,19 @@ std::string AttackCommand::AttackWith(Player* aPlayer, std::string aObject, std:
 
 	if (aPlayer->AreYou(aObject))
 	{
-		if (aPlayer->getInventory()->HasItem(aItem)) 
+		if (aPlayer->getInventory()->HasItem(aItem))
 		{
 			aPlayer->receiveDamage(aPlayer->getInventory()->Fetch(aObject)->getDamage());
 			result = "I know the situation is looking grim, but dont give up yet!";
 		}
-		else 
+		else
 		{
 			result = "You dont have " + aItem;
 		}
 	}
 	else if (aPlayer->getLocation()->fCharacters->hasChar(aObject) && aPlayer->getLocation()->fCharacters->getChar(aObject)->isAlive())
 	{
-		if (aPlayer->getInventory()->HasItem(aItem)) 
+		if (aPlayer->getInventory()->HasItem(aItem))
 		{
 			aPlayer->getLocation()->fCharacters->getChar(aObject)->receiveDamage(aPlayer->getInventory()->Fetch(aItem)->getDamage());
 			aPlayer->receiveDamage(aPlayer->getLocation()->fCharacters->getChar(aObject)->getDamage());
@@ -127,11 +127,10 @@ std::string AttackCommand::AttackWith(Player* aPlayer, std::string aObject, std:
 				result += "You killed " + aObject;
 			}
 		}
-		else 
+		else
 		{
 			result = "You dont have " + aItem;
 		}
-		
 	}
 	else if (!aPlayer->getLocation()->fCharacters->hasChar(aObject))
 	{
