@@ -42,13 +42,13 @@ void GameStateManager::change_state()
 		fState = new Help();
 		break;
 	case States::STATE_NEWHIGHSCORE:
-		fState = new NewHighScore(fPlayer, fGameMode);
+		fState = new NewHighScore(fPlayer);
 		break;
 	case States::STATE_VIEWHALLOFFAME:
 		fState = new HallofFame();
 		break;
 	case States::STATE_GAMEPLAY:
-		fState = new GamePlay(fPlayer, fGameMode, fDebug);
+		fState = new GamePlay(fPlayer, fDebug);
 		break;
 	case States::STATE_EXIT:
 		fState = new Exit();

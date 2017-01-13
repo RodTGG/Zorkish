@@ -1,6 +1,5 @@
 #pragma once
 #include "GameState.h"
-#include "GameMode.h"
 #include "Player.h"
 
 /// <summary>
@@ -27,7 +26,6 @@ private:
 
 	GameState* fState;					// GameState object pointer
 	Player* fPlayer;				// Player object pointer
-	GameMode* fGameMode;					// GameMode object pointer
 protected:
 	bool DebugMode();
 };

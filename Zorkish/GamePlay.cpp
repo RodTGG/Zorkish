@@ -1,20 +1,11 @@
 #include "stdafx.h"
 #include "GamePlay.h"
 
-GamePlay::GamePlay(Player* aPlayer, GameMode* aGameMode, bool aDebugging) : GameState(5)
+GamePlay::GamePlay(Player* aPlayer, bool aDebugging) : GameState(5)
 {
-	fGameMode = aGameMode;
 	fDebugging = aDebugging;
 	fPlayer = aPlayer;
 	fGraph = new Graph(aDebugging);
-	fCommandProcessor = new CommandProcessor();
-}
-
-GamePlay::GamePlay(Player* aPlayer, GameMode* aGameMode) : GameState(5)
-{
-	fGameMode = aGameMode;
-	fPlayer = aPlayer;
-	fGraph = new Graph();
 	fCommandProcessor = new CommandProcessor();
 }
 

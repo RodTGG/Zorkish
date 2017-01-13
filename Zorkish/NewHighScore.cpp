@@ -1,16 +1,13 @@
 #include "stdafx.h"
 #include "NewHighScore.h"
 
-NewHighScore::NewHighScore(Player* aPlayer, GameMode* aGameMode) : GameState(6)
+NewHighScore::NewHighScore(Player* aPlayer) : GameState(6)
 {
 	fPlayer = aPlayer;
-	game = aGameMode;
 }
 
 NewHighScore::~NewHighScore()
 {
-	delete fPlayer;
-	delete game;
 }
 
 void NewHighScore::display()
@@ -19,7 +16,6 @@ void NewHighScore::display()
 	std::cout << "--------------------------------------------------------" << std::endl;
 	std::cout << "Congratulations!" << std::endl;
 	std::cout << "You have made it to the Zorkish Hall Of Fame" << std::endl;
-	std::cout << "Adventure: " + game->NAME() << std::endl;
 	std::cout << "Score: " + fPlayer->getScore() << std::endl;
 	std::cout << "Moves: " + fPlayer->getMoves() << std::endl;
 }

@@ -1,6 +1,5 @@
 #pragma once
 #include "GameState.h"
-#include "GameMode.h"
 #include "CommandProcessor.h"
 #include "Graph.h"
 
@@ -8,8 +7,7 @@ class GamePlay :
 	public GameState
 {
 public:
-	GamePlay(Player* p, GameMode* aGame, bool aDebug);
-	GamePlay(Player* p, GameMode* aGame);
+	GamePlay(Player* p, bool aDebug = false);
 	~GamePlay();
 
 	void display() override;
@@ -20,8 +18,7 @@ public:
 private:
 	Player* fPlayer;
 	Graph* fGraph;
-	GameMode* fGameMode;;
-	bool fDebugging = false;
+	bool fDebugging;
 
 protected:
 	CommandProcessor* fCommandProcessor;;

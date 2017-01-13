@@ -8,7 +8,6 @@
 /// A gameobject the base class for all objects
 /// </summary>
 /// <seealso cref="IdeableObject" />
-
 class GameObject :
 	public IdeableObject
 {

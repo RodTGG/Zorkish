@@ -165,7 +165,6 @@
     <ClInclude Include="MoveCommand.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="MapNode.h" />
-    <ClInclude Include="GameMode.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GamePlay.h" />
     <ClInclude Include="GameState.h" />

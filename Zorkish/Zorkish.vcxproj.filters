@@ -84,9 +84,6 @@
     <ClInclude Include="NewHighScore.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="GameMode.h">
-      <Filter>Header Files\GameModes</Filter>
-    </ClInclude>
     <ClInclude Include="GamePlay.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
