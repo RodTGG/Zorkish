@@ -33,20 +33,11 @@ void Graph::Tokenizer(const std::string& str, std::vector<std::string>& fTokens,
 	}
 }
 
-/// <summary>
-/// Adds the node to adjency list.
-/// </summary>
-/// <param name="aNode">A MapNode.</param>
 void Graph::addNode(MapNode* aNode)
 {
 	adjlist.push_back(aNode);
 }
 
-/// <summary>
-/// Adds the neighbor.
-/// </summary>
-/// <param name="aNode1">name of node1.</param>
-/// <param name="aNode2">name of node2.</param>
 void Graph::addNeighbor(std::string aNode1, std::string aNode2, std::string aDirection)
 {
 	MapNode* a;
@@ -147,10 +138,6 @@ Resistance* Graph::getResistance(std::string aResistance)
 	return result;
 }
 
-/// <summary>
-/// Prints the graph.
-///	Prints nodes neighbours.
-/// </summary>
 void Graph::printGraph()
 {
 	for (unsigned int i = 0; i < adjlist.size(); i++)
@@ -210,15 +197,6 @@ void Graph::setNode(MapNode* aNode)
 	}
 }
 
-std::string Graph::fileName()
-{
-	return fName;
-}
-
-/// <summary>
-/// Reads the file from specified file.
-/// </summary>
-/// <param name="aFile">file to read from.</param>
 void Graph::readFile(std::string aFile)
 {
 	std::string line = "";

@@ -2,6 +2,10 @@
 #include "Container.h"
 #include "CharacterContainer.h"
 
+/// <summary>
+/// MapNode class
+/// 
+/// </summary>
 class MapNode
 {
 private:

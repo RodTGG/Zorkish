@@ -1,5 +1,8 @@
 #pragma once
 
+/// <summary>
+/// Damage property class
+/// </summary>
 class Damage
 {
 public:
