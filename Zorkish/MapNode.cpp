@@ -31,6 +31,7 @@ MapNode::MapNode(std::string aName, std::string aDesc, Item aItems[])
 	}
 }
 
+
 MapNode::~MapNode()
 {
 	delete fCharacters;
